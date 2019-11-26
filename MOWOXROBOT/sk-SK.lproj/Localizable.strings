@@ -1,0 +1,225 @@
+/* 
+  Localizable.strings
+  MOWOX
+
+  Created by 杭州轨物科技有限公司 on 2018/1/31.
+  Copyright © 2018年 yusz. All rights reserved.
+*/
+"confail" = "pripojenie úspešné";
+"consucc" = "pripojenie neúspešné";
+"disconnect" = "Odpojenie";
+
+"Input old PIN code" = "Zadajte starý PIN kód";
+"Input new PIN code" = "Zadajte nový PIN kód";
+"4 numbers" = "4 čísla";
+"numbers" = "čísla";
+"Repeat new PIN code" = "Znova zadajte nový PIN kód";
+"OK" = "OK";
+"MOW in the rain" = "Kosenie v daždi";
+"Yes" = "ÁNO";
+"NO" = "NIE";
+"Boundary cut" = "Kosenie pri okrajoch";
+
+"Date" = "Dátum";
+"Time" = "Čas";
+"Language setting" = "Nastavenie jazyka";
+"Time setting" = "Nastavenie času";
+"Working time setting" = "Nastavenie pracovného času";
+"Robot setting" = "Nastavenie robota";
+"PIN setting" = "Nastavenie PIN";
+"Start" = "Start";
+"Stop" = "Stop";
+"Alert" = "Upozornenia";
+"setting" = "Nastavenie";
+"Setting" = "Nastavenie";
+
+"Connect bluetooth" = "Pripojenie bluetooth";
+"Control the robot" = "Ovládanie robota";
+"Connected device" = "Pripojené zariadenie";
+"No device" = "Žiadne zariadenie";
+"Available devices" = "Dostupné zariadenia";
+"(please choose RobotMower_DYM)" = "(prosím zvoľte RobotMower_DYM)";
+
+"Information" = "Informácie";
+"Robot status" = "Status robota";
+"Update Robot's Firmware" = "Aktualizácia firmware robota";
+"Please input PIN code" = "Prosím zadajte PIN kód";
+"Cancel" = "Zrušiť";
+"Confirm" = "Potvrdiť";
+
+"Your robot's firmware version:" = "Verzia vášho firmware vášho robota:";
+"Latest robot's firmware version:" = "Najnovší firmware robota";
+"Please press Key \"2\"(Boot Mode,2-Update firmware) on the robot's keyboard to start." = "Pre začiatok aktualizácie stlačte tlačidlo \"2\" ( režim spustenia, 2-aktualizácia firmware ) na klávesnici robota.";
+//
+"Done" = "Hotovo";
+"English" = "Anglický jazyk";
+"Dansk" = "Dánsky jazyk";
+
+"Bluetooth connected" = "Bluetooth pripojené";
+"Robot on lawn" = "Robot na trávniku";
+"Back to station" = "Späť do stanice";
+"Robot on station" = "Robot v stanici";
+"Go to work" = "Začať s kosením";
+"Battery capacity" = "Kapacita batérie";
+"Robot control" = "Ovládanie robota";
+"Robot Control" = "Ovládanie robota";
+
+"Bluetooth not connected" = "Bluetooth nie je pripojené";
+"Incorrect PIN code length" = "Nesprávna dĺžka PIN kódu";
+"Incorrect PIN code" = "Nesprávny PIN kód";
+
+"Monday's time set wrong" = "Nastavenie času pre pondelok je nesprávne";
+"Tuesday's time set wrong" = "Nastavenie času pre utorok je nesprávne";
+"Wednesday's time set wrong" = "Nastavenie času pre stredu je nesprávne";
+"Thursday's time set wrong" = "Nastavenie času pre štvrtok je nesprávne";
+"Friday's time set wrong" = "Nastavenie času pre piatok je nesprávne";
+"Saturday's time set wrong" = "Nastavenie času pre sobotu je nesprávne";
+"Sunday's time set wrong" = "Nastavenie času pre nedeľu je nesprávne";
+"PinCode restrictions 4 digits" = "Obmedzeniu PIN kódu na 4 čísla";
+"OldPinCode ERROR" = "CHYBA starého PIN";
+"Two input is inconsistent" = "Dve zadané informácie nesúhlasia";
+"Please check if Bluetooth is turned on in the control center" = "Skontrolujte, či je v ovládacom centre zapnutý bluetooth";
+"Set pincode wrong" = "Nastavenie PIN kódu nesprávne";
+
+"Distribution network" = "Distribučná sieť";
+"Device" = "Zariadenie";
+"Available Device" = "Dostupné zariadenie";
+"Connected Device" = "Pripojené zariadenie";
+"Pull-down refresh" = "Obnovte potiahnutím nadol";
+"Release refresh" = "Obnovte pustením";
+"Loading" = "Načítavanie";
+"Add your gateway soon!" = "Čím skôr pridajte bránu!";
+"Add GateWay" = "Pridať bránu";
+"Next" = "Ďalej";
+
+"AM 0:00;" = "00:00";
+"AM 1:00;" = "01:00";
+"AM 2:00;" = "02:00";
+"AM 3:00;" = "03:00";
+"AM 4:00;" = "04:00";
+"AM 5:00;" = "05:00";
+"AM 6:00;" = "06:00";
+"AM 7:00;" = "07:00";
+"AM 8:00;" = "08:00";
+"AM 9:00;" = "09:00";
+"AM 10:00;"= "10:00";
+"AM 11:00;"= "11:00";
+"PM 0:00;" = "12:00";
+"PM 1:00;" = "13:00";
+"PM 2:00;" = "14:00";
+"PM 3:00;" = "15:00";
+"PM 4:00;" = "16:00";
+"PM 5:00;" = "17:00";
+"PM 6:00;" = "18:00";
+"PM 7:00;" = "19:00";
+"PM 8:00;" = "20:00";
+"PM 9:00;" = "21:00";
+"PM 10:00;"= "22:00";
+"PM 11:00;"= "23:00";
+
+"Hours" = "Hodiny";
+
+
+"Update" = "Aktualizácia";
+"success" = "úspešné";
+"error,again" = "chyba,opakovať";
+"update succese" = "aktualizácia úspešná";
+
+"Change password" = "zmena hesla";
+"6-12 characters or numbers" = "6-12 znakov alebo čísiel";
+"Input Old Password" = "zadajte staré heslo";
+"Input New Password" = "zadajte nové heslo";
+"Repeat New Password" = "znova zadajte nové heslo";
+"nodevice" = "žiadne zariadenie";
+"Connection succeeded!"="Pripojenie úspešné!";
+"Connect new devices." ="Pripojte nové zaradenia.";
+
+"Wi-Fi not connected" ="Wi-FI nie je pripojené.";
+"Bluetooth not connected" = "Bluetooth nie je pripojená";
+"Change to Wi-Fi" = "Prepnúť na Wi-Fi";
+"Change to Bluetooth" = "Prepnúť na Bluetooth";
+"Connect Wi-Fi" = "Pripojte Wi-Fi";
+
+"Robot Connect" = "Pripojenie robota";
+"Wi-Fi disconnected" = "Wi-Fi odpojené";
+"Wi-Fi connected" = "Wi-Fi pripojené";
+"Add Router" = "Pridajte router";
+"Configue Result" = "výsledok konfigurácie";
+"SUCCESSFUL!" = "ÚSPEŠNÉ";
+"I know" = "Ja viem";
+"FAILED!" = "CHYBA!";
+
+"Device Connection Successful" = "pripojenie zariadenia úspešné";
+"Secondary area setting" ="nastavenie druhej zóny";
+"App software version:" = "Verzia software aplikácie:";
+"Robot software version" = "Verzia software robota";
+"Data sent successfully" = "Dáta úspešne odoslané";
+"Data transmission failed" = "Prenos dát zlyhal";
+"Please enter up to two digits" = "Zadajte maximálne 2 čísla";
+"Please enter up to three digits" = "Zadajte maximálne 3 čísla";
+"Input cannot be greater than 500" = "Vložené hodnota nesmie byť vyššia ako 500";
+"Refresh" = "Obnoviť";
+"Device List" = "Zoznam zariadení";
+"Second area" = "Druhá zóna";
+"Area2_Per : ____ %" = "Zóna2_Pomer:____ %";
+"(The proportion of the second area in relation with the entire surface)" = "(Pomer druhej zóny k celej ploche)";
+"Area2_Dis : ____ m" = "Area2_Dis : ____ m";
+"(The distance (in meters) that the robot needs to reach the second area)" ="(vzdialenosť (v metroch), ktorú robot musí prejsť, aby dosiahol druhú zónu)";
+"Third area" = "Zóna3_Pomer";
+"Area3_Per : ____ %" = "Zóna3_Pomer:____ %";
+"(The proportion of the third area in relation with the entire surface)" = "(Pomer tretej zóny k celej ploche)";
+"Area3_Dis : ____ m" = "Zóna3_Dis : ____ m";
+"(The distance (in meters) that the robot needs to reach the third area)" ="(vzdialenosť (v metroch), ktorú robot musí prejsť, aby dosiahol tretiu zónu)";
+
+"English" = "Anglicky";
+"German" =  "Nemecky";
+"Danish" = "Dánsky";
+"Czech" = "Česky";
+"Slovak" = "Slovensky";
+"Polish" = "Poľsky";
+"Hungarian" = "Maďarsky";
+"Russian" =  "Rusky";
+"French" = "Francúzsky";
+"Bulgarian" = "Bulharský";
+"Finnish" = "Fínsky";
+"Dutch" = "Holandsky";
+"Lithuanian" = "Litovský";
+"Romanian" =  "Rumunsky";
+"Norwegian" = "Nórsky";
+"Portuguese" = "Portugalský";
+"Swedish" = "Švédsky";
+"Spanish" = "Španielsky";
+"Italian" = "Italian";
+"Please enter a number from 1 to 4" = "Zadajte číslo od 1 do 4";
+
+"Refresh" = "Obnoviť";
+"Working hours are all 0" = "Pracovný čas je 0";
+
+"Battery Error" = "Chyba batérie";
+"Signal Error" = "chyba hraničného signálu";
+"Mower Lifted" = "Kosačka nadvihnutá";
+"Mower tilted" = "Kosačka je naklonená";
+"Rolling over" = "Kosačka je prevrátená";
+"Mower trapped" = "Kosačka zaseknutá";
+"Motor over current" = "nadprúd motora";
+"Motor Fault" = "Chyba motora";
+"Bat Temp.abnormal" = "Teplota batérie";
+"PCB Over temperature" = "prehriate PCB";
+"Errors that do not exist" = "Chyby, ktoré neexistujú";
+
+"Time of robot" = "čas stroja";
+"Walk Motor" = "Motor pre chodcov";
+"Blade Motor" = "Motor nožov";
+"Robot Work" = "Práca s robotom";
+"Day" = "Deň";
+"Mowing" = "žacie";
+"Along boundary" = "Pozdĺž hranice";
+"Stopped" = "zastavený";
+"In station" = "Na stanici";
+
+"Blade Using Time" = "Doba chodu čepelí";
+"Reset Time" = "Vynulovanie času";
+"Are you sure?" = "Si si istý?";
+"Error Memory" = "Pamäť chýb";
+"Time Statistics" = "Kosačka-štatistiky";
+"Multi-Area-Mowing" = "Bod multi startu";

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sev-5S-VmH"/>
+                        <viewControllerLayoutGuide type="bottom" id="qfb-oD-gVU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="H3p-PD-DYb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BluetoothWelcome1_5.5.png" translatesAutoresizingMaskIntoConstraints="NO" id="ySh-X7-6f1">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="ySh-X7-6f1" secondAttribute="bottom" id="UVI-Xl-JHL"/>
+                            <constraint firstItem="ySh-X7-6f1" firstAttribute="top" secondItem="H3p-PD-DYb" secondAttribute="top" id="Xc9-gU-1xs"/>
+                            <constraint firstAttribute="trailing" secondItem="ySh-X7-6f1" secondAttribute="trailing" id="dSz-fv-wTl"/>
+                            <constraint firstItem="ySh-X7-6f1" firstAttribute="leading" secondItem="H3p-PD-DYb" secondAttribute="leading" id="dby-Xs-Oxf"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="BluetoothWelcome1_5.5.png" width="621" height="1104"/>
+    </resources>
+</document>

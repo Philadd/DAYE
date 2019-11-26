@@ -1,0 +1,226 @@
+/*
+ Localizable.strings
+ MOWOX
+ 
+ Created by 杭州轨物科技有限公司 on 2018/1/31.
+ Copyright © 2018年 yusz. All rights reserved.
+ */
+"confail" = "tilkobling mislykket";
+"consucc" = "tilkobling vellykket";
+"disconnect" = "frakoble";
+
+"Input old PIN code" = "Angi gammel PIN-kode";
+"Input new PIN code" = "Angi ny PIN-kode";
+"4 numbers" = "4 sifre";
+"numbers" = "sifre";
+"Repeat new PIN code" = "Gjenta ny PIN-kode";
+"OK" = "OK";
+"MOW in the rain" = "Klippe i regnvær";
+"Yes" = "JA";
+"NO" = "NEI";
+"Boundary cut" = "Kantklipping";
+
+"Date" = "Dato";
+"Time" = "Klokkeslett";
+"Language setting" = "Språkinnstilling";
+"Time setting" = "Tidsinnstilling";
+"Working time setting" = "Driftstid";
+"Robot setting" = "Robot-innstilling";
+"PIN setting" = "PIN-innstilling";
+"Start" = "Start";
+"Stop" = "Stopp";
+"Alert" = "Varsler";
+"setting" = "Innstillinger";
+"Setting" = "Innstillinger";
+
+"Connect bluetooth" = "Koble til Bluetooth";
+"Control the robot" = "Kontroller Robot";
+"Connected device" = "Tilkoblet utstyr";
+"No device" = "Intet utstyr";
+"Available devices" = "Tilgjengelig utstyr";
+"(please choose RobotMower_DYM)" = "(vennligst velg RobotMower_DYM)";
+
+"Information" = "Informasjon";
+"Robot status" = "Robotstatus";
+"Update Robot's Firmware" = "Oppdater Robots";
+"Please input PIN code" = "Angi PIN";
+"Cancel" = "Angi PIN";
+"Confirm" = "Bekreft";
+
+"Your robot's firmware version:" = "Robots fastvareversjon:";
+"Latest robot's firmware version:" = "Siste robots";
+"Please press Key \"2\"(Boot Mode,2-Update firmware) on the robot's keyboard to start." = "Trykk på tast \"2\"(Oppstartmodus,2-oppdater fastvare) på robots tastatur for å starte oppdateringen.";
+//
+"Done" = "Fullført";
+"English" = "Engelsk";
+"Dansk" = "Dansk";
+
+"Bluetooth connected" = "Bluetooth tilkoblet";
+"Robot on lawn" = "Robot på plen";
+"Back to station" = "Tilbake til stasjon";
+"Robot on station" = "Robot i stasjon";
+"Go to work" = "Start arbeid";
+"Battery capacity" = "Batterikapasitet";
+"Robot control" = "Robotkontroll";
+"Robot Control" = "Robotkontroll";
+
+"Bluetooth not connected" = "Bluetooth ikke";
+"Incorrect PIN code length" = "Feil PIN-kode";
+"Incorrect PIN code" = "Feil PIN-kode";
+
+"Monday's time set wrong" = "Klokkeslett for mandag innstilt";
+"Tuesday's time set wrong" = "Klokkeslett for tirsdag innstilt";
+"Wednesday's time set wrong" = "Klokkeslett for onsdag innstilt";
+"Thursday's time set wrong" = "Klokkeslett for torsdag innstilt";
+"Friday's time set wrong" = "Klokkeslett for fredag innstilt";
+"Saturday's time set wrong" = "Klokkeslett for lørdag innstilt";
+"Sunday's time set wrong" = "Klokkeslett for søndag innstilt";
+"PinCode restrictions 4 digits" = "Pinkode";
+"OldPinCode ERROR" = "Gammel PIN-kode FEIL";
+"Two input is inconsistent" = "To inndata er";
+"Please check if Bluetooth is turned on in the control center" = "Kontroller om";
+"Set pincode wrong" = "PIN-kode er feil innstilt";
+
+"Distribution network" = "Fordeling";
+"Device" = "Utstyr";
+"Available Device" = "Tilgjengelig utstyr";
+"Connected Device" = "Tilkoblet utstyr";
+"Pull-down refresh" = "Trekk ned for å";
+"Release refresh" = "Slipp opp for å oppdatere";
+"Loading" = "Laster";
+"Add your gateway soon!" = "Legg til din gateway";
+"Add GateWay" = "Legg til gateway";
+"Next" = "Neste";
+
+"AM 0:00;" = "00:00";
+"AM 1:00;" = "01:00";
+"AM 2:00;" = "02:00";
+"AM 3:00;" = "03:00";
+"AM 4:00;" = "04:00";
+"AM 5:00;" = "05:00";
+"AM 6:00;" = "06:00";
+"AM 7:00;" = "07:00";
+"AM 8:00;" = "08:00";
+"AM 9:00;" = "09:00";
+"AM 10:00;"= "10:00";
+"AM 11:00;"= "11:00";
+"PM 0:00;" = "12:00";
+"PM 1:00;" = "13:00";
+"PM 2:00;" = "14:00";
+"PM 3:00;" = "15:00";
+"PM 4:00;" = "16:00";
+"PM 5:00;" = "17:00";
+"PM 6:00;" = "18:00";
+"PM 7:00;" = "19:00";
+"PM 8:00;" = "20:00";
+"PM 9:00;" = "21:00";
+"PM 10:00;"= "22:00";
+"PM 11:00;"= "23:00";
+
+"Hours" = "Timer";
+
+
+"Update" = "Oppdater";
+"success" = "vellykket";
+"error,again" = "feil, prøv på nytt";
+"update succese" = "vellykket oppdatering";
+
+"Change password" = "Endre passord";
+"6-12 characters or numbers" = "6-12 tegn eller";
+"Input Old Password" = "Angi gammelt passord";
+"Input New Password" = "Angi nytt passord";
+"Repeat New Password" = "Gjenta nytt passord";
+"nodevice" = "Intet utstyr";
+"Connection succeeded!"="Tilkobling";
+"Connect new devices." ="Ny tilkobling";
+
+"Wi-Fi not connected" ="Wi-Fi ikke tilkoblet";
+"Bluetooth not connected" = "Bluetooth ikke";
+"Change to Wi-Fi" = "Bytt til Wi-Fi";
+"Change to Bluetooth" = "Bytt til Bluetooth";
+"Connect Wi-Fi" = "Koble til Wi-Fi";
+
+"Robot Connect" = "Robot tilkoblet";
+"Wi-Fi disconnected" = "Wi-Fi frakoblet";
+"Wi-Fi connected" = "Wi-Fi tilkoblet";
+"Add Router" = "Legg til ruter";
+"Configue Result" = "Konfigurasjonsresultat";
+"SUCCESSFUL!" = "VELLYKKET!";
+"I know" = "Jeg vet";
+"FAILED!" = "MISLYKKET!";
+
+"Device Connection Successful" = "Enhet tilkoblet";
+"Secondary area setting" ="Innstilling for sekundært område";
+"App software version:" = "Apps programvareversjon:";
+"Robot software version" = "Robots programvareversjon";
+"Data sent successfully" = "Data er sendt";
+"Data transmission failed" = "Dataoverføring var mislykket";
+"Please enter up to two digits" = "Angi inntil to siffer";
+"Please enter up to three digits" = "Angi inntil tre siffer";
+"Input cannot be greater than 500" = "Inndata kan ikke være mer enn 500";
+"Refresh" = "Oppdater";
+"Device List" = "Enhetsliste";
+"Second area" = "Sekundært område";
+"Area2_Per : ____ %" = "Area2_Per : ____ %";
+"(The proportion of the second area in relation with the entire surface)" = "(Dimensjon på det sekundære området i forhold til hele overflaten)";
+"Area2_Dis : ____ m" = "Area2_Dis : ____ m";
+"(The distance (in meters) that the robot needs to reach the second area)" ="(Distansen (i meter) som roboten må nå på det sekundære området)";
+"Third area" = "Tredje område";
+"Area3_Per : ____ %" = "Area3_Per : ____ %";
+
+"(The proportion of the third area in relation with the entire surface)" = "(Dimensjon på det tredje området i forhold til hele overflaten)";
+"Area3_Dis : ____ m" = "Area3_Dis : ____ m";
+"(The distance (in meters) that the robot needs to reach the third area)" ="(Distansen (i meter) som roboten må nå på det tredje området)";
+
+"Finish" = "Finsk";
+"English" = "Engelsk";
+"German" = "Tysk";
+"Danish" = "Dansk";
+"Czech" = "Tjekkisk";
+"Slovak" = "Slovakisk";
+"Polish" = "Polsk";
+"Hungarian" = "Ungarsk";
+"Russian" = "Russisk";
+"French" = "Fransk";
+"Bulgarian" = "Bulgarsk";
+"Finnish" = "Finsk";
+"Dutch" = "Nederlandsk";
+"Lithuanian" = "Litauisk";
+"Romanian" = "Rumensk";
+"Norwegian" = "Norsk";
+"Portuguese" = "Portugisisk";
+"Swedish" = "Svensk";
+"Spanish" = "Spansk";
+"Italian" = "Italiensk";
+"Please enter a number from 1 to 4" = "Vennligst skriv inn et tall fra 1 til 4";
+
+"Refresh" = "Oppdater";
+"Working hours are all 0" = "Arbeidstid er alle 0";
+
+"Battery Error" = "Batterifeil";
+"Signal Error" = "Grensignalfeil";
+"Mower Lifted" = "Gressklipper løftet";
+"Mower tilted" = "Gressklipper";
+"Rolling over" = "Gressklipper veltet";
+"Mower trapped" = "Gressklipper sitter fast";
+"Motor over current" = "Motor over strøm";
+"Motor Fault" = "Motorfeil";
+"Bat Temp.abnormal" = "Batteritemperatur";
+"PCB Over temperature" = "PCB-overtemperatur";
+"Errors that do not exist" = "Feil som ikke eksisterer";
+
+"Time of robot" = "Maskinens tid";
+"Walk Motor" = "Walk Motor";
+"Blade Motor" = "Blade Motor";
+"Robot Work" = "Robot arbeid";
+"Day" = "Dag";
+"Mowing" = "klipping";
+"Along boundary" = "Langs grensen";
+"Stopped" = "stoppet";
+"In station" = "På stasjon";
+"Blade Using Time" = "Driftstid knivblad";
+"Reset Time" = "Tilbakestill tid";
+"Are you sure?" = "Er du sikker?";
+"Error Memory" = "Feilminne";
+"Time Statistics" = "Klipperstatistik";
+"Multi-Area-Mowing" = "Multi-startpunkt";

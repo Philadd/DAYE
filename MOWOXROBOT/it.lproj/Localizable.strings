@@ -1,0 +1,224 @@
+/* 
+  Localizable.strings
+  MOWOX
+
+  Created by 杭州轨物科技有限公司 on 2018/1/31.
+  Copyright © 2018年 yusz. All rights reserved.
+*/
+"confail" = "connessione non riuscita";
+"consucc" = "connessione riuscita";
+"disconnect" = "disconnetti";
+
+"Input old PIN code" = "Inserisci il vecchio codice PIN";
+"Input new PIN code" = "Inserisci un nuovo codice PIN";
+"4 numbers" = "4 numeri";
+"numbers" = "numeri";
+"Repeat new PIN code" = "Ripeti il";
+"OK" = "OK";
+"MOW in the rain" = "Falciare sotto la pioggia";
+"Yes" = "SÌ";
+"NO" = "NO";
+"Boundary cut" = "Taglio di confine";
+
+"Date" = "Data";
+"Time" = "Ora";
+"Language setting" = "Impostazione della lingua";
+"Time setting" = "Impostazioni orario";
+"Working time setting" = "Impostazione dell'orario di lavoro";
+"Robot setting" = "Impostazione del robot";
+"PIN setting" = "Impostazione del PIN";
+"Start" = "Inizio";
+"Stop" = "Stop";
+"Alert" = "Avvisi";
+"setting" = "Impostazione";
+"Setting" = "Impostazione";
+
+"Connect bluetooth" = "Connetti bluetooth";
+"Control the robot" = "Controlla il robot";
+"Connected device" = "Dispositivo connesso";
+"No device" = "Nessun dispositivo";
+"Available devices" = "Dispositivi disponibili";
+"(please choose RobotMower_DYM)" = "(scegli RobotMower_DYM)";
+
+"Information" = "Informazione";
+"Robot status" = "Stato del robot";
+"Update Robot's Firmware" = "Aggiorna il firmware del robot";
+"Please input PIN code" = "Inserisci il codice PIN";
+"Cancel" = "Annulla";
+"Confirm" = "Conferma";
+
+"Your robot's firmware version:" = "La versione del firmware del tuo robot:";
+"Latest robot's firmware version:" = "Versione più recente del firmware del robot:";
+"Please press Key \"2\"(Boot Mode,2-Update firmware) on the robot's keyboard to start." = "Premi il tasto \"2\" (Modalità Boot, 2-Aggiorna firmware) sulla tastiera del robot per avviare l'aggiornamento.";
+//
+"Done" = "Fatto";
+"English" = "Inglese";
+"Dansk" = "Danese";
+
+"Bluetooth connected" = "Bluetooth connesso";
+"Robot on lawn" = "Robot sul prato";
+"Back to station" = "Torna alla stazione";
+"Robot on station" = "Robot alla stazione";
+"Go to work" = "Inizia a lavorare";
+"Battery capacity" = "Capacità della batteria";
+"Robot control" = "Controllo robot";
+"Robot Control" = "Controllo robot";
+
+"Bluetooth not connected" = "Bluetooth non connesso";
+"Incorrect PIN code length" = "Lunghezza del codice PIN errata";
+"Incorrect PIN code" = "Codice PIN errato";
+
+"Monday's time set wrong" = "Errore nell’impostazione dell'orario di lunedì";
+"Tuesday's time set wrong" = "Errore nell’impostazione dell'orario di martedì";
+"Wednesday's time set wrong" = "Errore nell’impostazione dell'orario di mercoledì";
+"Thursday's time set wrong" = "Errore nell’impostazione dell'orario di giovedì";
+"Friday's time set wrong" = "Errore nell’impostazione dell'orario di venerdì";
+"Saturday's time set wrong" = "Errore nell’impostazione dell'orario di sabato";
+"Sunday's time set wrong" = "Errore nell’impostazione dell'orario di domenica";
+"PinCode restrictions 4 digits" = "PinCode ristretto a 4 cifre";
+"OldPinCode ERROR" = "ERRORE Vecchio Codice Pin";
+"Two input is inconsistent" = "I due dati inseriti sono incoerenti";
+"Please check if Bluetooth is turned on in the control center" = "Si prega di verificare nel centro di controllo se Bluetooth è attivo";
+"Set pincode wrong" = "Errore nell’impostazione del codice PIN";
+
+"Distribution network" = "Rete di distribuzione";
+"Device" = "Dispositivo";
+"Available Device" = "Dispositivo disponibile";
+"Connected Device" = "Dispositivo connesso";
+"Pull-down refresh" = "Tira in basso per aggiornare";
+"Release refresh" = "Rilascia per aggiornare";
+"Loading" = "Caricamento in corso";
+"Add your gateway soon!" = "Aggiungi subito il tuo gateway!";
+"Add GateWay" = "Aggiungi il GateWay";
+"Next" = "Il prossimo";
+
+"AM 0:00;" = "00:00";
+"AM 1:00;" = "01:00";
+"AM 2:00;" = "02:00";
+"AM 3:00;" = "03:00";
+"AM 4:00;" = "04:00";
+"AM 5:00;" = "05:00";
+"AM 6:00;" = "06:00";
+"AM 7:00;" = "07:00";
+"AM 8:00;" = "08:00";
+"AM 9:00;" = "09:00";
+"AM 10:00;"= "10:00";
+"AM 11:00;"= "11:00";
+"PM 0:00;" = "12:00";
+"PM 1:00;" = "13:00";
+"PM 2:00;" = "14:00";
+"PM 3:00;" = "15:00";
+"PM 4:00;" = "16:00";
+"PM 5:00;" = "17:00";
+"PM 6:00;" = "18:00";
+"PM 7:00;" = "19:00";
+"PM 8:00;" = "20:00";
+"PM 9:00;" = "21:00";
+"PM 10:00;"= "22:00";
+"PM 11:00;"= "23:00";
+
+"Hours" = "Ore";
+
+
+"Update" = "Aggiorna";
+"success" = "successo";
+"error,again" = "errore,nuovamente";
+"update succese" = "aggiornamento riuscito";
+
+"Change password" = "Cambia la password";
+"6-12 characters or numbers" = "6-12 caratteri alfanumerici";
+"Input Old Password" = "Inserisci la vecchia password";
+"Input New Password" = "Inserisci la nuova password";
+"Repeat New Password" = "Ripeti la nuova password";
+"nodevice" = "Nessun dispositivo";
+"Connection succeeded!" = "Connessione riuscita!";
+"Connect new devices." ="Connetti nuovi dispositivi.";
+
+"Wi-Fi not connected" = "Wi-Fi non connesso";
+"Bluetooth not connected" = "Bluetooth non connesso";
+"Change to Wi-Fi" = "Passa al Wi-Fi";
+"Change to Bluetooth" = "Passa a Bluetooth";
+"Connect Wi-Fi" = "Connetti Wi-Fi";
+
+"Robot Connect" = "Connetti Robot";
+"Wi-Fi disconnected" = "Wi-Fi scollegato";
+"Wi-Fi connected" = "Wi-Fi collegato";
+"Add Router" = "Aggiungi Router";
+"Configue Result" = "Risultato della configurazione";
+"SUCCESSFUL!" = "RIUSCITO!";
+"I know" = "Lo so";
+"FAILED!" = "NON RIUSCITO!";
+
+"Device Connection Successful" = "Collegamento dispositivo completato";
+"Secondary area setting" ="Impostazione dell’area secondaria";
+"App software version:" = "Versione del software della App:";
+"Robot software version" = "Versione del software del robot";
+"Data sent successfully" = "Invio dati completato";
+"Data transmission failed" = "Invio dati non riuscito";
+"Please enter up to two digits" = "Digita fino a due cifre";
+"Please enter up to three digits" = "Digita fino a tre cifre";
+"Input cannot be greater than 500" = "Il valore inserito non può essere maggiore di 500";
+"Refresh" = "Aggiorna";
+"Device List" = "Elenco dispositivi";
+"Second area" = "Second area";
+"Area2_Per : ____ %" = "Area2_Per : ____ %";
+"(The proportion of the second area in relation with the entire surface)" = "(Percentuale della seconda area sull’intera superficie)";
+"Area2_Dis : ____ m" = "Area2_Dis : ____ m";
+"(The distance (in meters) that the robot needs to reach the second area)" ="(Distanza (in metri) che il robot deve percorrere fino alla seconda area)";
+"Third area" = "Third area";
+"Area3_Per : ____ %" = "Area3_Per : ____ %";
+"(The proportion of the third area in relation with the entire surface)" = "(Percentuale della terza area sull’intera superficie)";
+"Area3_Dis : ____ m" = "Area3_Dis : ____ m";
+"(The distance (in meters) that the robot needs to reach the third area)" ="(Distanza (in metri) che il robot deve percorrere fino alla terza area)";
+
+"English" = "Inglese";
+"German" = "Tedesco";
+"Danish" = "Danese";
+"Czech" = "Ceco";
+"Slovak" = "Slovacco";
+"Polish" = "Polacco";
+"Hungarian" = "Ungherese";
+"Russian" = "Russo";
+"French" = "Francese";
+"Bulgarian" = "Bulgaro";
+"Finnish" = "Finlandese";
+"Dutch" = "Olandese";
+"Lithuanian" = "Lituano";
+"Romanian" = "Rumeno";
+"Norwegian" = "Norvegese";
+"Portuguese" = "Portoghese";
+"Swedish" = "Svedese";
+"Spanish" = "Spagnolo";
+"Italian" = "Italiano";
+"Please enter a number from 1 to 4" = "Si prega di inserire un numero da 1 a 4";
+
+"Refresh" = "Aggiorna";
+"Working hours are all 0" = "Gli orari di lavoro sono tutti 0";
+
+"Battery Error" = "Errore della batteria";
+"Signal Error" = "Errore segnale limite";
+"Mower Lifted" = "Tosaerba sollevato";
+"Mower tilted" = "Tosaerba inclinato";
+"Rolling over" = "Tosaerba in movimento";
+"Mower trapped" = "Tosaerba bloccato";
+"Motor over current" = "Sovracorrente del motore";
+"Motor Fault" = "Guasto al motore";
+"Bat Temp.abnormal" = "Temperatura della batteria anormale";
+"PCB Over temperature" = "PCB surriscaldato";
+"Errors that do not exist" = "Errori che non esistono";
+
+"Time of robot" = "Tempo della macchina";
+"Walk Motor" = "Walk Motor";
+"Blade Motor" = "Blade Motor";
+"Robot Work" = "Lavoro robot";
+"Day" = "Giorno";
+"Mowing" = "falciatura";
+"Along boundary" = "Lungo il confine";
+"Stopped" = "Fermato";
+"In station" = "In stazione";
+"Blade Using Time" = "Durata lame";
+"Reset Time" = "Resettare tempo";
+"Are you sure?" = "Sei sicuro?";
+"Error Memory" = "Memoria errori";
+"Time Statistics" = "Statistiche tagliaerba";
+"Multi-Area-Mowing" = "Punto di partenza multiplo";
