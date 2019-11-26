@@ -215,3 +215,10 @@
 "Error Memory" = "Úložiště chyb";
 "Time Statistics" = "Statistiky sekání";
 "Multi-Area-Mowing" = "Multi-startpunkt";
+"Mon" = "Po";
+"Tue" = "Út";
+"Wed" = "St";
+"Thu" = "Čt";
+"Fri" = "Pá";
+"Sat" = "So";
+"Sun" = "Ne";

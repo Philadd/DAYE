@@ -215,3 +215,10 @@
 "Error Memory" = "hibamemória ";
 "Time Statistics" = "Nyíró-statisztikák";
 "Multi-Area-Mowing" = "multi-indít. pont";
+"Mon" = "Hé";
+"Tue" = "Ke";
+"Wed" = "Sze";
+"Thu" = "Csüt";
+"Fri" = "Pé";
+"Sat" = "Szo";
+"Sun" = "Vas";

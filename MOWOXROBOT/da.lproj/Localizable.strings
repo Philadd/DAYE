@@ -222,3 +222,10 @@
 "Error Memory" = "Fejlhukommelse";
 "Time Statistics" = "Plænekl.-statistik";
 "Multi-Area-Mowing" = "Multi-startpunkt";
+"Mon" = "Po";
+"Tue" = "Ut";
+"Wed" = "St";
+"Thu" = "Št";
+"Fri" = "Pi";
+"Sat" = "So";
+"Sun" = "Ne";

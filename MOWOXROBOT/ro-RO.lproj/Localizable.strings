@@ -222,3 +222,10 @@
 "Error Memory" = "Memorie erori";
 "Time Statistics" = "Statistici robot";
 "Multi-Area-Mowing" = "Punct Multi-Start";
+"Mon" = "Lu";
+"Tue" = "Ma";
+"Wed" = "Mi";
+"Thu" = "Jo";
+"Fri" = "Vi";
+"Sat" = "Sâ";
+"Sun" = "Du";

@@ -223,3 +223,10 @@
 "Error Memory" = "Störningsminne";
 "Time Statistics" = "Klippn.statistik";
 "Multi-Area-Mowing" = "Multi-startpunkt";
+"Mon" = "Må";
+"Tue" = "Ti";
+"Wed" = "On";
+"Thu" = "To";
+"Fri" = "Fr";
+"Sat" = "Lö";
+"Sun" = "Sö";

@@ -222,3 +222,10 @@
 "Error Memory" = "Memoria errori";
 "Time Statistics" = "Statistiche tagliaerba";
 "Multi-Area-Mowing" = "Punto di partenza multiplo";
+"Mon" = "Lu";
+"Tue" = "Ma";
+"Wed" = "Me";
+"Thu" = "Gi";
+"Fri" = "Ve";
+"Sat" = "Sa";
+"Sun" = "Do";

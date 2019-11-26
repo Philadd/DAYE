@@ -216,3 +216,10 @@
 "Error Memory" = "Virhemuisti";
 "Time Statistics" = "Leikkuritilastot";
 "Multi-Area-Mowing" = "Monta aloitusta";
+"Mon" = "ma";
+"Tue" = "ti";
+"Wed" = "ke";
+"Thu" = "to";
+"Fri" = "pe";
+"Sat" = "la";
+"Sun" = "su";

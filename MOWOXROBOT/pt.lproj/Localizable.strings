@@ -222,3 +222,10 @@
 "Error Memory" = "Memória de erros";
 "Time Statistics" = "Estat. corta-rel.";
 "Multi-Area-Mowing" = "Ponto inic. múlt.";
+"Mon" = "Seg";
+"Tue" = "Ter";
+"Wed" = "Qua";
+"Thu" = "Qui";
+"Fri" = "Sex";
+"Sat" = "Sáb";
+"Sun" = "Dom";

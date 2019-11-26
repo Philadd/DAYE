@@ -223,3 +223,10 @@
 "Error Memory" = "Pamäť chýb";
 "Time Statistics" = "Kosačka-štatistiky";
 "Multi-Area-Mowing" = "Bod multi startu";
+"Mon" = "Po";
+"Tue" = "Ut";
+"Wed" = "St";
+"Thu" = "Št";
+"Fri" = "Pi";
+"Sat" = "So";
+"Sun" = "Ne";

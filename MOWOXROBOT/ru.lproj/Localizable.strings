@@ -215,3 +215,10 @@
 "Error Memory" = "Накопитель ошибок";
 "Time Statistics" = "Статистика косилки";
 "Multi-Area-Mowing" = "Кошение Multi-Area";
+"Mon" = "Пн.";
+"Tue" = "Вт.";
+"Wed" = "Ср.";
+"Thu" = "Чт.";
+"Fri" = "Пт.";
+"Sat" = "Сб.";
+"Sun" = "Вс.";

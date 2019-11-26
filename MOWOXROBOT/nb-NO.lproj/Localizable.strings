@@ -224,3 +224,10 @@
 "Error Memory" = "Feilminne";
 "Time Statistics" = "Klipperstatistik";
 "Multi-Area-Mowing" = "Multi-startpunkt";
+"Mon" = "Ma";
+"Tue" = "Ti";
+"Wed" = "On";
+"Thu" = "To";
+"Fri" = "Fr";
+"Sat" = "Lø";
+"Sun" = "Sø";

@@ -222,3 +222,10 @@
 "Error Memory" = "Klaidų saug.";
 "Time Statistics" = "Pjovimo statist.";
 "Multi-Area-Mowing" = "Daug. pradž. tšk.";
+"Mon" = "P";
+"Tue" = "A";
+"Wed" = "T";
+"Thu" = "K";
+"Fri" = "Pn";
+"Sat" = "Š";
+"Sun" = "S";
