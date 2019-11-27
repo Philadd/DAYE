@@ -44,14 +44,10 @@
     [self viewLayoutSet];
     
     //延时1.0秒
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 
         [self setMowerTime];
         
-    });
-    //延时1.0秒
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self getPINData];
     });
 }
 
@@ -271,23 +267,6 @@
     [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
     
     [self.bluetoothDataManage setDataType:0x02];
-    [self.bluetoothDataManage setDataContent: dataContent];
-    [self.bluetoothDataManage sendBluetoothFrame];
-}
-//蓝牙版自动登录不能获取分区显示了
-- (void)getPINData{
-    
-    NSMutableArray *dataContent = [[NSMutableArray alloc] init];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    
-    [self.bluetoothDataManage setDataType:0x0c];
     [self.bluetoothDataManage setDataContent: dataContent];
     [self.bluetoothDataManage sendBluetoothFrame];
 }

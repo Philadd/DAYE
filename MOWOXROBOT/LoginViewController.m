@@ -164,37 +164,18 @@
                 RDVViewController *rdvView = [[RDVViewController alloc] init];
                 rdvView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
                 [self presentViewController:rdvView animated:YES completion:nil];
-                return;
             }
-            
-            NSMutableArray *dataContent = [[NSMutableArray alloc] init];
-            [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-            [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-            [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-            [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-            [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-            [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-            [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-            [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-            
-            [self.bluetoothDataManage setDataType:0x0c];
-            [self.bluetoothDataManage setDataContent: dataContent];
-            [self.bluetoothDataManage sendBluetoothFrame];
+            //子线程延时1s
+            double delayInSeconds = 1.0;
+            dispatch_queue_t mainQueue = dispatch_get_main_queue();
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW,delayInSeconds * NSEC_PER_SEC);
+            dispatch_after(popTime, mainQueue, ^{
+                NSLog(@"延时执行的1秒");
+                [self getPINData];
+            });
             
         }else{
-            NSMutableArray *dataContent = [[NSMutableArray alloc] init];
-            [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-            [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-            [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-            [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-            [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-            [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-            [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-            [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-            
-            [self.bluetoothDataManage setDataType:0x0c];
-            [self.bluetoothDataManage setDataContent: dataContent];
-            [self.bluetoothDataManage sendBluetoothFrame];
+            [self getPINData];
             
         }
     }
@@ -203,6 +184,24 @@
      rdvView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
      [self presentViewController:rdvView animated:YES completion:nil];
      */
+}
+
+//蓝牙版自动登录不能获取分区显示了
+- (void)getPINData{
+    
+    NSMutableArray *dataContent = [[NSMutableArray alloc] init];
+    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+    
+    [self.bluetoothDataManage setDataType:0x0c];
+    [self.bluetoothDataManage setDataContent: dataContent];
+    [self.bluetoothDataManage sendBluetoothFrame];
 }
 
 - (void)changeView{

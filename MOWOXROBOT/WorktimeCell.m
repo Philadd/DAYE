@@ -64,7 +64,7 @@
         }
         if (!_worksMinutesTF) {
             _worksMinutesTF = [UITextField worktimeTextFieldWithPlaceholder:@"0 Hours"];
-            _worksMinutesTF.frame = CGRectMake(ScreenWidth / 3.0 * 1.5 + 40, 5, ScreenWidth / 3.0, viewHeight - 10);
+            _worksMinutesTF.frame = CGRectMake(ScreenWidth / 3.0 * 1.5 + 40, 5, ScreenWidth / 3.0 + 10, viewHeight - 10);
             _worksMinutesTF.font = [UIFont systemFontOfSize:15.0];
             [_worksMinutesTF addTarget:self action:@selector(pushTag) forControlEvents:UIControlEventTouchUpInside];
             _worksMinutesTF.keyboardType = UIKeyboardTypeNumbersAndPunctuation;

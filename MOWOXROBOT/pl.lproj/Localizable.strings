@@ -212,10 +212,10 @@
 "Error Memory" = "Pamięć błędów";
 "Time Statistics" = "Statystyka";
 "Multi-Area-Mowing" = "Kilka punktów startowych";
-"Mon" = "pon.";
-"Tue" = "wt.";
-"Wed" = "śr.";
-"Thu" = "czw.";
-"Fri" = "pt.";
-"Sat" = "sob.";
-"Sun" = "nd.";
+"Mon" = "Pon.";
+"Tue" = "Wt.";
+"Wed" = "Śr.";
+"Thu" = "Czw.";
+"Fri" = "Pt.";
+"Sat" = "Sob.";
+"Sun" = "Nd.";
