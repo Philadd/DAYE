@@ -215,10 +215,10 @@
 "Error Memory" = "Foutgeheugen";
 "Time Statistics" = "Maaier statistieken";
 "Multi-Area-Mowing" = "Multi-startpunt";
-"Mon" = "ma";
-"Tue" = "di";
-"Wed" = "wo";
-"Thu" = "do";
-"Fri" = "vr";
-"Sat" = "za";
-"Sun" = "zo";
+"Mon" = "Ma";
+"Tue" = "Di";
+"Wed" = "Wo";
+"Thu" = "Do";
+"Fri" = "Vr";
+"Sat" = "Za";
+"Sun" = "Zo";
