@@ -215,7 +215,7 @@
         if (peripheralName == NULL) {
             return NO;
         }
-        if ([peripheralName hasPrefix:@"Robot_Mower_DYM"]) {
+        if ([peripheralName hasPrefix:@"Robot"]) {
             return YES;
         }else{
             return NO;
