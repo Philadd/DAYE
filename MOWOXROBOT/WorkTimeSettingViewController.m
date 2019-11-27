@@ -383,7 +383,7 @@ static CGFloat cellHeight = 45.0;
     cell.startHourTF.text = _starHourArray[startHourRow %_starHourArray.count];
     cell.startMinutesTF.text = [NSString stringWithFormat:@"%@%@",LocalString(@":"),_starMinuteArray[startMinutesRow %_starMinuteArray.count]];
     cell.worksHoursTF.text = [NSString stringWithFormat:@"%@",_workingHoursArray[workHourRow %_workingHoursArray.count]];
-    cell.worksMinutesTF.text = [NSString stringWithFormat:@"%@%@%@",LocalString(@"."),_workingMinuteArray[wokrMinutesRow % _workingMinuteArray.count],LocalString(@"Hours")];
+    cell.worksMinutesTF.text = [NSString stringWithFormat:@"%@%@ %@",LocalString(@"."),_workingMinuteArray[wokrMinutesRow % _workingMinuteArray.count],LocalString(@"Hours")];
     
     //数据保存到数组里 对应数据替换下标 更新数据
     [_selectrowArray replaceObjectAtIndex:rowWeek %_dayArray.count  * 4 withObject:[NSNumber numberWithLong:startHourRow % _starHourArray.count]];
