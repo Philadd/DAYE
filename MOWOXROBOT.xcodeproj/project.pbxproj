@@ -169,7 +169,6 @@
 		36006AFC2265AFDB00F4EEB2 /* A1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E1480451FCFEF1400FA8A2D /* A1@3x.png */; };
 		36006AFD2265AFDB00F4EEB2 /* SecondaryAreaImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E458D1C21AFD687001FEB1F /* SecondaryAreaImage.png */; };
 		36006AFE2265AFDB00F4EEB2 /* 电量1-2@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E1480661FCFFA8C00FA8A2D /* 电量1-2@1x.png */; };
-		36006B002265AFDB00F4EEB2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E6325361FA6BC5F00F14462 /* Info.plist */; };
 		36006B012265AFDB00F4EEB2 /* 前进@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EE3DC431FA8B2BE0049B8F7 /* 前进@2x.png */; };
 		36006B032265AFDB00F4EEB2 /* PasswordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB8D94AF213FE8960079EE63 /* PasswordTableViewCell.xib */; };
 		36006B042265AFDB00F4EEB2 /* 58@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E11A3811FD90AAD000CAA08 /* 58@2x.png */; };
@@ -358,7 +357,6 @@
 		368E4F7C238D1B8300AFE3B3 /* A1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E1480451FCFEF1400FA8A2D /* A1@3x.png */; };
 		368E4F7D238D1B8300AFE3B3 /* SecondaryAreaImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E458D1C21AFD687001FEB1F /* SecondaryAreaImage.png */; };
 		368E4F7E238D1B8300AFE3B3 /* 电量1-2@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E1480661FCFFA8C00FA8A2D /* 电量1-2@1x.png */; };
-		368E4F7F238D1B8300AFE3B3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E6325361FA6BC5F00F14462 /* Info.plist */; };
 		368E4F80238D1B8300AFE3B3 /* 前进@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EE3DC431FA8B2BE0049B8F7 /* 前进@2x.png */; };
 		368E4F81238D1B8300AFE3B3 /* PasswordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB8D94AF213FE8960079EE63 /* PasswordTableViewCell.xib */; };
 		368E4F82238D1B8300AFE3B3 /* 58@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E11A3811FD90AAD000CAA08 /* 58@2x.png */; };
@@ -542,7 +540,6 @@
 		368E5042238D296E00AFE3B3 /* A1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E1480451FCFEF1400FA8A2D /* A1@3x.png */; };
 		368E5043238D296E00AFE3B3 /* SecondaryAreaImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E458D1C21AFD687001FEB1F /* SecondaryAreaImage.png */; };
 		368E5044238D296E00AFE3B3 /* 电量1-2@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E1480661FCFFA8C00FA8A2D /* 电量1-2@1x.png */; };
-		368E5045238D296E00AFE3B3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E6325361FA6BC5F00F14462 /* Info.plist */; };
 		368E5046238D296E00AFE3B3 /* 前进@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EE3DC431FA8B2BE0049B8F7 /* 前进@2x.png */; };
 		368E5047238D296E00AFE3B3 /* PasswordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB8D94AF213FE8960079EE63 /* PasswordTableViewCell.xib */; };
 		368E5048238D296E00AFE3B3 /* 58@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E11A3811FD90AAD000CAA08 /* 58@2x.png */; };
@@ -577,6 +574,13 @@
 		368E506F238D2F4100AFE3B3 /* Launch_Park.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 368E506E238D2F4100AFE3B3 /* Launch_Park.storyboard */; };
 		368E5071238D3CCF00AFE3B3 /* Launch_BLU.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 368E5070238D3CCF00AFE3B3 /* Launch_BLU.storyboard */; };
 		368E5073238D3D4D00AFE3B3 /* Launch_GN.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 368E5072238D3D4D00AFE3B3 /* Launch_GN.storyboard */; };
+		368E507C238F665E00AFE3B3 /* MOWOX_Park.plist in Resources */ = {isa = PBXBuildFile; fileRef = 368E507B238F665E00AFE3B3 /* MOWOX_Park.plist */; };
+		368E5083238F6BBA00AFE3B3 /* DY00269.BIN in Resources */ = {isa = PBXBuildFile; fileRef = 368E507D238F6BBA00AFE3B3 /* DY00269.BIN */; };
+		368E5084238F6BBA00AFE3B3 /* DY12269.BIN in Resources */ = {isa = PBXBuildFile; fileRef = 368E507E238F6BBA00AFE3B3 /* DY12269.BIN */; };
+		368E5085238F6BBA00AFE3B3 /* DY02269.BIN in Resources */ = {isa = PBXBuildFile; fileRef = 368E507F238F6BBA00AFE3B3 /* DY02269.BIN */; };
+		368E5086238F6BBA00AFE3B3 /* DY01269.BIN in Resources */ = {isa = PBXBuildFile; fileRef = 368E5080238F6BBA00AFE3B3 /* DY01269.BIN */; };
+		368E5087238F6BBA00AFE3B3 /* DY11269.BIN in Resources */ = {isa = PBXBuildFile; fileRef = 368E5081238F6BBA00AFE3B3 /* DY11269.BIN */; };
+		368E5088238F6BBA00AFE3B3 /* DY14269.BIN in Resources */ = {isa = PBXBuildFile; fileRef = 368E5082238F6BBA00AFE3B3 /* DY14269.BIN */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -584,12 +588,6 @@
 		36006B192265AFDB00F4EEB2 /* MOWOX_Park.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MOWOX_Park.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3604FD41225B355F00D0B97D /* MOWOXROBOT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MOWOXROBOT.entitlements; sourceTree = "<group>"; };
 		36067D9221BF5CEB00FB6865 /* updateFirmwareTip0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "updateFirmwareTip0@2x.png"; path = "image/updateFirmwareTip0@2x.png"; sourceTree = SOURCE_ROOT; };
-		3609DCBE237260B400FA7ADF /* DY00269.BIN */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = DY00269.BIN; sourceTree = "<group>"; };
-		3609DCBF237260B400FA7ADF /* DY01269.BIN */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = DY01269.BIN; sourceTree = "<group>"; };
-		3609DCC0237260B400FA7ADF /* DY02269.BIN */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = DY02269.BIN; sourceTree = "<group>"; };
-		3609DCC1237260B400FA7ADF /* DY12269.BIN */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = DY12269.BIN; sourceTree = "<group>"; };
-		3609DCC2237260B400FA7ADF /* DY14269.BIN */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = DY14269.BIN; sourceTree = "<group>"; };
-		3609DCC3237260B400FA7ADF /* DY11269.BIN */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = DY11269.BIN; sourceTree = "<group>"; };
 		3609DCE02376B5E200FA7ADF /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		3619077422E158C3006A82BB /* 40*40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "40*40@2x.png"; sourceTree = "<group>"; };
 		3619077522E158C3006A82BB /* 87*87@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "87*87@3x.png"; sourceTree = "<group>"; };
@@ -613,6 +611,13 @@
 		368E506E238D2F4100AFE3B3 /* Launch_Park.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch_Park.storyboard; sourceTree = "<group>"; };
 		368E5070238D3CCF00AFE3B3 /* Launch_BLU.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch_BLU.storyboard; sourceTree = "<group>"; };
 		368E5072238D3D4D00AFE3B3 /* Launch_GN.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch_GN.storyboard; sourceTree = "<group>"; };
+		368E507B238F665E00AFE3B3 /* MOWOX_Park.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = MOWOX_Park.plist; path = MOWOXROBOT/MOWOX_Park.plist; sourceTree = SOURCE_ROOT; };
+		368E507D238F6BBA00AFE3B3 /* DY00269.BIN */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = DY00269.BIN; sourceTree = "<group>"; };
+		368E507E238F6BBA00AFE3B3 /* DY12269.BIN */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = DY12269.BIN; sourceTree = "<group>"; };
+		368E507F238F6BBA00AFE3B3 /* DY02269.BIN */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = DY02269.BIN; sourceTree = "<group>"; };
+		368E5080238F6BBA00AFE3B3 /* DY01269.BIN */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = DY01269.BIN; sourceTree = "<group>"; };
+		368E5081238F6BBA00AFE3B3 /* DY11269.BIN */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = DY11269.BIN; sourceTree = "<group>"; };
+		368E5082238F6BBA00AFE3B3 /* DY14269.BIN */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = DY14269.BIN; sourceTree = "<group>"; };
 		36BF86C02383C733009EA9AB /* BlueTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlueTableViewCell.h; sourceTree = "<group>"; };
 		36BF86C12383C733009EA9AB /* BlueTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlueTableViewCell.m; sourceTree = "<group>"; };
 		36FA9915236BC7E800600941 /* RobotRunTimeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RobotRunTimeViewController.h; sourceTree = "<group>"; };
@@ -750,7 +755,6 @@
 		3E63252B1FA6BC5F00F14462 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		3E63252C1FA6BC5F00F14462 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3E63252F1FA6BC5F00F14462 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3E6325361FA6BC5F00F14462 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E63253D1FA6C17C00F14462 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		3E63253E1FA6C17C00F14462 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		3E6325531FA6D09400F14462 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background@2x.png"; path = "image/background@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -978,12 +982,12 @@
 		3E0F567E1FF23F9400A4D339 /* bin */ = {
 			isa = PBXGroup;
 			children = (
-				3609DCBE237260B400FA7ADF /* DY00269.BIN */,
-				3609DCBF237260B400FA7ADF /* DY01269.BIN */,
-				3609DCC0237260B400FA7ADF /* DY02269.BIN */,
-				3609DCC3237260B400FA7ADF /* DY11269.BIN */,
-				3609DCC1237260B400FA7ADF /* DY12269.BIN */,
-				3609DCC2237260B400FA7ADF /* DY14269.BIN */,
+				368E507D238F6BBA00AFE3B3 /* DY00269.BIN */,
+				368E5080238F6BBA00AFE3B3 /* DY01269.BIN */,
+				368E507F238F6BBA00AFE3B3 /* DY02269.BIN */,
+				368E5081238F6BBA00AFE3B3 /* DY11269.BIN */,
+				368E507E238F6BBA00AFE3B3 /* DY12269.BIN */,
+				368E5082238F6BBA00AFE3B3 /* DY14269.BIN */,
 			);
 			path = bin;
 			sourceTree = SOURCE_ROOT;
@@ -1184,7 +1188,7 @@
 				368E5070238D3CCF00AFE3B3 /* Launch_BLU.storyboard */,
 				368E5072238D3D4D00AFE3B3 /* Launch_GN.storyboard */,
 				BB1299302021A79500285201 /* Localizable.strings */,
-				3E6325361FA6BC5F00F14462 /* Info.plist */,
+				368E507B238F665E00AFE3B3 /* MOWOX_Park.plist */,
 				3E6325251FA6BC5F00F14462 /* Supporting Files */,
 				BBA446562101742A00D3B30E /* MOWOXROBOT */,
 				361FF0592255B65D00A5108D /* BLU_Images.xcassets */,
@@ -1696,9 +1700,11 @@
 				36006A882265AFDB00F4EEB2 /* 右转@2x.png in Resources */,
 				3668675922E5B8230054F384 /* ParkWelcome1_4.7@2x.png in Resources */,
 				36006A8A2265AFDB00F4EEB2 /* 40@2x.png in Resources */,
+				368E5084238F6BBA00AFE3B3 /* DY12269.BIN in Resources */,
 				36006A8B2265AFDB00F4EEB2 /* findBluetooth@2x.png in Resources */,
 				36006A8C2265AFDB00F4EEB2 /* 1024x1024@1x.png in Resources */,
 				36006A8D2265AFDB00F4EEB2 /* img_nav_more@1x.png in Resources */,
+				368E5086238F6BBA00AFE3B3 /* DY01269.BIN in Resources */,
 				36006A8E2265AFDB00F4EEB2 /* background@2x.png in Resources */,
 				36006A8F2265AFDB00F4EEB2 /* Generalsetting@1x.png in Resources */,
 				3668673622E590770054F384 /* parkIcon.xcassets in Resources */,
@@ -1713,15 +1719,19 @@
 				36006A9A2265AFDB00F4EEB2 /* ic_nav_more_black@3x.png in Resources */,
 				36006A9C2265AFDB00F4EEB2 /* 60x60@3x.png in Resources */,
 				36006A9D2265AFDB00F4EEB2 /* icon-60.png in Resources */,
+				368E507C238F665E00AFE3B3 /* MOWOX_Park.plist in Resources */,
+				368E5083238F6BBA00AFE3B3 /* DY00269.BIN in Resources */,
 				36006A9F2265AFDB00F4EEB2 /* icon-60@3x.png in Resources */,
 				36006AA02265AFDB00F4EEB2 /* Localizable.strings in Resources */,
 				36006AA12265AFDB00F4EEB2 /* B2_50@2x.png in Resources */,
 				36006AA22265AFDB00F4EEB2 /* 蓝牙图标@2x.png in Resources */,
 				36006AA32265AFDB00F4EEB2 /* A3@3x.png in Resources */,
+				368E5088238F6BBA00AFE3B3 /* DY14269.BIN in Resources */,
 				36006AA42265AFDB00F4EEB2 /* parkimage@2x.png in Resources */,
 				36006AA52265AFDB00F4EEB2 /* Main.storyboard in Resources */,
 				36006AA62265AFDB00F4EEB2 /* bluetooth@1x.png in Resources */,
 				36006AA72265AFDB00F4EEB2 /* xianbuyong.png in Resources */,
+				368E5087238F6BBA00AFE3B3 /* DY11269.BIN in Resources */,
 				36006AA82265AFDB00F4EEB2 /* Pinsetting@1x.png in Resources */,
 				36006AAA2265AFDB00F4EEB2 /* right@1x.png in Resources */,
 				36006AAD2265AFDB00F4EEB2 /* 80@3x.png in Resources */,
@@ -1778,6 +1788,7 @@
 				36006AEF2265AFDB00F4EEB2 /* A2_50@2x.png in Resources */,
 				36006AF12265AFDB00F4EEB2 /* 58x58@2x.png in Resources */,
 				36006AF22265AFDB00F4EEB2 /* 割草机@2x.png in Resources */,
+				368E5085238F6BBA00AFE3B3 /* DY02269.BIN in Resources */,
 				36006AF32265AFDB00F4EEB2 /* backview@1x.png in Resources */,
 				36006AF52265AFDB00F4EEB2 /* 返回@2x.png in Resources */,
 				36006AF62265AFDB00F4EEB2 /* 87x87@3x.png in Resources */,
@@ -1787,7 +1798,6 @@
 				36006AFC2265AFDB00F4EEB2 /* A1@3x.png in Resources */,
 				36006AFD2265AFDB00F4EEB2 /* SecondaryAreaImage.png in Resources */,
 				36006AFE2265AFDB00F4EEB2 /* 电量1-2@1x.png in Resources */,
-				36006B002265AFDB00F4EEB2 /* Info.plist in Resources */,
 				36006B012265AFDB00F4EEB2 /* 前进@2x.png in Resources */,
 				36006B032265AFDB00F4EEB2 /* PasswordTableViewCell.xib in Resources */,
 				36006B042265AFDB00F4EEB2 /* 58@2x.png in Resources */,
@@ -1911,7 +1921,6 @@
 				368E4F7C238D1B8300AFE3B3 /* A1@3x.png in Resources */,
 				368E4F7D238D1B8300AFE3B3 /* SecondaryAreaImage.png in Resources */,
 				368E4F7E238D1B8300AFE3B3 /* 电量1-2@1x.png in Resources */,
-				368E4F7F238D1B8300AFE3B3 /* Info.plist in Resources */,
 				368E4F80238D1B8300AFE3B3 /* 前进@2x.png in Resources */,
 				368E4F81238D1B8300AFE3B3 /* PasswordTableViewCell.xib in Resources */,
 				368E4F82238D1B8300AFE3B3 /* 58@2x.png in Resources */,
@@ -2050,7 +2059,6 @@
 				368E5042238D296E00AFE3B3 /* A1@3x.png in Resources */,
 				368E5043238D296E00AFE3B3 /* SecondaryAreaImage.png in Resources */,
 				368E5044238D296E00AFE3B3 /* 电量1-2@1x.png in Resources */,
-				368E5045238D296E00AFE3B3 /* Info.plist in Resources */,
 				368E5061238D2AFC00AFE3B3 /* App_BG_2-2@1x.png in Resources */,
 				368E5046238D296E00AFE3B3 /* 前进@2x.png in Resources */,
 				368E5063238D2B0200AFE3B3 /* App_BG_4@2x.png in Resources */,
@@ -2498,7 +2506,7 @@
 					"\"${PODS_ROOT}/Headers/Public/RDVTabBarController\"",
 					"\"${PODS_ROOT}/Headers/Public/SVProgressHUD\"",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/MOWOX.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/MOWOXROBOT/MOWOX_Park.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -2557,7 +2565,7 @@
 					"\"${PODS_ROOT}/Headers/Public/RDVTabBarController\"",
 					"\"${PODS_ROOT}/Headers/Public/SVProgressHUD\"",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/MOWOX.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/MOWOXROBOT/MOWOX_Park.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -2613,7 +2621,7 @@
 					"\"${PODS_ROOT}/Headers/Public/RDVTabBarController\"",
 					"\"${PODS_ROOT}/Headers/Public/SVProgressHUD\"",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/MOWOX.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/MOWOXROBOT/MOWOX_Park.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
