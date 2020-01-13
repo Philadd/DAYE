@@ -446,66 +446,62 @@
 #pragma mark - Control Mower
 - (void)goToWork
 {
-    if (_appDelegate.status == 0 && [[NetWork shareNetWork].mySocket isDisconnected]) {
-        [NSObject showHudTipStr:NSLocalizedString(@"Wi-Fi not connected", nil)];
-        return;
-    }
-    if (_appDelegate.currentPeripheral == nil && _appDelegate.status == 1) {
-        [NSObject showHudTipStr:NSLocalizedString(@"Bluetooth not connected", nil)];
-        return;
-    }
-    NSMutableArray *dataContent = [[NSMutableArray alloc] init];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x02]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:LocalString(@"Are you sure to go to work?")preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:LocalString(@"Confirm") style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        NSLog(@"action = %@",action);
+        
+        NSMutableArray *dataContent = [[NSMutableArray alloc] init];
+        [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x02]];
+        [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+        [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+        [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+        [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+        [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+        [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+        [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+        
+        [self.bluetoothDataManage setDataType:0x01];
+        [self.bluetoothDataManage setDataContent: dataContent];
+        [self.bluetoothDataManage sendBluetoothFrame];
+        
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:LocalString(@"Cancel") style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
+        NSLog(@"action = %@",action);
+    }];
+    [alert addAction:okAction];
+    [alert addAction:cancelAction];
+    [self presentViewController:alert animated:YES completion:nil];
     
-    [self.bluetoothDataManage setDataType:0x01];
-    [self.bluetoothDataManage setDataContent: dataContent];
-    [self.bluetoothDataManage sendBluetoothFrame];
-    
-    /*[self.onLawn.layer setBackgroundColor:[UIColor lightGrayColor].CGColor];
-     [self.BacktostationButton.layer setBackgroundColor:[UIColor lightGrayColor].CGColor];
-     [self.onStation.layer setBackgroundColor:[UIColor clearColor].CGColor];
-     [self.GoToWorkButton.layer setBackgroundColor:[UIColor clearColor].CGColor];
-     self.BacktostationButton.enabled = YES;
-     self.GoToWorkButton.enabled = NO;*/
 }
 
 - (void)backToStation
 {
-    if (_appDelegate.status == 0 && [[NetWork shareNetWork].mySocket isDisconnected]) {
-        [NSObject showHudTipStr:NSLocalizedString(@"Wi-Fi not connected", nil)];
-        return;
-    }
-    if (_appDelegate.currentPeripheral == nil && _appDelegate.status == 1) {
-        [NSObject showHudTipStr:NSLocalizedString(@"Bluetooth not connected", nil)];
-        return;
-    }
-    NSMutableArray *dataContent = [[NSMutableArray alloc] init];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x03]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:LocalString(@"Are you sure to back to station?")preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:LocalString(@"Confirm") style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        NSLog(@"action = %@",action);
+        
+        NSMutableArray *dataContent = [[NSMutableArray alloc] init];
+        [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x03]];
+        [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+        [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+        [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+        [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+        [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+        [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+        [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+        
+        [self.bluetoothDataManage setDataType:0x01];
+        [self.bluetoothDataManage setDataContent: dataContent];
+        [self.bluetoothDataManage sendBluetoothFrame];
+        
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:LocalString(@"Cancel") style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
+        NSLog(@"action = %@",action);
+    }];
+    [alert addAction:okAction];
+    [alert addAction:cancelAction];
+    [self presentViewController:alert animated:YES completion:nil];
     
-    [self.bluetoothDataManage setDataType:0x01];
-    [self.bluetoothDataManage setDataContent: dataContent];
-    [self.bluetoothDataManage sendBluetoothFrame];
-    
-    /*[self.onStation.layer setBackgroundColor:[UIColor lightGrayColor].CGColor];
-     [self.GoToWorkButton.layer setBackgroundColor:[UIColor lightGrayColor].CGColor];
-     [self.onLawn.layer setBackgroundColor:[UIColor clearColor].CGColor];
-     [self.BacktostationButton.layer setBackgroundColor:[UIColor clearColor].CGColor];
-     self.BacktostationButton.enabled = NO;
-     self.GoToWorkButton.enabled = YES;*/
 }
 
 #pragma mark - ViewController

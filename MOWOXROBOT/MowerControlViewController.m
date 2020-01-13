@@ -150,19 +150,32 @@
 
 - (void)start
 {
-    NSMutableArray *dataContent = [[NSMutableArray alloc] init];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:LocalString(@"Are you sure to go to work?")preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:LocalString(@"Confirm") style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        NSLog(@"action = %@",action);
+        
+        NSMutableArray *dataContent = [[NSMutableArray alloc] init];
+        [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+        [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+        [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+        [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+        [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+        [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+        [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+        [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+        
+        [self.bluetoothDataManage setDataType:0x01];
+        [self.bluetoothDataManage setDataContent: dataContent];
+        [self.bluetoothDataManage sendBluetoothFrame];
+        
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:LocalString(@"Cancel") style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
+        NSLog(@"action = %@",action);
+    }];
+    [alert addAction:okAction];
+    [alert addAction:cancelAction];
+    [self presentViewController:alert animated:YES completion:nil];
     
-    [self.bluetoothDataManage setDataType:0x01];
-    [self.bluetoothDataManage setDataContent: dataContent];
-    [self.bluetoothDataManage sendBluetoothFrame];
 }
 
 - (void)stop
