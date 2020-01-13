@@ -43,9 +43,29 @@
     
     [self viewLayoutSet];
     
+    //查询割草机电量
+    
+    //[self acquireDate];
+    
+    [self inquireBatter];
+    
+    NSMutableArray *dataContent = [[NSMutableArray alloc] init];
+    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+    
+    [self.bluetoothDataManage setDataType:0x0c];
+    [self.bluetoothDataManage setDataContent: dataContent];
+    [self.bluetoothDataManage sendBluetoothFrame];
+    
     //延时1.0秒
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
         [self setMowerTime];
         
     });
@@ -54,8 +74,19 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    NSMutableArray *dataContent = [[NSMutableArray alloc] init];
+    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x11]];
+    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x11]];
+    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x11]];
+    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x11]];
+    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x11]];
+    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x11]];
+    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x11]];
+    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x11]];
     
-    [self inquireBatter];
+    [self.bluetoothDataManage setDataType:0x00];
+    [self.bluetoothDataManage setDataContent: dataContent];
+    [self.bluetoothDataManage sendBluetoothFrame];
     //添加蓝牙状态观察
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getBatterDataAndSetButton:) name:@"getMowerData" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(disconnectBluetooth:) name:@"disconnectBluetooth" object:nil];

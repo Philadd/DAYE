@@ -393,8 +393,7 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        NSString *path = [[NSBundle mainBundle] pathForResource:self->dataName ofType:@"bin"];
-        NSLog(@"固件路径。。。%@",path);
+        NSString *path = [[NSBundle mainBundle] pathForResource:dataName ofType:@"bin"];
         NSData *data = [NSData dataWithContentsOfFile:path];
         
         AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
