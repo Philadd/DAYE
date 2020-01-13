@@ -581,6 +581,18 @@
 		36A7B6C923CC85F800F1C29F /* DY02269.bin in Resources */ = {isa = PBXBuildFile; fileRef = 36A7B6C323CC85F700F1C29F /* DY02269.bin */; };
 		36A7B6CA23CC85F800F1C29F /* DY11269.bin in Resources */ = {isa = PBXBuildFile; fileRef = 36A7B6C423CC85F800F1C29F /* DY11269.bin */; };
 		36A7B6CB23CC85F800F1C29F /* DY12269.bin in Resources */ = {isa = PBXBuildFile; fileRef = 36A7B6C523CC85F800F1C29F /* DY12269.bin */; };
+		36A7B6D823CCAFF300F1C29F /* DY01269.bin in Resources */ = {isa = PBXBuildFile; fileRef = 36A7B6C223CC85F700F1C29F /* DY01269.bin */; };
+		36A7B6D923CCAFF400F1C29F /* DY01269.bin in Resources */ = {isa = PBXBuildFile; fileRef = 36A7B6C223CC85F700F1C29F /* DY01269.bin */; };
+		36A7B6DA23CCAFF900F1C29F /* DY00269.bin in Resources */ = {isa = PBXBuildFile; fileRef = 36A7B6C123CC85F700F1C29F /* DY00269.bin */; };
+		36A7B6DB23CCAFFA00F1C29F /* DY00269.bin in Resources */ = {isa = PBXBuildFile; fileRef = 36A7B6C123CC85F700F1C29F /* DY00269.bin */; };
+		36A7B6DC23CCAFFF00F1C29F /* DY02269.bin in Resources */ = {isa = PBXBuildFile; fileRef = 36A7B6C323CC85F700F1C29F /* DY02269.bin */; };
+		36A7B6DD23CCAFFF00F1C29F /* DY02269.bin in Resources */ = {isa = PBXBuildFile; fileRef = 36A7B6C323CC85F700F1C29F /* DY02269.bin */; };
+		36A7B6DE23CCB04400F1C29F /* DY11269.bin in Resources */ = {isa = PBXBuildFile; fileRef = 36A7B6C423CC85F800F1C29F /* DY11269.bin */; };
+		36A7B6DF23CCB04400F1C29F /* DY11269.bin in Resources */ = {isa = PBXBuildFile; fileRef = 36A7B6C423CC85F800F1C29F /* DY11269.bin */; };
+		36A7B6E023CCB04C00F1C29F /* DY12269.bin in Resources */ = {isa = PBXBuildFile; fileRef = 36A7B6C523CC85F800F1C29F /* DY12269.bin */; };
+		36A7B6E123CCB04D00F1C29F /* DY12269.bin in Resources */ = {isa = PBXBuildFile; fileRef = 36A7B6C523CC85F800F1C29F /* DY12269.bin */; };
+		36A7B6E223CCB04F00F1C29F /* DY14269.bin in Resources */ = {isa = PBXBuildFile; fileRef = 36A7B6C023CC85F700F1C29F /* DY14269.bin */; };
+		36A7B6E323CCB05000F1C29F /* DY14269.bin in Resources */ = {isa = PBXBuildFile; fileRef = 36A7B6C023CC85F700F1C29F /* DY14269.bin */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1823,8 +1835,10 @@
 				368E4F19238D1B8300AFE3B3 /* A6@2x.png in Resources */,
 				368E4F1A238D1B8300AFE3B3 /* 返回绿色@1x.png in Resources */,
 				368E4F1B238D1B8300AFE3B3 /* updateFirmwareTip0@2x.png in Resources */,
+				36A7B6E023CCB04C00F1C29F /* DY12269.bin in Resources */,
 				368E4F1C238D1B8300AFE3B3 /* 电量2@1x.png in Resources */,
 				368E4F1D238D1B8300AFE3B3 /* icon-150@3x.png in Resources */,
+				36A7B6DA23CCAFF900F1C29F /* DY00269.bin in Resources */,
 				368E4F1E238D1B8300AFE3B3 /* 120x120@2x.png in Resources */,
 				368E4F1F238D1B8300AFE3B3 /* 机器人APP1+2(1)-3.png in Resources */,
 				368E4F20238D1B8300AFE3B3 /* BluetoothWelcome1_5.5@2x.png in Resources */,
@@ -1837,6 +1851,7 @@
 				368E4F27238D1B8300AFE3B3 /* background@2x.png in Resources */,
 				368E4F28238D1B8300AFE3B3 /* Generalsetting@1x.png in Resources */,
 				368E4F2A238D1B8300AFE3B3 /* A2@3x.png in Resources */,
+				36A7B6DE23CCB04400F1C29F /* DY11269.bin in Resources */,
 				368E4F2B238D1B8300AFE3B3 /* Imformation@2x.png in Resources */,
 				368E4F2C238D1B8300AFE3B3 /* A3_50@2x.png in Resources */,
 				368E4F2D238D1B8300AFE3B3 /* DeviceTableViewCell.xib in Resources */,
@@ -1861,6 +1876,7 @@
 				368E4F40238D1B8300AFE3B3 /* WorkingtimeSetting@1x.png in Resources */,
 				368E4F41238D1B8300AFE3B3 /* 80x80@2x.png in Resources */,
 				368E4F42238D1B8300AFE3B3 /* backgroundro@1x.png in Resources */,
+				36A7B6E223CCB04F00F1C29F /* DY14269.bin in Resources */,
 				368E4F43238D1B8300AFE3B3 /* BluetoothWelcome1_4.7@2x.png in Resources */,
 				368E4F44238D1B8300AFE3B3 /* backgroundco@2x.png in Resources */,
 				368E4F45238D1B8300AFE3B3 /* left@1x.png in Resources */,
@@ -1869,6 +1885,7 @@
 				368E4F48238D1B8300AFE3B3 /* 180x180@3x.png in Resources */,
 				368E4F49238D1B8300AFE3B3 /* login@2x.png in Resources */,
 				368E4F4A238D1B8300AFE3B3 /* bluetoothImage@1x.png in Resources */,
+				36A7B6DC23CCAFFF00F1C29F /* DY02269.bin in Resources */,
 				368E4F4B238D1B8300AFE3B3 /* wifi@2x.png in Resources */,
 				368E4F4C238D1B8300AFE3B3 /* A1_50@2x.png in Resources */,
 				368E4F4D238D1B8300AFE3B3 /* 蓝牙@1x.png in Resources */,
@@ -1933,6 +1950,7 @@
 				368E4F89238D1B8300AFE3B3 /* background1@2x.png in Resources */,
 				368E5071238D3CCF00AFE3B3 /* Launch_BLU.storyboard in Resources */,
 				368E4F8A238D1B8300AFE3B3 /* 120x120@3x.png in Resources */,
+				36A7B6D823CCAFF300F1C29F /* DY01269.bin in Resources */,
 				368E4F8B238D1B8300AFE3B3 /* 蓝牙断开@1x.png in Resources */,
 				368E4F8C238D1B8300AFE3B3 /* LaunchImage@2x.png in Resources */,
 				368E4F8D238D1B8300AFE3B3 /* Back1@1x.png in Resources */,
@@ -1959,6 +1977,7 @@
 				368E4FEC238D296E00AFE3B3 /* 1024x1024@1x.png in Resources */,
 				368E4FED238D296E00AFE3B3 /* img_nav_more@1x.png in Resources */,
 				368E4FEE238D296E00AFE3B3 /* background@2x.png in Resources */,
+				36A7B6D923CCAFF400F1C29F /* DY01269.bin in Resources */,
 				368E505E238D2A8300AFE3B3 /* AssetRobot.xcassets in Resources */,
 				368E4FEF238D296E00AFE3B3 /* Generalsetting@1x.png in Resources */,
 				368E4FF0238D296E00AFE3B3 /* A2@3x.png in Resources */,
@@ -1979,10 +1998,12 @@
 				368E4FFD238D296E00AFE3B3 /* 蓝牙图标@2x.png in Resources */,
 				368E4FFE238D296E00AFE3B3 /* A3@3x.png in Resources */,
 				368E4FFF238D296E00AFE3B3 /* parkimage@2x.png in Resources */,
+				36A7B6DB23CCAFFA00F1C29F /* DY00269.bin in Resources */,
 				368E506D238D2B4200AFE3B3 /* 40X40.png in Resources */,
 				368E5000238D296E00AFE3B3 /* Main.storyboard in Resources */,
 				368E5001238D296E00AFE3B3 /* bluetooth@1x.png in Resources */,
 				368E5064238D2B0500AFE3B3 /* App_welcome@2x.png in Resources */,
+				36A7B6E323CCB05000F1C29F /* DY14269.bin in Resources */,
 				368E5002238D296E00AFE3B3 /* xianbuyong.png in Resources */,
 				368E5003238D296E00AFE3B3 /* Pinsetting@1x.png in Resources */,
 				368E5004238D296E00AFE3B3 /* right@1x.png in Resources */,
@@ -1990,8 +2011,10 @@
 				368E5006238D296E00AFE3B3 /* WorkingtimeSetting@1x.png in Resources */,
 				368E5007238D296E00AFE3B3 /* 80x80@2x.png in Resources */,
 				368E5008238D296E00AFE3B3 /* backgroundro@1x.png in Resources */,
+				36A7B6E123CCB04D00F1C29F /* DY12269.bin in Resources */,
 				368E5067238D2B3000AFE3B3 /* 150x150.png in Resources */,
 				368E5009238D296E00AFE3B3 /* BluetoothWelcome1_4.7@2x.png in Resources */,
+				36A7B6DF23CCB04400F1C29F /* DY11269.bin in Resources */,
 				368E500A238D296E00AFE3B3 /* backgroundco@2x.png in Resources */,
 				368E500B238D296E00AFE3B3 /* left@1x.png in Resources */,
 				368E500C238D296E00AFE3B3 /* 蓝牙连接@2x.png in Resources */,
@@ -2052,6 +2075,7 @@
 				368E503C238D296E00AFE3B3 /* backview@1x.png in Resources */,
 				368E5069238D2B3800AFE3B3 /* 87x87.png in Resources */,
 				368E503D238D296E00AFE3B3 /* 返回@2x.png in Resources */,
+				36A7B6DD23CCAFFF00F1C29F /* DY02269.bin in Resources */,
 				368E503E238D296E00AFE3B3 /* 87x87@3x.png in Resources */,
 				368E503F238D296E00AFE3B3 /* Pinsetting@2x.png in Resources */,
 				368E5040238D296E00AFE3B3 /* img_wifi@2x.png in Resources */,
