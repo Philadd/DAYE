@@ -33,7 +33,7 @@
 
 @implementation SettingViewController
 #if RobotMower | MOWOXROBOT
-static int latestVersion = 270;
+static int latestVersion = 269;
 #elif RobotPark
 static int latestVersion = 269;
 #endif
