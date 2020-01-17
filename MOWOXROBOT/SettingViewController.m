@@ -51,6 +51,7 @@ static int latestVersion = 269;
     }else{
         _updateButton.hidden = YES;
     }
+    _updateButton.hidden = YES;
     NSLog(@"版本号%d",[BluetoothDataManage shareInstance].versionupdate);
     //分区按钮显示
     if ([BluetoothDataManage shareInstance].sectionvalve == 0) {

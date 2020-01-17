@@ -153,31 +153,86 @@
             [NSObject showHudTipStr:LocalString(@"Bluetooth not connected")];
         }
     }else{
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        if ([defaults integerForKey:@"pincode"]) {
-            [BluetoothDataManage shareInstance].pincode = (int)[defaults integerForKey:@"pincode"];
-            
-            //解决如果机器不发请求 默认之前保存密码 进入页面。
-            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-            NSString *password = [userDefaults objectForKey:@"password"];
-            if ([password integerValue] == [userDefaults integerForKey:@"pincode"]) {
-                RDVViewController *rdvView = [[RDVViewController alloc] init];
-                rdvView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-                [self presentViewController:rdvView animated:YES completion:nil];
-            }
-            //子线程延时1s
-            double delayInSeconds = 1.0;
-            dispatch_queue_t mainQueue = dispatch_get_main_queue();
-            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW,delayInSeconds * NSEC_PER_SEC);
-            dispatch_after(popTime, mainQueue, ^{
-                NSLog(@"延时执行的1秒");
+        if (_appDelegate.status == 1) {
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            if ([defaults integerForKey:@"pincode"]) {
+                [BluetoothDataManage shareInstance].pincode = (int)[defaults integerForKey:@"pincode"];
+                
+                //解决如果机器不发请求 默认之前保存密码 进入页面。
+                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                NSString *password = [userDefaults objectForKey:@"password"];
+                if ([password integerValue] == [userDefaults integerForKey:@"pincode"]) {
+                    RDVViewController *rdvView = [[RDVViewController alloc] init];
+                    rdvView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+                    [self presentViewController:rdvView animated:YES completion:nil];
+                }
+                //子线程延时1s
+                double delayInSeconds = 1.0;
+                dispatch_queue_t mainQueue = dispatch_get_main_queue();
+                dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW,delayInSeconds * NSEC_PER_SEC);
+                dispatch_after(popTime, mainQueue, ^{
+                    NSLog(@"延时执行的1秒");
+                    [self getPINData];
+                });
+                
+            }else{
                 [self getPINData];
-            });
-            
+                
+            }
         }else{
-            [self getPINData];
+            
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            if ([defaults integerForKey:@"pincode"]) {
+                [BluetoothDataManage shareInstance].pincode = (int)[defaults integerForKey:@"pincode"];
+                
+                //解决如果机器不发请求 默认之前保存密码 进入页面。
+                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                NSString *password = [userDefaults objectForKey:@"password"];
+                if ([password integerValue] == [userDefaults integerForKey:@"pincode"]) {
+                    RDVViewController *rdvView = [[RDVViewController alloc] init];
+                    rdvView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+                    [self presentViewController:rdvView animated:YES completion:nil];
+                    return;
+                }
+                
+                NSMutableArray *dataContent = [[NSMutableArray alloc] init];
+                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+                
+                [self.bluetoothDataManage setDataType:0x0c];
+                [self.bluetoothDataManage setDataContent: dataContent];
+                [self.bluetoothDataManage sendBluetoothFrame];
+                
+            }else{
+                NSMutableArray *dataContent = [[NSMutableArray alloc] init];
+                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
+                
+                [self.bluetoothDataManage setDataType:0x0c];
+                [self.bluetoothDataManage setDataContent: dataContent];
+                [self.bluetoothDataManage sendBluetoothFrame];
+            }
+            
+            _resultLabel = [[UILabel alloc] init];
+            _popView = [[LMPopInputPasswordView alloc]init];
+            _popView.frame = CGRectMake((self.view.frame.size.width - 250)*0.5, 50, 250, 150);
+            _popView.delegate = self;
+            [_popView pop];
             
         }
+        
     }
     /*
      RDVViewController *rdvView = [[RDVViewController alloc] init];
