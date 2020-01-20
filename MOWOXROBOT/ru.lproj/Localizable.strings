@@ -202,8 +202,8 @@
 
 "Time of robot" = "Время машины";
 "Walk Motor" = "Прогулочный мотор";
-"Blade Motor" = "Лезвие Мотор";
-"Robot Work" = "Робот Работа";
+"Blade Motor" = "Режущий аппарат";
+"Work time" = "Время работы";
 "Day" = "День";
 "Mowing" = "покос";
 "Along boundary" = "Вдоль границы";

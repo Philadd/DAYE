@@ -203,8 +203,8 @@
 
 "Time of robot" = "Koneen aika";
 "Walk Motor" = "Kävele moottori";
-"Blade Motor" = "Terän moottori";
-"Robot Work" = "Robotti";
+"Blade Motor" = "Leikkurikoneisto";
+"Work time" = "Työaika";
 "Day" = "Päivä";
 "Mowing" = "niitto";
 "Along boundary" = "Rajan varrella";

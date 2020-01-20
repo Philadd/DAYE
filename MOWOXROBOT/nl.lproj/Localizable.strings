@@ -202,8 +202,8 @@
 
 "Time of robot" = "Tijd van de machine";
 "Walk Motor" = "Loop motor";
-"Blade Motor" = "Bladmotor";
-"Robot Work" = "Robotwerk";
+"Blade Motor" = "Maaiwerk";
+"Work time" = "Werktijd";
 "Day" = "Dag";
 "Mowing" = "Gras maaien";
 "Along boundary" = "Langs de grens";

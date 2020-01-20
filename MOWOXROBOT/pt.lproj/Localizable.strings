@@ -208,9 +208,9 @@
 "Errors that do not exist" = "Erros que não existem";
 
 "Time of robot" = "Maskinens tid";
-"Walk Motor" = "Motor De Caminhada";
-"Blade Motor" = "Motor da Lâmina";
-"Robot Work" = "Trabalho de Robô";
+"Walk Motor" = "Walk Motor";
+"Blade Motor" = "Barra de corte";
+"Work time" = "Tempo de trabalho";
 "Day" = "Dia";
 "Mowing" = "Roçada";
 "Along boundary" = "Ao longo do limite";

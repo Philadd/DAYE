@@ -208,9 +208,9 @@
 "Errors that do not exist" = "Fejl, der ikke findes";
 
 "Time of robot" = "Maskinens tid";
-"Walk Motor" = "Walk Motor";
-"Blade Motor" = "Bladmotor";
-"Robot Work" = "Robot arbejde";
+"Walk Motor" = "Gå motor";
+"Blade Motor" = "Slåmaskine";
+"Work time" = "Arbejdstid";
 "Day" = "Dag";
 "Mowing" = "Slår græs";
 "Along boundary" = "Langs grænsen";

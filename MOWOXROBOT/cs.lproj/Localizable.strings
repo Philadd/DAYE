@@ -201,9 +201,9 @@
 "Errors that do not exist" = "Chyby, které neexistují";
 
 "Time of robot" = "Doba stroje";
-"Walk Motor" = "Motor chůze";
-"Blade Motor" = "Motor nože";
-"Robot Work" = "Robot práce";
+"Walk Motor" = "Walk Motor";
+"Blade Motor" = "Žací ústrojí";
+"Work time" = "Pracovní doba";
 "Day" = "Den";
 "Mowing" = "Sekání";
 "Along boundary" = "Podél hranice";

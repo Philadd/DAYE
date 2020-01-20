@@ -46,11 +46,12 @@ static int latestVersion = 269;
     self.bluetoothDataManage = [BluetoothDataManage shareInstance];
     
     [self viewLayoutSet];
-    if ([BluetoothDataManage shareInstance].versionupdate < latestVersion) {
-        _updateButton.hidden = NO;
-    }else{
-        _updateButton.hidden = YES;
-    }
+//    if ([BluetoothDataManage shareInstance].versionupdate < latestVersion) {
+//        _updateButton.hidden = NO;
+//    }else{
+//        _updateButton.hidden = YES;
+//    }
+    
     NSLog(@"版本号%d",[BluetoothDataManage shareInstance].versionupdate);
     //分区按钮显示
     if ([BluetoothDataManage shareInstance].sectionvalve == 0) {
@@ -85,6 +86,7 @@ static int latestVersion = 269;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    _updateButton.hidden = YES;
     NSMutableArray *dataContent = [[NSMutableArray alloc] init];
     [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
     [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];

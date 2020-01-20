@@ -538,6 +538,12 @@
     }
     if(indexPath.section == 1)
     {
+        //断开蓝牙 清除pincode 密码
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults removeObjectForKey:@"password"];
+        [userDefaults removeObjectForKey:@"pincode"];
+        [userDefaults synchronize];
+        
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
         CBPeripheral *peripheral = [self.peripherals objectAtIndex:indexPath.row];
         
@@ -596,6 +602,11 @@
         [self.connectedPeripherals removeAllObjects];
         [self.tableView reloadData];
     }
+    //断开蓝牙 清除pincode 密码
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults removeObjectForKey:@"password"];
+    [userDefaults removeObjectForKey:@"pincode"];
+    [userDefaults synchronize];
 }
 
 

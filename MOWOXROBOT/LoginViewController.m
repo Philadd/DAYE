@@ -141,19 +141,21 @@
 #pragma mark - ViewController push and back
 - (void)connectMower
 {
-    //测试用直接进入APP
-    //    RDVViewController *rdvView = [[RDVViewController alloc] init];
-    //    rdvView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    //    [self presentViewController:rdvView animated:YES completion:nil];
-    //    return;
-    if (_appDelegate.currentPeripheral == nil && [[NetWork shareNetWork].mySocket isDisconnected]) {
-        if (_appDelegate.status == 0) {
-            [NSObject showHudTipStr:LocalString(@"Wi-Fi not connected")];
-        }else{
+        //测试用直接进入APP
+        //    RDVViewController *rdvView = [[RDVViewController alloc] init];
+        //    rdvView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        //    [self presentViewController:rdvView animated:YES completion:nil];
+        //    return;
+        if (_appDelegate.currentPeripheral == nil) {
+            
             [NSObject showHudTipStr:LocalString(@"Bluetooth not connected")];
-        }
-    }else{
-        if (_appDelegate.status == 1) {
+            //断开蓝牙 清除pincode 密码
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            [userDefaults removeObjectForKey:@"password"];
+            [userDefaults removeObjectForKey:@"pincode"];
+            [userDefaults synchronize];
+            
+        }else{
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             if ([defaults integerForKey:@"pincode"]) {
                 [BluetoothDataManage shareInstance].pincode = (int)[defaults integerForKey:@"pincode"];
@@ -179,66 +181,7 @@
                 [self getPINData];
                 
             }
-        }else{
-            
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            if ([defaults integerForKey:@"pincode"]) {
-                [BluetoothDataManage shareInstance].pincode = (int)[defaults integerForKey:@"pincode"];
-                
-                //解决如果机器不发请求 默认之前保存密码 进入页面。
-                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-                NSString *password = [userDefaults objectForKey:@"password"];
-                if ([password integerValue] == [userDefaults integerForKey:@"pincode"]) {
-                    RDVViewController *rdvView = [[RDVViewController alloc] init];
-                    rdvView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-                    [self presentViewController:rdvView animated:YES completion:nil];
-                    return;
-                }
-                
-                NSMutableArray *dataContent = [[NSMutableArray alloc] init];
-                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-                
-                [self.bluetoothDataManage setDataType:0x0c];
-                [self.bluetoothDataManage setDataContent: dataContent];
-                [self.bluetoothDataManage sendBluetoothFrame];
-                
-            }else{
-                NSMutableArray *dataContent = [[NSMutableArray alloc] init];
-                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-                [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-                
-                [self.bluetoothDataManage setDataType:0x0c];
-                [self.bluetoothDataManage setDataContent: dataContent];
-                [self.bluetoothDataManage sendBluetoothFrame];
-            }
-            
-            _resultLabel = [[UILabel alloc] init];
-            _popView = [[LMPopInputPasswordView alloc]init];
-            _popView.frame = CGRectMake((self.view.frame.size.width - 250)*0.5, 50, 250, 150);
-            _popView.delegate = self;
-            [_popView pop];
-            
         }
-        
-    }
-    /*
-     RDVViewController *rdvView = [[RDVViewController alloc] init];
-     rdvView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-     [self presentViewController:rdvView animated:YES completion:nil];
-     */
 }
 
 //蓝牙版自动登录不能获取分区显示了

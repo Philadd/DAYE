@@ -202,8 +202,8 @@
 
 "Time of robot" = "Temps de machine";
 "Walk Motor" = "Moteur de marche";
-"Blade Motor" = "Moteur de lame";
-"Robot Work" = "Travail de robot";
+"Blade Motor" = "Unité de tonte";
+"Work time" = "Temps travail";
 "Day" = "Jour";
 "Mowing" = "Fauchage";
 "Along boundary" = "Le long de la limite";
@@ -213,7 +213,7 @@
 "Reset Time" = "Réinitialiser le temps";
 "Are you sure?" = "Êtes-vous sûr?";
 "Error Memory" = "Mémoire d'erreurs";
-"Time Statistics" = "Statistiques ";
+"Time Statistics" = "Statistiques";
 "Multi-Area-Mowing" = "Plusieurs points départ";
 "Mon" = "Lu";
 "Tue" = "Ma";

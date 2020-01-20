@@ -209,9 +209,9 @@
 "Errors that do not exist" = "Грешки, които не съществуват";
 
 "Time of robot" = "Време на машината";
-"Walk Motor" = "Разходка с мотор";
-"Blade Motor" = "Двигател на ножа";
-"Robot Work" = "Работа с робот";
+"Walk Motor" = "Walk Motor";
+"Blade Motor" = "Косачен механизъм";
+"Work time" = "Време на работа";
 "Day" = "Ден";
 "Mowing" = "Косенето";
 "Along boundary" = "По границата";

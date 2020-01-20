@@ -136,9 +136,6 @@
 - (void)setLanguage
 {
     NSInteger row = [self.languagePicker selectedRowInComponent:0];
-    if (row == 1) {
-        row = 2;
-    }
     
     NSMutableArray *dataContent = [[NSMutableArray alloc] init];
     [dataContent addObject:[NSNumber numberWithUnsignedInteger:row]];
@@ -153,30 +150,6 @@
     [self.bluetoothDataManage setDataType:0x03];
     [self.bluetoothDataManage setDataContent: dataContent];
     [self.bluetoothDataManage sendBluetoothFrame];
-    
-    
-    /*NSArray *langArr = [[NSUserDefaults standardUserDefaults] valueForKey:@"AppleLanguages"];
-    NSString *language = langArr.firstObject;
-    NSLog(@"模拟器语言切换之前：%@",language);
-    
-    // 切换语言
-    NSArray *lanArrNwe = @[@"zh-Hans"];
-    NSInteger row = [self.languagePicker selectedRowInComponent:0];
-    switch (row) {
-        case 0:
-            lanArrNwe = @[@"en"];
-            break;
-            
-        case 12:
-            lanArrNwe = @[@"zh-Hans"];
-            break;
-            
-        default:
-            break;
-    }
-    [[NSUserDefaults standardUserDefaults] setValue:lanArrNwe forKey:@"AppleLanguages"];
-    [[NSUserDefaults standardUserDefaults] synchronize];*/
-    
     
 }
 

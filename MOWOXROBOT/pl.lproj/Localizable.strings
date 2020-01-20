@@ -199,8 +199,8 @@
 
 "Time of robot" = "Czas maszyny";
 "Walk Motor" = "Walk Motor";
-"Blade Motor" = "Silnik ostrza";
-"Robot Work" = "Praca z robotem";
+"Blade Motor" = "Zespół tnący";
+"Work time" = "Czas pracy";
 "Day" = "Dzień";
 "Mowing" = "Kośba";
 "Along boundary" = "Wzdłuż granicy";

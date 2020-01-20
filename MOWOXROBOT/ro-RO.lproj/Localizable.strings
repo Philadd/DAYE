@@ -208,9 +208,9 @@
 "Errors that do not exist" = "Erori care nu există";
 
 "Time of robot" = "Timpul mașinii";
-"Walk Motor" = "Plimbare cu motorul";
-"Blade Motor" = "Blade Motor";
-"Robot Work" = "Robotul funcționează";
+"Walk Motor" = "Motor de mers";
+"Blade Motor" = "Sistem tundere";
+"Work time" = "Timp funcţionare";
 "Day" = "Zi";
 "Mowing" = "Cositul";
 "Along boundary" = "De-a lungul graniței";

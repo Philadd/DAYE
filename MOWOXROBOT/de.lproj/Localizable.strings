@@ -203,8 +203,8 @@
 
 "Time of robot" = "Zeit der Maschine";
 "Walk Motor" = "Schrittmotor";
-"Blade Motor" = "Klingenmotor";
-"Robot Work" = "Roboterarbeit";
+"Blade Motor" = "Mähwerk";
+"Work time" = "Arbeitszeit";
 "Day" = "Tag";
 "Mowing" = "Mähen";
 "Along boundary" = "Entlang der Grenze";

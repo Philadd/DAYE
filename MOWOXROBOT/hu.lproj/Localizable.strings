@@ -202,8 +202,8 @@
 
 "Time of robot" = "A gép ideje";
 "Walk Motor" = "Walk Motor";
-"Blade Motor" = "Blade Motor";
-"Robot Work" = "Robot munka";
+"Blade Motor" = "Nyíró gépezet";
+"Work time" = "Munkaidő";
 "Day" = "Nap";
 "Mowing" = "Kaszálás";
 "Along boundary" = "A határ mentén";

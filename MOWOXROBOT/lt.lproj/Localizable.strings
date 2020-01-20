@@ -208,9 +208,9 @@
 "Errors that do not exist" = "Nėra klaidų";
 
 "Time of robot" = "Mašinos laikas";
-"Walk Motor" = "Pėsčiųjų variklis";
-"Blade Motor" = "Peili$ variklis";
-"Robot Work" = "Robotas";
+"Walk Motor" = "Walk Motor";
+"Blade Motor" = "Pj.įr.";
+"Work time" = "Darbo laikas";
 "Day" = "Diena";
 "Mowing" = "Šienavimas";
 "Along boundary" = "Išilgai sienos";

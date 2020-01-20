@@ -210,8 +210,8 @@
 
 "Time of robot" = "Maskinens tid";
 "Walk Motor" = "Walk Motor";
-"Blade Motor" = "Bladmotor";
-"Robot Work" = "Robotarbete";
+"Blade Motor" = "Klippanordning";
+"Work time" = "Arbetstid";
 "Day" = "Dag";
 "Mowing" = "klippning";
 "Along boundary" = "Längs gränsen";

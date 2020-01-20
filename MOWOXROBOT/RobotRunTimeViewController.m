@@ -221,7 +221,7 @@
     dispatch_async(dispatch_get_main_queue(),^{
         self.motorWorkTime.text = [NSString stringWithFormat:@"%@:%@",LocalString(@"Walk Motor"),motorWorkTime];
         self.motorRunningTime.text = [NSString stringWithFormat:@"%@:%@",LocalString(@"Blade Motor"),motorRunningTime];
-        self.motorOnTime.text = [NSString stringWithFormat:@"%@:%@",LocalString(@"Robot Work"),onTime];
+        self.motorOnTime.text = [NSString stringWithFormat:@"%@:%@",LocalString(@"Work time"),onTime];
     });
     
 }
