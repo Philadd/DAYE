@@ -689,19 +689,19 @@ static CGFloat cellHeight = 45.0;
     }
     NSArray *dataWorkTime = [dataWorkTime1 arrayByAddingObjectsFromArray:dataWorkTime2];
     
-    if ([_selectrowArray[0] intValue] *60 + [_selectrowArray[2] intValue] * 60 + [_selectrowArray[1] intValue] + [_selectrowArray[3] intValue] > 1440){
+    if ([_selectrowArray[0] intValue] *60 + [_selectrowArray[2] intValue] * 60 + [_selectrowArray[1] intValue] + [_selectrowArray[3] intValue] * 6 > 1440){
         [NSObject showHudTipStr:LocalString(@"Monday's time set wrong")];
-    }else if ([_selectrowArray[4] intValue] *60 + [_selectrowArray[6] intValue] * 60 + [_selectrowArray[5] intValue] + [_selectrowArray[7] intValue] > 1440){
+    }else if ([_selectrowArray[4] intValue] *60 + [_selectrowArray[6] intValue] * 60 + [_selectrowArray[5] intValue] + [_selectrowArray[7] intValue] * 6 > 1440){
         [NSObject showHudTipStr:LocalString(@"Tuesday's time set wrong")];
-    }else if ([_selectrowArray[8] intValue] *60 + [_selectrowArray[10] intValue] * 60 + [_selectrowArray[9] intValue] + [_selectrowArray[11] intValue] > 1440){
+    }else if ([_selectrowArray[8] intValue] *60 + [_selectrowArray[10] intValue] * 60 + [_selectrowArray[9] intValue] + [_selectrowArray[11] intValue] * 6 > 1440){
         [NSObject showHudTipStr:LocalString(@"Wednesday's time set wrong")];
-    }else if ([_selectrowArray[12] intValue] *60 + [_selectrowArray[14] intValue] * 60 + [_selectrowArray[13] intValue] + [_selectrowArray[15] intValue] > 1440){
+    }else if ([_selectrowArray[12] intValue] *60 + [_selectrowArray[14] intValue] * 60 + [_selectrowArray[13] intValue] + [_selectrowArray[15] intValue] * 6 > 1440){
         [NSObject showHudTipStr:LocalString(@"Thursday's time set wrong")];
-    }else if ([_selectrowArray[16] intValue] *60 + [_selectrowArray[18] intValue] * 60 + [_selectrowArray[17] intValue] + [_selectrowArray[19] intValue] > 1440){
+    }else if ([_selectrowArray[16] intValue] *60 + [_selectrowArray[18] intValue] * 60 + [_selectrowArray[17] intValue] + [_selectrowArray[19] intValue] * 6 > 1440){
         [NSObject showHudTipStr:LocalString(@"Friday's time set wrong")];
-    }else if ([_selectrowArray[20] intValue] *60 + [_selectrowArray[22] intValue] * 60 + [_selectrowArray[21] intValue] + [_selectrowArray[23] intValue] > 1440){
+    }else if ([_selectrowArray[20] intValue] *60 + [_selectrowArray[22] intValue] * 60 + [_selectrowArray[21] intValue] + [_selectrowArray[23] intValue] * 6 > 1440){
         [NSObject showHudTipStr:LocalString(@"Saturday's time set wrong")];
-    }else if ([_selectrowArray[24] intValue] *60 + [_selectrowArray[26] intValue] * 60 + [_selectrowArray[25] intValue] + [_selectrowArray[27] intValue] > 1440){
+    }else if ([_selectrowArray[24] intValue] *60 + [_selectrowArray[26] intValue] * 60 + [_selectrowArray[25] intValue] + [_selectrowArray[27] intValue] * 6 > 1440){
         [NSObject showHudTipStr:LocalString(@"Sunday's time set wrong")];
     }else{
         [NSObject showHudTipStr:LocalString(@"Data sent successfully")];
