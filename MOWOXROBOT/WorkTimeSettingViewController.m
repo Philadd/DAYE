@@ -20,6 +20,7 @@
 
 @property (strong, nonatomic)  UIPickerView *workDatePickview;
 @property (strong, nonatomic)  UIButton *okButton;
+@property (strong, nonatomic)  UIButton *oKBtn;
 
 ///@brife 工作时间设置
 @property (nonatomic, strong) NSMutableArray  *dayArray;
@@ -58,11 +59,11 @@ static CGFloat cellHeight = 45.0;
     _flag = 0;//默认不发送数据
     _timer = [self timer];
     
-    UIButton *refreshButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,30,30)];
-    [refreshButton setTitle:LocalString(@"Refresh") forState:UIControlStateNormal];
-    [refreshButton addTarget:self action:@selector(refresh) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:refreshButton];
-    self.navigationItem.rightBarButtonItem= rightItem;
+//    UIButton *refreshButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,30,30)];
+//    [refreshButton setTitle:LocalString(@"Refresh") forState:UIControlStateNormal];
+//    [refreshButton addTarget:self action:@selector(refresh) forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:refreshButton];
+//    self.navigationItem.rightBarButtonItem= rightItem;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -198,6 +199,11 @@ static CGFloat cellHeight = 45.0;
     [_okButton setButtonStyle1];
     [self.okButton addTarget:self action:@selector(goMowerTime) forControlEvents:UIControlEventTouchUpInside];
     
+    self.oKBtn = [UIButton buttonWithTitle:LocalString(@"OK") titleColor:[UIColor blackColor]];
+    [_oKBtn setButtonStyle1];
+    [self.oKBtn addTarget:self action:@selector(goMowerTime) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:_oKBtn];
     [self.view addSubview:_okButton];
     
     NSString *deviceType = [UIDevice currentDevice].model;
@@ -217,7 +223,20 @@ static CGFloat cellHeight = 45.0;
             make.centerX.equalTo(self.view.mas_centerX);
         }];
     }
-    
+    //iPhoneX适配
+    if (kDevice_Is_iPhoneX) {
+        [self.oKBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(CGSizeMake(ScreenWidth * 0.6, ScreenHeight * 0.066));
+            make.bottom.equalTo(self.myTableView.mas_top).offset(-ScreenHeight * 0.005);
+            make.centerX.equalTo(self.view.mas_centerX);
+        }];
+    }else{
+        [self.oKBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(CGSizeMake(ScreenWidth * 0.6, ScreenHeight * 0.066));
+            make.bottom.equalTo(self.myTableView.mas_top).offset(-ScreenHeight * 0.03);
+            make.centerX.equalTo(self.view.mas_centerX);
+        }];
+    }
     
     [self.okButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(ScreenWidth * 0.6, ScreenHeight * 0.066));
@@ -716,11 +735,11 @@ static CGFloat cellHeight = 45.0;
         });
     }
 }
-
-- (void)refresh{
-    sleep(1.0f);
-    [self inquireWorktimeSetting];
-}
+//取消刷新功能
+//- (void)refresh{
+//    sleep(1.0f);
+//    [self inquireWorktimeSetting];
+//}
 
 - (void)goMowerTime
 {

@@ -33,9 +33,9 @@
 
 @implementation SettingViewController
 #if RobotMower | MOWOXROBOT
-static int latestVersion = 269;
+static int latestVersion = 271;
 #elif RobotPark
-static int latestVersion = 269;
+static int latestVersion = 271;
 #endif
 
 - (void)viewDidLoad {
@@ -46,11 +46,11 @@ static int latestVersion = 269;
     self.bluetoothDataManage = [BluetoothDataManage shareInstance];
     
     [self viewLayoutSet];
-//    if ([BluetoothDataManage shareInstance].versionupdate < latestVersion) {
-//        _updateButton.hidden = NO;
-//    }else{
-//        _updateButton.hidden = YES;
-//    }
+    if ([BluetoothDataManage shareInstance].versionupdate < latestVersion) {
+        _updateButton.hidden = NO;
+    }else{
+        _updateButton.hidden = YES;
+    }
     
     NSLog(@"版本号%d",[BluetoothDataManage shareInstance].versionupdate);
     //分区按钮显示
