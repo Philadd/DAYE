@@ -253,6 +253,10 @@
         [self.bluetoothDataManage setDataType:0x06];
         [self.bluetoothDataManage setDataContent: dataContent];
         [self.bluetoothDataManage sendBluetoothFrame];
+        
+        [self.navigationController popViewControllerAnimated:YES];
+        
+        [NSObject showHudTipStr:LocalString(@"Password modified successfully")];
     }
 }
 

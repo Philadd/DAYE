@@ -54,6 +54,17 @@
 
     self.bluetoothDataManage = [BluetoothDataManage shareInstance];
     [self viewLayoutSet];
+    if ([BluetoothDataManage shareInstance].versionupdate > 268) {
+        _alertsButton.hidden = NO;
+    }else{
+        _alertsButton.hidden = YES;
+        
+        [_timeRobotButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(CGSizeMake(ScreenWidth * 0.82, ScreenHeight * 0.066));
+            make.top.equalTo(self.settingButton.mas_bottom).offset(ScreenHeight * 0.05);
+            make.centerX.equalTo(self.view.mas_centerX);
+        }];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {

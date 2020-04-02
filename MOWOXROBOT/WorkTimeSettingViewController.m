@@ -725,13 +725,29 @@ static CGFloat cellHeight = 45.0;
     }else{
         [NSObject showHudTipStr:LocalString(@"Data sent successfully")];
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            [self.bluetoothDataManage setDataType:0x04];
-            [self.bluetoothDataManage setDataContent: dataStartTime];
-            [self.bluetoothDataManage sendWorktimeBluetoothFrame];
-            usleep(1000 * 1000);
-            [self.bluetoothDataManage setDataType:0x05];
-            [self.bluetoothDataManage setDataContent: dataWorkTime];
-            [self.bluetoothDataManage sendWorktimeBluetoothFrame];
+            
+            if ([BluetoothDataManage shareInstance].versionupdate > 268) {
+                
+                [self.bluetoothDataManage setDataType:0x04];
+                [self.bluetoothDataManage setDataContent: dataStartTime];
+                [self.bluetoothDataManage sendWorktimeBluetoothFrame];
+                usleep(1000 * 1000);
+                [self.bluetoothDataManage setDataType:0x05];
+                [self.bluetoothDataManage setDataContent: dataWorkTime];
+                [self.bluetoothDataManage sendWorktimeBluetoothFrame];
+                
+            }else{
+                
+                [self.bluetoothDataManage setDataType:0x04];
+                [self.bluetoothDataManage setDataContent: dataStartTime];
+                [self.bluetoothDataManage sendBluetoothFrame];
+                usleep(1000 * 1000);
+                [self.bluetoothDataManage setDataType:0x05];
+                [self.bluetoothDataManage setDataContent: dataWorkTime];
+                [self.bluetoothDataManage sendBluetoothFrame];
+                
+            }
+            
         });
     }
 }
