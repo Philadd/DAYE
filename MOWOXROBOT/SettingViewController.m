@@ -15,6 +15,7 @@
 #import "MowerSettingViewController.h"
 #import "FirmwareViewController.h"
 #import "SecondarySettingViewController.h"
+#import "WorkTimeSettingVC_268.h"
 
 @interface SettingViewController ()
 
@@ -237,8 +238,17 @@ static int latestVersion = 271;
 }
 
 - (void)worktimeSet{
-    WorkTimeSettingViewController *VC = [[WorkTimeSettingViewController alloc] init];
-    [self.navigationController pushViewController:VC animated:YES];
+    
+    if ([BluetoothDataManage shareInstance].versionupdate >= 268) {
+        WorkTimeSettingViewController *VC = [[WorkTimeSettingViewController alloc] init];
+        [self.navigationController pushViewController:VC animated:YES];
+        
+    }else{
+        WorkTimeSettingVC_268 *VC_268 = [[WorkTimeSettingVC_268 alloc] init];
+        [self.navigationController pushViewController:VC_268 animated:YES];
+    }
+    
+    
 }
 
 - (void)pinSet{

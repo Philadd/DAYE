@@ -593,6 +593,12 @@
 		368E5071238D3CCF00AFE3B3 /* Launch_BLU.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 368E5070238D3CCF00AFE3B3 /* Launch_BLU.storyboard */; };
 		368E5073238D3D4D00AFE3B3 /* Launch_GN.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 368E5072238D3D4D00AFE3B3 /* Launch_GN.storyboard */; };
 		368E507C238F665E00AFE3B3 /* MOWOX_Park.plist in Resources */ = {isa = PBXBuildFile; fileRef = 368E507B238F665E00AFE3B3 /* MOWOX_Park.plist */; };
+		36BEE7082439FD3500684369 /* WorkTimeSettingVC_268.m in Sources */ = {isa = PBXBuildFile; fileRef = 36BEE7072439FD3500684369 /* WorkTimeSettingVC_268.m */; };
+		36BEE7092439FD3500684369 /* WorkTimeSettingVC_268.m in Sources */ = {isa = PBXBuildFile; fileRef = 36BEE7072439FD3500684369 /* WorkTimeSettingVC_268.m */; };
+		36BEE70A2439FD3500684369 /* WorkTimeSettingVC_268.m in Sources */ = {isa = PBXBuildFile; fileRef = 36BEE7072439FD3500684369 /* WorkTimeSettingVC_268.m */; };
+		36BEE70D2439FE7F00684369 /* WorktimeCell_268.m in Sources */ = {isa = PBXBuildFile; fileRef = 36BEE70C2439FE7F00684369 /* WorktimeCell_268.m */; };
+		36BEE70E2439FE7F00684369 /* WorktimeCell_268.m in Sources */ = {isa = PBXBuildFile; fileRef = 36BEE70C2439FE7F00684369 /* WorktimeCell_268.m */; };
+		36BEE70F2439FE7F00684369 /* WorktimeCell_268.m in Sources */ = {isa = PBXBuildFile; fileRef = 36BEE70C2439FE7F00684369 /* WorktimeCell_268.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -630,6 +636,10 @@
 		368E5070238D3CCF00AFE3B3 /* Launch_BLU.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch_BLU.storyboard; sourceTree = "<group>"; };
 		368E5072238D3D4D00AFE3B3 /* Launch_GN.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch_GN.storyboard; sourceTree = "<group>"; };
 		368E507B238F665E00AFE3B3 /* MOWOX_Park.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = MOWOX_Park.plist; path = MOWOXROBOT/MOWOX_Park.plist; sourceTree = SOURCE_ROOT; };
+		36BEE7062439FD3500684369 /* WorkTimeSettingVC_268.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkTimeSettingVC_268.h; sourceTree = "<group>"; };
+		36BEE7072439FD3500684369 /* WorkTimeSettingVC_268.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkTimeSettingVC_268.m; sourceTree = "<group>"; };
+		36BEE70B2439FE7F00684369 /* WorktimeCell_268.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorktimeCell_268.h; sourceTree = "<group>"; };
+		36BEE70C2439FE7F00684369 /* WorktimeCell_268.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorktimeCell_268.m; sourceTree = "<group>"; };
 		36BF86C02383C733009EA9AB /* BlueTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlueTableViewCell.h; sourceTree = "<group>"; };
 		36BF86C12383C733009EA9AB /* BlueTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlueTableViewCell.m; sourceTree = "<group>"; };
 		36FA9915236BC7E800600941 /* RobotRunTimeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RobotRunTimeViewController.h; sourceTree = "<group>"; };
@@ -1080,6 +1090,8 @@
 				3E0D5ED71FDE1D1A0035857F /* WorktimeCell.m */,
 				36BF86C02383C733009EA9AB /* BlueTableViewCell.h */,
 				36BF86C12383C733009EA9AB /* BlueTableViewCell.m */,
+				36BEE70B2439FE7F00684369 /* WorktimeCell_268.h */,
+				36BEE70C2439FE7F00684369 /* WorktimeCell_268.m */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -1398,6 +1410,8 @@
 				3E5815C51FAFFF3E00E93520 /* GeneralsettingLanguageViewController.m */,
 				3E5815C71FAFFF5D00E93520 /* WorkTimeSettingViewController.h */,
 				3E5815C81FAFFF5D00E93520 /* WorkTimeSettingViewController.m */,
+				36BEE7062439FD3500684369 /* WorkTimeSettingVC_268.h */,
+				36BEE7072439FD3500684369 /* WorkTimeSettingVC_268.m */,
 				3E3AD4751FDBC36A00667EDA /* MowerSettingViewController.h */,
 				3E3AD4761FDBC36A00667EDA /* MowerSettingViewController.m */,
 				3E1284C21FF32E510087CBED /* FirmwareViewController.h */,
@@ -2273,6 +2287,7 @@
 				36006A602265AFDB00F4EEB2 /* ESP_WifiUtil.m in Sources */,
 				36006A612265AFDB00F4EEB2 /* GeneralsettingLanguageViewController.m in Sources */,
 				36006A622265AFDB00F4EEB2 /* ViewAlertsCell.m in Sources */,
+				36BEE7082439FD3500684369 /* WorkTimeSettingVC_268.m in Sources */,
 				36006A632265AFDB00F4EEB2 /* ESPTouchResult.m in Sources */,
 				36006A642265AFDB00F4EEB2 /* BlueTableViewController.m in Sources */,
 				36006A652265AFDB00F4EEB2 /* ESPTouchGenerator.m in Sources */,
@@ -2280,6 +2295,7 @@
 				36006A672265AFDB00F4EEB2 /* PincodeSettingViewController.m in Sources */,
 				36006A682265AFDB00F4EEB2 /* ProgressView.m in Sources */,
 				36006A692265AFDB00F4EEB2 /* RemoterControlViewController.m in Sources */,
+				36BEE70D2439FE7F00684369 /* WorktimeCell_268.m in Sources */,
 				36006A6A2265AFDB00F4EEB2 /* SecondarySettingViewController.m in Sources */,
 				36006A6B2265AFDB00F4EEB2 /* connectButton.m in Sources */,
 				36006A6C2265AFDB00F4EEB2 /* AlertsViewController.m in Sources */,
@@ -2345,6 +2361,7 @@
 				368E4EF9238D1B8300AFE3B3 /* ESP_WifiUtil.m in Sources */,
 				368E4EFA238D1B8300AFE3B3 /* GeneralsettingLanguageViewController.m in Sources */,
 				368E4EFB238D1B8300AFE3B3 /* ViewAlertsCell.m in Sources */,
+				36BEE7092439FD3500684369 /* WorkTimeSettingVC_268.m in Sources */,
 				368E4EFC238D1B8300AFE3B3 /* ESPTouchResult.m in Sources */,
 				368E4EFD238D1B8300AFE3B3 /* BlueTableViewController.m in Sources */,
 				368E4EFE238D1B8300AFE3B3 /* ESPTouchGenerator.m in Sources */,
@@ -2352,6 +2369,7 @@
 				368E4F00238D1B8300AFE3B3 /* PincodeSettingViewController.m in Sources */,
 				368E4F01238D1B8300AFE3B3 /* ProgressView.m in Sources */,
 				368E4F02238D1B8300AFE3B3 /* RemoterControlViewController.m in Sources */,
+				36BEE70E2439FE7F00684369 /* WorktimeCell_268.m in Sources */,
 				368E4F03238D1B8300AFE3B3 /* SecondarySettingViewController.m in Sources */,
 				368E4F04238D1B8300AFE3B3 /* connectButton.m in Sources */,
 				368E4F05238D1B8300AFE3B3 /* AlertsViewController.m in Sources */,
@@ -2417,6 +2435,7 @@
 				368E4FC0238D296E00AFE3B3 /* ESP_WifiUtil.m in Sources */,
 				368E4FC1238D296E00AFE3B3 /* GeneralsettingLanguageViewController.m in Sources */,
 				368E4FC2238D296E00AFE3B3 /* ViewAlertsCell.m in Sources */,
+				36BEE70A2439FD3500684369 /* WorkTimeSettingVC_268.m in Sources */,
 				368E4FC3238D296E00AFE3B3 /* ESPTouchResult.m in Sources */,
 				368E4FC4238D296E00AFE3B3 /* BlueTableViewController.m in Sources */,
 				368E4FC5238D296E00AFE3B3 /* ESPTouchGenerator.m in Sources */,
@@ -2424,6 +2443,7 @@
 				368E4FC7238D296E00AFE3B3 /* PincodeSettingViewController.m in Sources */,
 				368E4FC8238D296E00AFE3B3 /* ProgressView.m in Sources */,
 				368E4FC9238D296E00AFE3B3 /* RemoterControlViewController.m in Sources */,
+				36BEE70F2439FE7F00684369 /* WorktimeCell_268.m in Sources */,
 				368E4FCA238D296E00AFE3B3 /* SecondarySettingViewController.m in Sources */,
 				368E4FCB238D296E00AFE3B3 /* connectButton.m in Sources */,
 				368E4FCC238D296E00AFE3B3 /* AlertsViewController.m in Sources */,

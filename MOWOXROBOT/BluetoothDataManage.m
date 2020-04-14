@@ -377,68 +377,109 @@ static BluetoothDataManage *sgetonInstanceData = nil;
             NSLog(@"接收到getWorkingTime1");
             
             NSMutableDictionary *dataDic = [[NSMutableDictionary alloc] init];
-            NSNumber *monHour = _receiveData[4];
-            NSNumber *tueHour = _receiveData[5];
-            NSNumber *wedHour = _receiveData[6];
-            NSNumber *thuHour = _receiveData[7];
-            NSNumber *friHour = _receiveData[8];
-            NSNumber *satHour = _receiveData[9];
-            NSNumber *sunHour = _receiveData[10];
-            NSNumber *monMinute = _receiveData[11];
-            NSNumber *tueMinute = _receiveData[12];
-            NSNumber *wedMinute = _receiveData[13];
-            NSNumber *thuMinute = _receiveData[14];
-            NSNumber *friMinute = _receiveData[15];
-            NSNumber *satMinute = _receiveData[16];
-            NSNumber *sunMinute = _receiveData[17];
-            [dataDic setObject:monHour forKey:@"monHour"];
-            [dataDic setObject:tueHour forKey:@"tueHour"];
-            [dataDic setObject:wedHour forKey:@"wedHour"];
-            [dataDic setObject:thuHour forKey:@"thuHour"];
-            [dataDic setObject:friHour forKey:@"friHour"];
-            [dataDic setObject:satHour forKey:@"satHour"];
-            [dataDic setObject:sunHour forKey:@"sunHour"];
-            [dataDic setObject:monMinute forKey:@"monMinute"];
-            [dataDic setObject:tueMinute forKey:@"tueMinute"];
-            [dataDic setObject:wedMinute forKey:@"wedMinute"];
-            [dataDic setObject:thuMinute forKey:@"thuMinute"];
-            [dataDic setObject:friMinute forKey:@"friMinute"];
-            [dataDic setObject:satMinute forKey:@"satMinute"];
-            [dataDic setObject:sunMinute forKey:@"sunMinute"];
+            if (self.versionupdate < 268) {
+                
+                NSNumber *monStart = _receiveData[4];
+                NSNumber *monWork = _receiveData[5];
+                NSNumber *tueStart = _receiveData[6];
+                NSNumber *tueWork = _receiveData[7];
+                NSNumber *wedStart = _receiveData[8];
+                NSNumber *wedWork = _receiveData[9];
+                NSNumber *thuStart = _receiveData[10];
+                NSNumber *thuWork = _receiveData[11];
+                [dataDic setObject:monStart forKey:@"monStart"];
+                [dataDic setObject:monWork forKey:@"monWork"];
+                [dataDic setObject:tueStart forKey:@"tueStart"];
+                [dataDic setObject:tueWork forKey:@"tueWork"];
+                [dataDic setObject:wedStart forKey:@"wedStart"];
+                [dataDic setObject:wedWork forKey:@"wedWork"];
+                [dataDic setObject:thuStart forKey:@"thuStart"];
+                [dataDic setObject:thuWork forKey:@"thuWork"];
+            }else{
+                
+                NSNumber *monHour = _receiveData[4];
+                NSNumber *tueHour = _receiveData[5];
+                NSNumber *wedHour = _receiveData[6];
+                NSNumber *thuHour = _receiveData[7];
+                NSNumber *friHour = _receiveData[8];
+                NSNumber *satHour = _receiveData[9];
+                NSNumber *sunHour = _receiveData[10];
+                NSNumber *monMinute = _receiveData[11];
+                NSNumber *tueMinute = _receiveData[12];
+                NSNumber *wedMinute = _receiveData[13];
+                NSNumber *thuMinute = _receiveData[14];
+                NSNumber *friMinute = _receiveData[15];
+                NSNumber *satMinute = _receiveData[16];
+                NSNumber *sunMinute = _receiveData[17];
+                [dataDic setObject:monHour forKey:@"monHour"];
+                [dataDic setObject:tueHour forKey:@"tueHour"];
+                [dataDic setObject:wedHour forKey:@"wedHour"];
+                [dataDic setObject:thuHour forKey:@"thuHour"];
+                [dataDic setObject:friHour forKey:@"friHour"];
+                [dataDic setObject:satHour forKey:@"satHour"];
+                [dataDic setObject:sunHour forKey:@"sunHour"];
+                [dataDic setObject:monMinute forKey:@"monMinute"];
+                [dataDic setObject:tueMinute forKey:@"tueMinute"];
+                [dataDic setObject:wedMinute forKey:@"wedMinute"];
+                [dataDic setObject:thuMinute forKey:@"thuMinute"];
+                [dataDic setObject:friMinute forKey:@"friMinute"];
+                [dataDic setObject:satMinute forKey:@"satMinute"];
+                [dataDic setObject:sunMinute forKey:@"sunMinute"];
+                
+            }
+            
             [[NSNotificationCenter defaultCenter] postNotificationName:@"recieveWorkingTime1" object:nil userInfo:dataDic];
             
         }else if (self.frameType == getWorkingTime2){
             NSLog(@"接收到getWorkingTime2");
             NSMutableDictionary *dataDic = [[NSMutableDictionary alloc] init];
-            NSNumber *monWorkHour = _receiveData[4];
-            NSNumber *tueWorkHour = _receiveData[5];
-            NSNumber *wedWorkHour = _receiveData[6];
-            NSNumber *thuWorkHour = _receiveData[7];
-            NSNumber *friWorkHour = _receiveData[8];
-            NSNumber *satWorkHour = _receiveData[9];
-            NSNumber *sunWorkHour = _receiveData[10];
-            NSNumber *monWorkMinute = _receiveData[11];
-            NSNumber *tueWorkMinute = _receiveData[12];
-            NSNumber *wedWorkMinute = _receiveData[13];
-            NSNumber *thuWorkMinute = _receiveData[14];
-            NSNumber *friWorkMinute = _receiveData[15];
-            NSNumber *satWorkMinute = _receiveData[16];
-            NSNumber *sunWorkMinute = _receiveData[17];
-            [dataDic setObject:monWorkHour forKey:@"monWorkHour"];
-            [dataDic setObject:tueWorkHour forKey:@"tueWorkHour"];
-            [dataDic setObject:wedWorkHour forKey:@"wedWorkHour"];
-            [dataDic setObject:thuWorkHour forKey:@"thuWorkHour"];
-            [dataDic setObject:friWorkHour forKey:@"friWorkHour"];
-            [dataDic setObject:satWorkHour forKey:@"satWorkHour"];
-            [dataDic setObject:sunWorkHour forKey:@"sunWorkHour"];
+            if (self.versionupdate < 268) {
+                NSNumber *friStart = _receiveData[4];
+                NSNumber *friWork = _receiveData[5];
+                NSNumber *satStart = _receiveData[6];
+                NSNumber *satWork = _receiveData[7];
+                NSNumber *sunStart = _receiveData[8];
+                NSNumber *sunWork = _receiveData[9];
+                [dataDic setObject:friStart forKey:@"friStart"];
+                [dataDic setObject:friWork forKey:@"friWork"];
+                [dataDic setObject:satStart forKey:@"satStart"];
+                [dataDic setObject:satWork forKey:@"satWork"];
+                [dataDic setObject:sunStart forKey:@"sunStart"];
+                [dataDic setObject:sunWork forKey:@"sunWork"];
+            }else{
+                
+                NSNumber *monWorkHour = _receiveData[4];
+                NSNumber *tueWorkHour = _receiveData[5];
+                NSNumber *wedWorkHour = _receiveData[6];
+                NSNumber *thuWorkHour = _receiveData[7];
+                NSNumber *friWorkHour = _receiveData[8];
+                NSNumber *satWorkHour = _receiveData[9];
+                NSNumber *sunWorkHour = _receiveData[10];
+                NSNumber *monWorkMinute = _receiveData[11];
+                NSNumber *tueWorkMinute = _receiveData[12];
+                NSNumber *wedWorkMinute = _receiveData[13];
+                NSNumber *thuWorkMinute = _receiveData[14];
+                NSNumber *friWorkMinute = _receiveData[15];
+                NSNumber *satWorkMinute = _receiveData[16];
+                NSNumber *sunWorkMinute = _receiveData[17];
+                [dataDic setObject:monWorkHour forKey:@"monWorkHour"];
+                [dataDic setObject:tueWorkHour forKey:@"tueWorkHour"];
+                [dataDic setObject:wedWorkHour forKey:@"wedWorkHour"];
+                [dataDic setObject:thuWorkHour forKey:@"thuWorkHour"];
+                [dataDic setObject:friWorkHour forKey:@"friWorkHour"];
+                [dataDic setObject:satWorkHour forKey:@"satWorkHour"];
+                [dataDic setObject:sunWorkHour forKey:@"sunWorkHour"];
+                
+                [dataDic setObject:monWorkMinute forKey:@"monWorkMinute"];
+                [dataDic setObject:tueWorkMinute forKey:@"tueWorkMinute"];
+                [dataDic setObject:wedWorkMinute forKey:@"wedWorkMinute"];
+                [dataDic setObject:thuWorkMinute forKey:@"thuWorkMinute"];
+                [dataDic setObject:friWorkMinute forKey:@"friWorkMinute"];
+                [dataDic setObject:satWorkMinute forKey:@"satWorkMinute"];
+                [dataDic setObject:sunWorkMinute forKey:@"sunWorkMinute"];
+                
+            }
             
-            [dataDic setObject:monWorkMinute forKey:@"monWorkMinute"];
-            [dataDic setObject:tueWorkMinute forKey:@"tueWorkMinute"];
-            [dataDic setObject:wedWorkMinute forKey:@"wedWorkMinute"];
-            [dataDic setObject:thuWorkMinute forKey:@"thuWorkMinute"];
-            [dataDic setObject:friWorkMinute forKey:@"friWorkMinute"];
-            [dataDic setObject:satWorkMinute forKey:@"satWorkMinute"];
-            [dataDic setObject:sunWorkMinute forKey:@"sunWorkMinute"];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"recieveWorkingTime2" object:nil userInfo:dataDic];
         }else if (self.frameType == getMowerSetting){
             NSLog(@"接收到getMowerSetting");

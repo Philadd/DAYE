@@ -20,7 +20,6 @@
 
 @property (strong, nonatomic)  UIPickerView *workDatePickview;
 @property (strong, nonatomic)  UIButton *okButton;
-@property (strong, nonatomic)  UIButton *oKBtn;
 
 ///@brife 工作时间设置
 @property (nonatomic, strong) NSMutableArray  *dayArray;
@@ -146,7 +145,7 @@ static CGFloat cellHeight = 45.0;
         //[self.workDatePickview selectRow:7 inComponent:1 animated:YES];
         //_workDatePickview.autoresizingMask = UIViewAutoresizingFlexibleHeight;
         UIView *backView = [[UIView alloc] init];
-        backView.frame = CGRectMake(0,0 , ScreenWidth, 30);
+        backView.frame = CGRectMake(0,0 , ScreenWidth, 30/HScale);
         backView.layer.backgroundColor = [UIColor colorWithRed:250/255.0 green:250/255.0 blue:250/255.0 alpha:1].CGColor;
         [self.workDatePickview addSubview:backView];
         
@@ -198,12 +197,6 @@ static CGFloat cellHeight = 45.0;
     self.okButton = [UIButton buttonWithTitle:LocalString(@"OK") titleColor:[UIColor blackColor]];
     [_okButton setButtonStyle1];
     [self.okButton addTarget:self action:@selector(goMowerTime) forControlEvents:UIControlEventTouchUpInside];
-    
-    self.oKBtn = [UIButton buttonWithTitle:LocalString(@"OK") titleColor:[UIColor blackColor]];
-    [_oKBtn setButtonStyle1];
-    [self.oKBtn addTarget:self action:@selector(goMowerTime) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.view addSubview:_oKBtn];
     [self.view addSubview:_okButton];
     
     NSString *deviceType = [UIDevice currentDevice].model;
@@ -220,20 +213,6 @@ static CGFloat cellHeight = 45.0;
         [self.myTableView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(CGSizeMake(ScreenWidth, cellHeight * 7));
             make.top.equalTo(self.view.mas_top).offset(44 + ScreenHeight * 0.01 + 64);
-            make.centerX.equalTo(self.view.mas_centerX);
-        }];
-    }
-    //iPhoneX适配
-    if (kDevice_Is_iPhoneX) {
-        [self.oKBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(ScreenWidth * 0.6, ScreenHeight * 0.066));
-            make.bottom.equalTo(self.myTableView.mas_top).offset(-ScreenHeight * 0.005);
-            make.centerX.equalTo(self.view.mas_centerX);
-        }];
-    }else{
-        [self.oKBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(ScreenWidth * 0.6, ScreenHeight * 0.066));
-            make.bottom.equalTo(self.myTableView.mas_top).offset(-ScreenHeight * 0.03);
             make.centerX.equalTo(self.view.mas_centerX);
         }];
     }
@@ -374,7 +353,7 @@ static CGFloat cellHeight = 45.0;
         inputAccessoryView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
         [inputAccessoryView sizeToFit];
         CGRect frame = inputAccessoryView.frame;
-        frame.size.height = 30.0f;
+        frame.size.height = 35.0f;
         inputAccessoryView.frame = frame;
         
         UIBarButtonItem * doneBtn = [[UIBarButtonItem alloc]initWithTitle:LocalString(@"Done") style:UIBarButtonItemStyleDone target:self action:@selector(done:)];
@@ -410,6 +389,9 @@ static CGFloat cellHeight = 45.0;
     [_selectrowArray replaceObjectAtIndex:rowWeek %_dayArray.count * 4 + 2 withObject:[NSNumber numberWithLong:workHourRow %_workingHoursArray.count]];
     [_selectrowArray replaceObjectAtIndex:rowWeek %_dayArray.count * 4 + 3 withObject:[NSNumber numberWithLong:wokrMinutesRow % _workingMinuteArray.count]];
     NSLog(@"%ld %ld %ld %ld %ld",rowWeek %_dayArray.count,startHourRow % _starHourArray.count,startMinutesRow %_starMinuteArray.count,workHourRow %_workingHoursArray.count,wokrMinutesRow % _workingMinuteArray.count);
+    
+    //调用发送设置
+    [self sentMowerTime];
 
 }
 
@@ -726,27 +708,13 @@ static CGFloat cellHeight = 45.0;
         [NSObject showHudTipStr:LocalString(@"Data sent successfully")];
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
             
-            if ([BluetoothDataManage shareInstance].versionupdate > 268) {
-                
-                [self.bluetoothDataManage setDataType:0x04];
-                [self.bluetoothDataManage setDataContent: dataStartTime];
-                [self.bluetoothDataManage sendWorktimeBluetoothFrame];
-                usleep(1000 * 1000);
-                [self.bluetoothDataManage setDataType:0x05];
-                [self.bluetoothDataManage setDataContent: dataWorkTime];
-                [self.bluetoothDataManage sendWorktimeBluetoothFrame];
-                
-            }else{
-                
-                [self.bluetoothDataManage setDataType:0x04];
-                [self.bluetoothDataManage setDataContent: dataStartTime];
-                [self.bluetoothDataManage sendBluetoothFrame];
-                usleep(1000 * 1000);
-                [self.bluetoothDataManage setDataType:0x05];
-                [self.bluetoothDataManage setDataContent: dataWorkTime];
-                [self.bluetoothDataManage sendBluetoothFrame];
-                
-            }
+            [self.bluetoothDataManage setDataType:0x04];
+            [self.bluetoothDataManage setDataContent: dataStartTime];
+            [self.bluetoothDataManage sendWorktimeBluetoothFrame];
+            usleep(1000 * 1000);
+            [self.bluetoothDataManage setDataType:0x05];
+            [self.bluetoothDataManage setDataContent: dataWorkTime];
+            [self.bluetoothDataManage sendWorktimeBluetoothFrame];
             
         });
     }
