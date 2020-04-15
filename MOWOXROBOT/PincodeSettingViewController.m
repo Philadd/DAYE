@@ -240,23 +240,40 @@
     {
         [NSObject showHudTipStr:LocalString(@"Two input is inconsistent")];
     }else{
-        NSMutableArray *dataContent = [[NSMutableArray alloc] init];
-        [dataContent addObject:[NSNumber numberWithUnsignedInteger:[self.inputOldPinCodeTextField.text characterAtIndex:0] - 48]];
-        [dataContent addObject:[NSNumber numberWithUnsignedInteger:[self.inputOldPinCodeTextField.text characterAtIndex:1] - 48]];
-        [dataContent addObject:[NSNumber numberWithUnsignedInteger:[self.inputOldPinCodeTextField.text characterAtIndex:2] - 48]];
-        [dataContent addObject:[NSNumber numberWithUnsignedInteger:[self.inputOldPinCodeTextField.text characterAtIndex:3] - 48]];
-        [dataContent addObject:[NSNumber numberWithUnsignedInteger:[self.inputNewPinCodeTextField.text characterAtIndex:0] - 48]];
-        [dataContent addObject:[NSNumber numberWithUnsignedInteger:[self.inputNewPinCodeTextField.text characterAtIndex:1] - 48]];
-        [dataContent addObject:[NSNumber numberWithUnsignedInteger:[self.inputNewPinCodeTextField.text characterAtIndex:2] - 48]];
-        [dataContent addObject:[NSNumber numberWithUnsignedInteger:[self.inputNewPinCodeTextField.text characterAtIndex:3] - 48]];
         
-        [self.bluetoothDataManage setDataType:0x06];
-        [self.bluetoothDataManage setDataContent: dataContent];
-        [self.bluetoothDataManage sendBluetoothFrame];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            NSMutableArray *dataContent = [[NSMutableArray alloc] init];
+            
+            //        NSNumber *oldPIN = [NSNumber numberWithUnsignedInteger:[self.inputOldPinCodeTextField.text integerValue]];
+            //        NSNumber *newPIN = [NSNumber numberWithUnsignedInteger:[self.inputNewPinCodeTextField.text integerValue]];
+            //        [dataContent addObject:oldPIN];
+            //        [dataContent addObject:newPIN];
+            
+            
+            [dataContent addObject:[NSNumber numberWithUnsignedInteger:[self.inputOldPinCodeTextField.text characterAtIndex:0] - 48]];
+            [dataContent addObject:[NSNumber numberWithUnsignedInteger:[self.inputOldPinCodeTextField.text characterAtIndex:1] - 48]];
+            [dataContent addObject:[NSNumber numberWithUnsignedInteger:[self.inputOldPinCodeTextField.text characterAtIndex:2] - 48]];
+            [dataContent addObject:[NSNumber numberWithUnsignedInteger:[self.inputOldPinCodeTextField.text characterAtIndex:3] - 48]];
+            [dataContent addObject:[NSNumber numberWithUnsignedInteger:[self.inputNewPinCodeTextField.text characterAtIndex:0] - 48]];
+            [dataContent addObject:[NSNumber numberWithUnsignedInteger:[self.inputNewPinCodeTextField.text characterAtIndex:1] - 48]];
+            [dataContent addObject:[NSNumber numberWithUnsignedInteger:[self.inputNewPinCodeTextField.text characterAtIndex:2] - 48]];
+            [dataContent addObject:[NSNumber numberWithUnsignedInteger:[self.inputNewPinCodeTextField.text characterAtIndex:3] - 48]];
+            
+            [self.bluetoothDataManage setDataType:0x06];
+            [self.bluetoothDataManage setDataContent: dataContent];
+            [self.bluetoothDataManage sendBluetoothFrame];
+            
+        });
         
-        [self.navigationController popViewControllerAnimated:YES];
+        //延时1秒
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self backAction];
+            
+            [NSObject showHudTipStr:LocalString(@"Password modified successfully")];
+        });
+
         
-        [NSObject showHudTipStr:LocalString(@"Password modified successfully")];
     }
 }
 
