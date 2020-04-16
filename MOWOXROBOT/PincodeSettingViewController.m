@@ -244,13 +244,6 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             
             NSMutableArray *dataContent = [[NSMutableArray alloc] init];
-            
-            //        NSNumber *oldPIN = [NSNumber numberWithUnsignedInteger:[self.inputOldPinCodeTextField.text integerValue]];
-            //        NSNumber *newPIN = [NSNumber numberWithUnsignedInteger:[self.inputNewPinCodeTextField.text integerValue]];
-            //        [dataContent addObject:oldPIN];
-            //        [dataContent addObject:newPIN];
-            
-            
             [dataContent addObject:[NSNumber numberWithUnsignedInteger:[self.inputOldPinCodeTextField.text characterAtIndex:0] - 48]];
             [dataContent addObject:[NSNumber numberWithUnsignedInteger:[self.inputOldPinCodeTextField.text characterAtIndex:1] - 48]];
             [dataContent addObject:[NSNumber numberWithUnsignedInteger:[self.inputOldPinCodeTextField.text characterAtIndex:2] - 48]];

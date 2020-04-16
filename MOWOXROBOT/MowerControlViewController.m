@@ -71,6 +71,8 @@
             make.centerX.equalTo(self.view.mas_centerX);
         }];
     }
+    //暂时隐藏
+    _timeRobotButton.hidden = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
