@@ -26,9 +26,9 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0.16</string>
+	<string>2.0.17</string>
 	<key>CFBundleVersion</key>
-	<string>22</string>
+	<string>23</string>
 	<key>Code Signing Style</key>
 	<string>Automatic</string>
 	<key>LSRequiresIPhoneOS</key>
