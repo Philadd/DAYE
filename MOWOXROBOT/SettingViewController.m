@@ -92,19 +92,7 @@ static int latestVersion = 271;
 {
     [super viewWillAppear:animated];
     _updateButton.hidden = YES;
-    NSMutableArray *dataContent = [[NSMutableArray alloc] init];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
-    [dataContent addObject:[NSNumber numberWithUnsignedInteger:0x00]];
     
-    [self.bluetoothDataManage setDataType:0x1d];
-    [self.bluetoothDataManage setDataContent: dataContent];
-    [self.bluetoothDataManage sendBluetoothFrame];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

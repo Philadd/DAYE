@@ -1678,6 +1678,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				Base,
 				da,
 				de,
@@ -1697,6 +1698,7 @@
 				"sk-SK",
 				"sv-SE",
 				"nb-NO",
+				en,
 			);
 			mainGroup = 3E6325191FA6BC5F00F14462;
 			productRefGroup = 3E6325231FA6BC5F00F14462 /* Products */;
