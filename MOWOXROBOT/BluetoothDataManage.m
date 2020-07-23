@@ -304,7 +304,7 @@ static BluetoothDataManage *sgetonInstanceData = nil;
         [_receiveData removeAllObjects];
         [_receiveData addObjectsFromArray:data];
         self.frameType = [self checkOutType:data];//判断数据类型
-        if (self.frameType == otherFrame) {
+        if (self.frameType == otherFrame || _receiveData.count != 22) {
             
             NSLog(@"接收到未知的数据帧");
             
