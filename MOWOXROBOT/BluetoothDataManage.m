@@ -353,20 +353,20 @@ static BluetoothDataManage *sgetonInstanceData = nil;
             [[NSNotificationCenter defaultCenter] postNotificationName:@"recieveAlertsContent" object:nil userInfo:dataDic];
         }else if (self.frameType == getMowerTime){
             NSLog(@"接收到getMowerTime");
-            NSMutableDictionary *dataDic = [[NSMutableDictionary alloc] init];
-            NSNumber *year1 = _receiveData[4];
-            NSNumber *year2 = _receiveData[5];
-            NSNumber *month = _receiveData[6];
-            NSNumber *day = _receiveData[7];
-            NSNumber *hour = _receiveData[8];
-            NSNumber *minute = _receiveData[9];
-            [dataDic setObject:year1 forKey:@"year1"];
-            [dataDic setObject:year2 forKey:@"year2"];
-            [dataDic setObject:month forKey:@"month"];
-            [dataDic setObject:day forKey:@"day"];
-            [dataDic setObject:hour forKey:@"hour"];
-            [dataDic setObject:minute forKey:@"minute"];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"recieveMowerTime" object:nil userInfo:dataDic];
+//            NSMutableDictionary *dataDic = [[NSMutableDictionary alloc] init];
+//            NSNumber *year1 = _receiveData[4];
+//            NSNumber *year2 = _receiveData[5];
+//            NSNumber *month = _receiveData[6];
+//            NSNumber *day = _receiveData[7];
+//            NSNumber *hour = _receiveData[8];
+//            NSNumber *minute = _receiveData[9];
+//            [dataDic setObject:year1 forKey:@"year1"];
+//            [dataDic setObject:year2 forKey:@"year2"];
+//            [dataDic setObject:month forKey:@"month"];
+//            [dataDic setObject:day forKey:@"day"];
+//            [dataDic setObject:hour forKey:@"hour"];
+//            [dataDic setObject:minute forKey:@"minute"];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:@"recieveMowerTime" object:nil userInfo:dataDic];
         }else if (self.frameType == getMowerLanguage){
             NSLog(@"接收到getMowerLanguage");
             NSMutableDictionary *dataDic = [[NSMutableDictionary alloc] init];
@@ -500,8 +500,6 @@ static BluetoothDataManage *sgetonInstanceData = nil;
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             [defaults setInteger:_pincode forKey:@"pincode"];
             [defaults synchronize];
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"updatePinCode" object:nil userInfo:nil];
             
             _sectionvalve = [_receiveData[8] intValue];
         }else if (self.frameType == setPincodeResponse){

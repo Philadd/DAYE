@@ -34,6 +34,9 @@
 @end
 
 @implementation LoginViewController
+{
+    NSTimeInterval time;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
 #if RobotMower | RobotPark
@@ -56,6 +59,7 @@
                                              selector:@selector(deviceOrientationDidChange:)
                                                  name:UIDeviceOrientationDidChangeNotification
                                                object:nil];
+    time = 0.0;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -67,7 +71,6 @@
     [self.connButton addTarget:self action:@selector(showConnView) forControlEvents:UIControlEventTouchUpInside];
     //[self.changeButton addTarget:self action:@selector(changeConnWay) forControlEvents:UIControlEventTouchUpInside];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePinCode) name:@"updatePinCode" object:nil];
     
 }
 
@@ -81,7 +84,7 @@
     [super viewWillDisappear:animated];
     
     [self.navigationController setNavigationBarHidden:NO animated:YES];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updatePinCode" object:nil];
+
 }
 
 - (void)viewLayoutSet{
@@ -141,11 +144,14 @@
 #pragma mark - ViewController push and back
 - (void)connectMower
 {
-        //测试用直接进入APP
-        //    RDVViewController *rdvView = [[RDVViewController alloc] init];
-        //    rdvView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-        //    [self presentViewController:rdvView animated:YES completion:nil];
-        //    return;
+    //测试用直接进入APP
+    //    RDVViewController *rdvView = [[RDVViewController alloc] init];
+    //    rdvView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    //    [self presentViewController:rdvView animated:YES completion:nil];
+    //    return;
+    NSTimeInterval currentTime = [NSDate date].timeIntervalSince1970;//防止暴力点击
+    if (currentTime - time > 1) {//限制用户点击按钮的时间间隔大于1秒钟
+        
         if (_appDelegate.currentPeripheral == nil) {
             
             [NSObject showHudTipStr:LocalString(@"Bluetooth not connected")];
@@ -167,21 +173,31 @@
                     RDVViewController *rdvView = [[RDVViewController alloc] init];
                     rdvView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
                     [self presentViewController:rdvView animated:YES completion:nil];
+                }else{
+                    //密码不对 应该输入最新密码
+                    _resultLabel = [[UILabel alloc] init];
+                    _popView = [[LMPopInputPasswordView alloc]init];
+                    _popView.frame = CGRectMake((self.view.frame.size.width - 250)*0.5, 50, 250, 150);
+                    _popView.delegate = self;
+                    [_popView pop];
+                    
                 }
-                //子线程延时1s
-                double delayInSeconds = 1.0;
-                dispatch_queue_t mainQueue = dispatch_get_main_queue();
-                dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW,delayInSeconds * NSEC_PER_SEC);
-                dispatch_after(popTime, mainQueue, ^{
-                    NSLog(@"延时执行的1秒");
-                    [self getPINData];
-                });
-                
-            }else{
-                [self getPINData];
                 
             }
         }
+        //更新点击时间
+        time = currentTime;
+        //子线程延时1s
+        double delayInSeconds = 1.0;
+        dispatch_queue_t mainQueue = dispatch_get_main_queue();
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW,delayInSeconds * NSEC_PER_SEC);
+        dispatch_after(popTime, mainQueue, ^{
+            NSLog(@"延时执行的1秒");
+            [self getPINData];
+        });
+        
+    }
+    
 }
 
 //蓝牙版自动登录不能获取分区显示了
@@ -220,23 +236,6 @@
 
 - (IBAction)LoginViewControllerUnwindSegue:(UIStoryboardSegue *)unwindSegue {
     
-}
-
-//接收通知
-- (void)updatePinCode{
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *password = [userDefaults objectForKey:@"password"];
-    if ([password integerValue] == [userDefaults integerForKey:@"pincode"]) {
-        RDVViewController *rdvView = [[RDVViewController alloc] init];
-        rdvView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-        [self presentViewController:rdvView animated:YES completion:nil];
-    }else{
-        _resultLabel = [[UILabel alloc] init];
-        _popView = [[LMPopInputPasswordView alloc]init];
-        _popView.frame = CGRectMake((self.view.frame.size.width - 250)*0.5, 50, 250, 150);
-        _popView.delegate = self;
-        [_popView pop];
-    }
 }
 
 #pragma mark ---LMPopInputPassViewDelegate
