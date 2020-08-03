@@ -83,7 +83,7 @@
     self.bluetoothDataManage = [BluetoothDataManage shareInstance];
     
     //获取bin文件的总包数并记录
-    NSString *path = [[NSBundle mainBundle] pathForResource:dataName ofType:@"bin"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:dataName ofType:@"BIN"];
     NSData *data = [NSData dataWithContentsOfFile:path];
     long size = [data length];
     int packageNum = (int)size / 2048;
@@ -393,7 +393,7 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        NSString *path = [[NSBundle mainBundle] pathForResource:dataName ofType:@"bin"];
+        NSString *path = [[NSBundle mainBundle] pathForResource:dataName ofType:@"BIN"];
         NSData *data = [NSData dataWithContentsOfFile:path];
         
         AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];

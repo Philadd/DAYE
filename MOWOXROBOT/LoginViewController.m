@@ -173,14 +173,7 @@
                     RDVViewController *rdvView = [[RDVViewController alloc] init];
                     rdvView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
                     [self presentViewController:rdvView animated:YES completion:nil];
-                }else{
-                    //密码不对 应该输入最新密码
-                    _resultLabel = [[UILabel alloc] init];
-                    _popView = [[LMPopInputPasswordView alloc]init];
-                    _popView.frame = CGRectMake((self.view.frame.size.width - 250)*0.5, 50, 250, 150);
-                    _popView.delegate = self;
-                    [_popView pop];
-                    
+                    return;
                 }
                 
             }
@@ -195,6 +188,13 @@
             NSLog(@"延时执行的1秒");
             [self getPINData];
         });
+        
+        //密码不对 应该输入最新密码
+        _resultLabel = [[UILabel alloc] init];
+        _popView = [[LMPopInputPasswordView alloc]init];
+        _popView.frame = CGRectMake((self.view.frame.size.width - 250)*0.5, 50, 250, 150);
+        _popView.delegate = self;
+        [_popView pop];
         
     }
     
