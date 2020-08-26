@@ -37,6 +37,8 @@
 	<string>音乐权限</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>蓝牙权限</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>蓝牙权限</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>日历权限</string>
 	<key>NSCameraUsageDescription</key>
