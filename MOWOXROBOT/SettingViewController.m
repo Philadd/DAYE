@@ -34,7 +34,7 @@
 @end
 
 @implementation SettingViewController
-static int latestVersion_4 =  401;//更新页面 同时修改！！
+static int latestVersion_4 =  402;//更新页面 同时修改！！
 static int latestVersion = 273;
 
 - (void)viewDidLoad {
