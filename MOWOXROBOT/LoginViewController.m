@@ -172,6 +172,7 @@
                 if ([password integerValue] == [userDefaults integerForKey:@"pincode"]) {
                     RDVViewController *rdvView = [[RDVViewController alloc] init];
                     rdvView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+                    rdvView.modalPresentationStyle = UIModalPresentationFullScreen;
                     [self presentViewController:rdvView animated:YES completion:nil];
                     return;
                 }
@@ -259,6 +260,7 @@
                
                 RDVViewController *rdvView = [[RDVViewController alloc] init];
                 rdvView.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+                rdvView.modalPresentationStyle = UIModalPresentationFullScreen;
                 [self presentViewController:rdvView animated:YES completion:nil];
             }else{
                 NSMutableArray *dataContent = [[NSMutableArray alloc] init];

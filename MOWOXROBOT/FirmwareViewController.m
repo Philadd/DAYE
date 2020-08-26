@@ -22,48 +22,31 @@
 
 @property (strong, nonatomic)  UIActivityIndicatorView *activityIndicatorView;
 @property (strong, nonatomic)  ASProgressPopUpView *progressViewNew;
-@property (nonatomic) int packgeNum;
+
+@property (nonatomic) int packgeNum_main;
+@property (nonatomic) int packgeNum_motor;
+@property (nonatomic) int packgeNum_right;
+@property (nonatomic) int packgeNum_left;
+@property (nonatomic) int packgeNum_All;
 @end
 
 @implementation FirmwareViewController
 {
     NSString *dataName;
+    NSString *dataMotor;
+    NSString *dataMotorLeft;
+    NSString *dataMotorRight;
     UIView *background;
     UIImageView *imgView;//创建显示图像的视图
     CGRect oldFrame;    //保存图片原来的大小
     CGRect largeFrame;  //确定图片放大最大的程度
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    if ([defaults integerForKey:@"deviceType"]) {
-        [BluetoothDataManage shareInstance].deviceType = (int)[defaults integerForKey:@"deviceType"];
-        switch ([BluetoothDataManage shareInstance].deviceType) {
-            case 0:
-                dataName = @"DY00271";
-                break;
-            case 1:
-                if ([BluetoothDataManage shareInstance].sectionvalve ==0) {
-                    dataName = @"DY01271";
-                }else{
-                    dataName = @"DY11271";
-                }
-                break;
-            case 2:
-                if ([BluetoothDataManage shareInstance].sectionvalve ==0) {
-                    dataName = @"DY02271";
-                }else{
-                    dataName = @"DY12271";
-                }
-                break;
-            default:
-                break;
-        }
-    }
-    
-    NSLog(@"更新文件包名.....%@",dataName);
     [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
     
     
@@ -83,14 +66,48 @@
     self.bluetoothDataManage = [BluetoothDataManage shareInstance];
     
     //获取bin文件的总包数并记录
+    dataName = @"DYM221501M040_APPlication";
+    dataMotor = @"DYM221501_BladeMotorDriverLoopInc";
+    dataMotorRight = @"DYM221501_WalkMotorDriverLoopInc";
+    dataMotorLeft = @"DYM221501_WalkMotorDriverLoopInc";
+    
     NSString *path = [[NSBundle mainBundle] pathForResource:dataName ofType:@"BIN"];
     NSData *data = [NSData dataWithContentsOfFile:path];
     long size = [data length];
-    int packageNum = (int)size / 2048;
-    _packgeNum = packageNum;
-    if (![BluetoothDataManage shareInstance].updateFirmware_packageNum) {
-        [BluetoothDataManage shareInstance].updateFirmware_packageNum = packageNum;
+    _packgeNum_main = (int)size / firmwareData([BluetoothDataManage shareInstance].version1);
+    
+    if (!self.bluetoothDataManage.updateFirmware_packageNum) {
+        self.bluetoothDataManage.updateFirmware_packageNum = _packgeNum_main;
     }
+    
+    NSString *motorPath = [[NSBundle mainBundle] pathForResource:dataMotor ofType:@"BIN"];
+    NSData *motor = [NSData dataWithContentsOfFile:motorPath];
+    long motorSize = [motor length];
+    _packgeNum_motor= (int)motorSize / firmwareData([BluetoothDataManage shareInstance].version1);
+    if (!self.bluetoothDataManage.updateFirmware_packageNum_Motor) {
+        self.bluetoothDataManage.updateFirmware_packageNum_Motor = _packgeNum_motor;
+    }
+    
+    NSString *dataMotor_left = [[NSBundle mainBundle] pathForResource:dataMotorLeft ofType:@"BIN"];
+    NSData *motor_left = [NSData dataWithContentsOfFile:dataMotor_left];
+    long motor_leftSize = [motor_left length];
+    _packgeNum_left = (int)motor_leftSize / firmwareData([BluetoothDataManage shareInstance].version1);
+    if (!self.bluetoothDataManage.updateFirmware_packageNum_Left) {
+        self.bluetoothDataManage.updateFirmware_packageNum_Left = _packgeNum_left;
+    }
+    
+    
+    NSString *dataMotor_right = [[NSBundle mainBundle] pathForResource:dataMotorRight ofType:@"BIN"];
+    NSData *motor_right = [NSData dataWithContentsOfFile:dataMotor_right];
+    long motor_rightSize = [motor_right length];
+    _packgeNum_right = (int)motor_rightSize / firmwareData([BluetoothDataManage shareInstance].version1);
+    
+    if (!self.bluetoothDataManage.updateFirmware_packageNum_Right) {
+        self.bluetoothDataManage.updateFirmware_packageNum_Right = _packgeNum_right;
+    }
+    
+    _packgeNum_All = ((float)self.packgeNum_main + (float)self.packgeNum_motor + (float)self.packgeNum_left + (float)self.packgeNum_right);
+    NSLog(@"总包数 %f %f %f %f %f",(float)_packgeNum_All,(float)self.packgeNum_main,(float)self.packgeNum_motor,(float)self.packgeNum_left,(float)self.packgeNum_right);
     //ui设置
     [self viewLayoutSet];
     
@@ -98,45 +115,17 @@
     [BluetoothDataManage shareInstance].progress_num = 0;
     
     [self.progressViewNew showPopUpViewAnimated:YES];
+    
     // 单击
     UITapGestureRecognizer *SingleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resetImage:)];
     SingleTapGesture.numberOfTapsRequired = 1;//tap次数
-    [self.tipImage addGestureRecognizer:SingleTapGesture];
+    [self.view addGestureRecognizer:SingleTapGesture];
     //如果处理的是图片，别忘了
     _tipImage.userInteractionEnabled = YES;
     _tipImage.multipleTouchEnabled = YES;
     oldFrame = _tipImage.frame;
     largeFrame = CGRectMake(ScreenWidth,ScreenHeight, 3 * oldFrame.size.width, 3 * oldFrame.size.height);
-}
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [BluetoothDataManage shareInstance].updateFirmware_j = 0;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateFirmware:) name:@"shaogujian" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSuccese) name:@"updateSuccese" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateFirmwareWeak) name:@"recieveUpdateFirmware" object:nil];
-    
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"shaogujian" object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateSuccese" object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"recieveUpdateFirmware" object:nil];
-    [BluetoothDataManage shareInstance].updateFirmware_j = 0;
-}
-
-- (void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
-    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:NO];
-}
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 //单击实现原来大小
@@ -188,6 +177,48 @@
     animation.values = values;
     [aView.layer addAnimation:animation forKey:nil];
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [BluetoothDataManage shareInstance].updateFirmware_j = 0;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateFirmware:) name:@"shaogujian" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSuccese_main) name:@"updateSuccese_main" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSuccese_motor) name:@"updateSuccese_motor" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSuccese_left) name:@"updateSuccese_left" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSuccese_right) name:@"updateSuccese_right" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSucceseEnd) name:@"updateSucceseEnd" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(GETupdateSucceseEnd) name:@"GETupdateSucceseEnd" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateFirmwareWeak) name:@"recieveUpdateFirmware" object:nil];
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[self rdv_tabBarController] setTabBarHidden:NO animated:YES];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"shaogujian" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateSuccese_main" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateSuccese_motor" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateSuccese_left" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateSuccese_right" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateSucceseEnd" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"GETupdateSucceseEnd" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"recieveUpdateFirmware" object:nil];
+    [BluetoothDataManage shareInstance].updateFirmware_j = 0;
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:NO];
+}
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 - (void)viewLayoutSet{
     UIImage *image = [UIImage imageNamed:@"返回1"];
     [self addLeftBarButtonWithImage:image action:@selector(backAction)];
@@ -205,12 +236,7 @@
     
     //curVerTextView
     _curVerTV = [[UITextView alloc] init];
-#if RobotMower | MOWOXROBOT
-    _curVerTV.text = [NSString stringWithFormat:@"%@\n V%d.%d.%d.%d\n%@\n V%d.2.7.1\n",LocalString(@"Your robot's firmware version:"),[BluetoothDataManage shareInstance].deviceType,[BluetoothDataManage shareInstance].version1,[BluetoothDataManage shareInstance].version2,[BluetoothDataManage shareInstance].version3,LocalString(@"Latest robot's firmware version:"),[BluetoothDataManage shareInstance].deviceType];
-#elif RobotPark
-    _curVerTV.text = [NSString stringWithFormat:@"%@\n V%d.%d.%d.%d\n%@\n V%d.2.7.1\n",LocalString(@"Your robot's firmware version:"),[BluetoothDataManage shareInstance].deviceType,[BluetoothDataManage shareInstance].version1,[BluetoothDataManage shareInstance].version2,[BluetoothDataManage shareInstance].version3,LocalString(@"Latest robot's firmware version:"),[BluetoothDataManage shareInstance].deviceType];
-#endif
-    
+    _curVerTV.text = [NSString stringWithFormat:@"%@\n V%d.%d.%d.%d\n%@\n V%d.2.7.3\n",LocalString(@"Your robot's firmware version:"),[BluetoothDataManage shareInstance].deviceType,[BluetoothDataManage shareInstance].version1,[BluetoothDataManage shareInstance].version2,[BluetoothDataManage shareInstance].version3,LocalString(@"Latest robot's firmware version:"),[BluetoothDataManage shareInstance].deviceType];
     _curVerTV.font = [UIFont fontWithName:@"Arial" size:17];
     _curVerTV.backgroundColor = [UIColor clearColor];
     _curVerTV.autocapitalizationType = UITextAutocapitalizationTypeSentences;
@@ -284,6 +310,7 @@
             make.top.equalTo(self.tipImage.mas_bottom);
         }];
     }
+    
     [_progressViewNew mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(ScreenWidth * 0.82, 5.0));
         make.centerX.equalTo(self.view.mas_centerX);
@@ -295,6 +322,7 @@
         make.centerY.equalTo(self.view.mas_centerY);
     }];
 }
+
 #pragma mark - 实现点击图片缩放，移动等功能
 // 添加所有的手势
 - (void) addGestureRecognizerToView:(UIView *)view
@@ -312,7 +340,7 @@
     [view addGestureRecognizer:panGestureRecognizer];
 }
 
-//处理旋转手势
+ //处理旋转手势
 - (void) rotateView:(UIRotationGestureRecognizer *)rotationGestureRecognizer
 {
     UIView *view = rotationGestureRecognizer.view;
@@ -330,7 +358,7 @@
         view.transform = CGAffineTransformScale(view.transform, pinchGestureRecognizer.scale, pinchGestureRecognizer.scale);
         pinchGestureRecognizer.scale = 1;
     }
-    
+
 }
 
 // 处理拖拉手势
@@ -389,133 +417,167 @@
     }else if ([result isEqualToString:@"error"]){
         [NSObject showHudTipStr:[NSString stringWithFormat:@"%d %@",[BluetoothDataManage shareInstance].progress_num,LocalString(@"error,again")]];
     }
-    _progressViewNew.progress = [BluetoothDataManage shareInstance].progress_num / (float)_packgeNum;
+    
+    self.progressViewNew.progress = self.bluetoothDataManage.progress_num / (float)_packgeNum_All;
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        NSString *path = [[NSBundle mainBundle] pathForResource:dataName ofType:@"BIN"];
-        NSData *data = [NSData dataWithContentsOfFile:path];
-        
-        AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-        
-        UInt8 sendBuffer[5];
-        sendBuffer[0] = [[NSNumber numberWithUnsignedInteger:0x23] unsignedCharValue];
-        sendBuffer[1] = [[NSNumber numberWithUnsignedInteger:[BluetoothDataManage shareInstance].updateFirmware_packageNum] unsignedCharValue];
-        sendBuffer[2] = [[NSNumber numberWithUnsignedInteger:0x23] unsignedCharValue];
-        sendBuffer[3] = [[NSNumber numberWithUnsignedInteger:0x00] unsignedCharValue];
-        sendBuffer[4] = [[NSNumber numberWithUnsignedInteger:0x08] unsignedCharValue];
-        
-        int j = [BluetoothDataManage shareInstance].updateFirmware_j;
-        
-        if ((j + 2048) < [data length]) {
-            NSString *rangePac = [NSString stringWithFormat:@"%i,%i", j, 2048];
-            NSData *subPac = [data subdataWithRange:NSRangeFromString(rangePac)];
-            sendBuffer[1] = [[NSNumber numberWithUnsignedInteger:[BluetoothDataManage shareInstance].updateFirmware_packageNum] unsignedCharValue];
-            
-            NSData *sendPacHead = [NSData dataWithBytes:sendBuffer length:5];
-            NSLog(@"发送一条蓝牙帧： %@",sendPacHead);
-            if (appDelegate.currentCharacteristic && appDelegate.currentPeripheral)
+        switch ([BluetoothDataManage shareInstance].updateSucceseFlag) {
+            case 1: //固件更新
             {
-                [appDelegate.currentPeripheral writeValue:sendPacHead forCharacteristic:appDelegate.currentCharacteristic type:CBCharacteristicWriteWithResponse];
+                [self setMototData:0x23 numData:self.bluetoothDataManage.updateFirmware_packageNum pathName:self->dataName];
+                NSLog(@"固件名称%@ %d",self->dataName,[BluetoothDataManage shareInstance].updateFirmware_packageNum);
             }
-            usleep(10 * 1000);
-            
-            for (int i = 0; i < [subPac length]; i += 20) {
-                
-                // 预加 最大包长度，如果依然小于总数据长度，可以取最大包数据大小
-                if ((i + 20) < [subPac length]) {
-                    NSString *rangeStr = [NSString stringWithFormat:@"%i,%i", i, 20];
-                    NSData *subData = [subPac subdataWithRange:NSRangeFromString(rangeStr)];
-                    NSLog(@"发送一条蓝牙帧： %@",subData);
-                    if (appDelegate.currentCharacteristic && appDelegate.currentPeripheral)
-                    {
-                        [appDelegate.currentPeripheral writeValue:subData forCharacteristic:appDelegate.currentCharacteristic type:CBCharacteristicWriteWithResponse];
-                    }
-                    //根据接收模块的处理能力做相应延时
-                    usleep(10 * 1000);
-                }
-                else {
-                    NSString *rangeStr = [NSString stringWithFormat:@"%i,%i", i, (int)([subPac length] - i)];
-                    NSData *subData = [subPac subdataWithRange:NSRangeFromString(rangeStr)];
-                    NSLog(@"发送一条蓝牙帧： %@",subData);
-                    if (appDelegate.currentCharacteristic && appDelegate.currentPeripheral)
-                    {
-                        [appDelegate.currentPeripheral writeValue:subData forCharacteristic:appDelegate.currentCharacteristic type:CBCharacteristicWriteWithResponse];
-                    }
-                    usleep(10 * 1000);
-                }
-            }
-            
-            uint8_t crc8 = [self crc8:subPac];
-            NSLog(@"%d",crc8);
-            UInt8 sendCRCbuff[1];
-            sendCRCbuff[0] = [[NSNumber numberWithUnsignedInteger:crc8] unsignedCharValue];
-            NSData *sendCRC8 = [NSData dataWithBytes:sendCRCbuff length:1];
-            NSLog(@"发送一条蓝牙帧： %@",sendCRC8);
-            if (appDelegate.currentCharacteristic && appDelegate.currentPeripheral)
+                break;
+            case 2: //电机更新
             {
-                [appDelegate.currentPeripheral writeValue:sendCRC8 forCharacteristic:appDelegate.currentCharacteristic type:CBCharacteristicWriteWithResponse];
+                [self setMototData:0x47 numData:self.bluetoothDataManage.updateFirmware_packageNum_Motor pathName:self->dataMotor];
             }
-            
-        }else if(j != [data length]){
-            //不接收
-            [[NSNotificationCenter defaultCenter] removeObserver:self name:@"shaogujian" object:nil];
-            
-            NSString *rangePac = [NSString stringWithFormat:@"%i,%i", j, (int)([data length] - j)];
-            NSData *subPac = [data subdataWithRange:NSRangeFromString(rangePac)];
-            sendBuffer[1] = [[NSNumber numberWithUnsignedInteger:0] unsignedCharValue];
-            
-            sendBuffer[3] = [[NSNumber numberWithUnsignedInteger:(int)([data length] - j) % 256] unsignedCharValue];
-            sendBuffer[4] = [[NSNumber numberWithUnsignedInteger:(int)([data length] - j) / 256] unsignedCharValue];
-            NSData *sendPacHead = [NSData dataWithBytes:sendBuffer length:5];
-            NSLog(@"发送一条蓝牙帧： %@",sendPacHead);
-            if (appDelegate.currentCharacteristic && appDelegate.currentPeripheral)
+                break;
+            case 3:  //左电机更新
             {
-                [appDelegate.currentPeripheral writeValue:sendPacHead forCharacteristic:appDelegate.currentCharacteristic type:CBCharacteristicWriteWithResponse];
+                [self setMototData:0x4C numData:self.bluetoothDataManage.updateFirmware_packageNum_Left pathName:self->dataMotorLeft];
+                NSLog(@"更新左");
             }
-            usleep(10 * 1000);
-            
-            for (int i = 0; i < [subPac length]; i += 20) {
-                
-                // 预加 最大包长度，如果依然小于总数据长度，可以取最大包数据大小
-                if ((i + 20) < [subPac length]) {
-                    NSString *rangeStr = [NSString stringWithFormat:@"%i,%i", i, 20];
-                    NSData *subData = [subPac subdataWithRange:NSRangeFromString(rangeStr)];
-                    NSLog(@"发送一条蓝牙帧： %@",subData);
-                    if (appDelegate.currentCharacteristic && appDelegate.currentPeripheral)
-                    {
-                        [appDelegate.currentPeripheral writeValue:subData forCharacteristic:appDelegate.currentCharacteristic type:CBCharacteristicWriteWithResponse];
-                    }
-                    //根据接收模块的处理能力做相应延时
-                    usleep(10 * 1000);
-                }
-                else {
-                    NSString *rangeStr = [NSString stringWithFormat:@"%i,%i", i, (int)([subPac length] - i)];
-                    NSData *subData = [subPac subdataWithRange:NSRangeFromString(rangeStr)];
-                    NSLog(@"发送一条蓝牙帧： %@",subData);
-                    if (appDelegate.currentCharacteristic && appDelegate.currentPeripheral)
-                    {
-                        [appDelegate.currentPeripheral writeValue:subData forCharacteristic:appDelegate.currentCharacteristic type:CBCharacteristicWriteWithResponse];
-                    }
-                    usleep(10 * 1000);
-                }
-            }
-            
-            uint8_t crc8 = [self crc8:subPac];
-            NSLog(@"%d",crc8);
-            UInt8 sendCRCbuff[1];
-            sendCRCbuff[0] = [[NSNumber numberWithUnsignedInteger:crc8] unsignedCharValue];
-            NSData *sendCRC8 = [NSData dataWithBytes:sendCRCbuff length:1];
-            NSLog(@"发送一条蓝牙帧： %@",sendCRC8);
-            if (appDelegate.currentCharacteristic && appDelegate.currentPeripheral)
+                break;
+            case 4: //右电机更新
             {
-                [appDelegate.currentPeripheral writeValue:sendCRC8 forCharacteristic:appDelegate.currentCharacteristic type:CBCharacteristicWriteWithResponse];
+                [self setMototData:0x52 numData:self.bluetoothDataManage.updateFirmware_packageNum_Right pathName:self->dataMotorRight];
+                NSLog(@"更新右");
             }
+                break;
+            default:
+                break;
+        }
+    });
+    
+}
+//更新
+- (void)setMototData:(UInt8)HCode numData:(UInt16)PackageNum pathName:(NSString *)fileName{
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:@"BIN"];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    
+    AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+    
+    UInt8 sendBuffer[6];
+    sendBuffer[0] = [[NSNumber numberWithUnsignedInteger:HCode] unsignedCharValue];
+    sendBuffer[1] = [[NSNumber numberWithUnsignedInteger:PackageNum%256] unsignedCharValue];
+    sendBuffer[2] = [[NSNumber numberWithUnsignedInteger:PackageNum/256] unsignedCharValue];
+    sendBuffer[3] = [[NSNumber numberWithUnsignedInteger:HCode] unsignedCharValue];
+    sendBuffer[4] = [[NSNumber numberWithUnsignedInteger:0x00] unsignedCharValue];
+    sendBuffer[5] = [[NSNumber numberWithUnsignedInteger:firmwareData([BluetoothDataManage shareInstance].version1)/256] unsignedCharValue];
+    
+    int j = [BluetoothDataManage shareInstance].updateFirmware_j;
+    
+    if ((j + firmwareData([BluetoothDataManage shareInstance].version1)) < [data length]) {
+        NSString *rangePac = [NSString stringWithFormat:@"%i,%i", j, firmwareData([BluetoothDataManage shareInstance].version1)];
+        NSData *subPac = [data subdataWithRange:NSRangeFromString(rangePac)];
+        sendBuffer[1] = [[NSNumber numberWithUnsignedInteger:PackageNum%256] unsignedCharValue];
+        sendBuffer[2] = [[NSNumber numberWithUnsignedInteger:PackageNum/256] unsignedCharValue];
+        
+        NSData *sendPacHead = [NSData dataWithBytes:sendBuffer length:6];
+        NSLog(@"发送一条蓝牙帧： %@",sendPacHead);
+        if (appDelegate.currentCharacteristic && appDelegate.currentPeripheral)
+        {
+            [appDelegate.currentPeripheral writeValue:sendPacHead forCharacteristic:appDelegate.currentCharacteristic type:CBCharacteristicWriteWithResponse];
+        }
+        usleep(10 * 1000);
+        
+        for (int i = 0; i < [subPac length]; i += 20) {
             
+            // 预加 最大包长度，如果依然小于总数据长度，可以取最大包数据大小
+            if ((i + 20) < [subPac length]) {
+                NSString *rangeStr = [NSString stringWithFormat:@"%i,%i", i, 20];
+                NSData *subData = [subPac subdataWithRange:NSRangeFromString(rangeStr)];
+                NSLog(@"发送一条蓝牙帧： %@",subData);
+                if (appDelegate.currentCharacteristic && appDelegate.currentPeripheral)
+                {
+                    [appDelegate.currentPeripheral writeValue:subData forCharacteristic:appDelegate.currentCharacteristic type:CBCharacteristicWriteWithResponse];
+                }
+                //根据接收模块的处理能力做相应延时
+                usleep(10 * 1000);
+            }
+            else {
+                NSString *rangeStr = [NSString stringWithFormat:@"%i,%i", i, (int)([subPac length] - i)];
+                NSData *subData = [subPac subdataWithRange:NSRangeFromString(rangeStr)];
+                NSLog(@"发送一条蓝牙帧： %@",subData);
+                if (appDelegate.currentCharacteristic && appDelegate.currentPeripheral)
+                {
+                    [appDelegate.currentPeripheral writeValue:subData forCharacteristic:appDelegate.currentCharacteristic type:CBCharacteristicWriteWithResponse];
+                }
+                usleep(10 * 1000);
+            }
         }
         
+        uint8_t crc8 = [self crc8:subPac];
+        NSLog(@"%d",crc8);
+        UInt8 sendCRCbuff[1];
+        sendCRCbuff[0] = [[NSNumber numberWithUnsignedInteger:crc8] unsignedCharValue];
+        NSData *sendCRC8 = [NSData dataWithBytes:sendCRCbuff length:1];
+        NSLog(@"发送一条蓝牙帧： %@",sendCRC8);
+        if (appDelegate.currentCharacteristic && appDelegate.currentPeripheral)
+        {
+            [appDelegate.currentPeripheral writeValue:sendCRC8 forCharacteristic:appDelegate.currentCharacteristic type:CBCharacteristicWriteWithResponse];
+        }
         
-    });
+    }else if(j != [data length]){
+        //不接收
+        //[[NSNotificationCenter defaultCenter] removeObserver:self name:@"shaogujian" object:nil];
+        
+        NSString *rangePac = [NSString stringWithFormat:@"%i,%i", j, (int)([data length] - j)];
+        NSData *subPac = [data subdataWithRange:NSRangeFromString(rangePac)];
+        sendBuffer[1] = [[NSNumber numberWithUnsignedInteger:0] unsignedCharValue];
+        sendBuffer[2] = [[NSNumber numberWithUnsignedInteger:0] unsignedCharValue];
+        
+        sendBuffer[4] = [[NSNumber numberWithUnsignedInteger:(int)([data length] - j) % 256] unsignedCharValue];
+        sendBuffer[5] = [[NSNumber numberWithUnsignedInteger:(int)([data length] - j) / 256] unsignedCharValue];
+        NSData *sendPacHead = [NSData dataWithBytes:sendBuffer length:6];
+        NSLog(@"发送一条蓝牙帧： %@",sendPacHead);
+        if (appDelegate.currentCharacteristic && appDelegate.currentPeripheral)
+        {
+            [appDelegate.currentPeripheral writeValue:sendPacHead forCharacteristic:appDelegate.currentCharacteristic type:CBCharacteristicWriteWithResponse];
+        }
+        usleep(10 * 1000);
+        
+        for (int i = 0; i < [subPac length]; i += 20) {
+            
+            // 预加 最大包长度，如果依然小于总数据长度，可以取最大包数据大小
+            if ((i + 20) < [subPac length]) {
+                NSString *rangeStr = [NSString stringWithFormat:@"%i,%i", i, 20];
+                NSData *subData = [subPac subdataWithRange:NSRangeFromString(rangeStr)];
+                NSLog(@"发送一条蓝牙帧： %@",subData);
+                if (appDelegate.currentCharacteristic && appDelegate.currentPeripheral)
+                {
+                    [appDelegate.currentPeripheral writeValue:subData forCharacteristic:appDelegate.currentCharacteristic type:CBCharacteristicWriteWithResponse];
+                }
+                //根据接收模块的处理能力做相应延时
+                usleep(10 * 1000);
+            }
+            else {
+                NSString *rangeStr = [NSString stringWithFormat:@"%i,%i", i, (int)([subPac length] - i)];
+                NSData *subData = [subPac subdataWithRange:NSRangeFromString(rangeStr)];
+                NSLog(@"发送一条蓝牙帧： %@",subData);
+                if (appDelegate.currentCharacteristic && appDelegate.currentPeripheral)
+                {
+                    [appDelegate.currentPeripheral writeValue:subData forCharacteristic:appDelegate.currentCharacteristic type:CBCharacteristicWriteWithResponse];
+                }
+                usleep(10 * 1000);
+            }
+        }
+        
+        uint8_t crc8 = [self crc8:subPac];
+        NSLog(@"%d",crc8);
+        UInt8 sendCRCbuff[1];
+        sendCRCbuff[0] = [[NSNumber numberWithUnsignedInteger:crc8] unsignedCharValue];
+        NSData *sendCRC8 = [NSData dataWithBytes:sendCRCbuff length:1];
+        NSLog(@"发送一条蓝牙帧： %@",sendCRC8);
+        if (appDelegate.currentCharacteristic && appDelegate.currentPeripheral)
+        {
+            [appDelegate.currentPeripheral writeValue:sendCRC8 forCharacteristic:appDelegate.currentCharacteristic type:CBCharacteristicWriteWithResponse];
+        }
+        
+    }
     
 }
 
@@ -547,14 +609,90 @@
 /**
  **更新固件成功
  **/
-- (void)updateSuccese{
+- (void)updateSuccese_main{
     //self.progressView.hidden = NO;
     //_tipLabel.text = LocalString(@"####Update Success####");
     //_tipLabel.textColor = [UIColor greenColor];
+    //[NSObject showHudTipStr:LocalString(@"update succese")];
+    //[[UIApplication sharedApplication] setIdleTimerDisabled:NO];
+    //_progressViewNew.progress = 1.0;
+    //[BluetoothDataManage shareInstance].progress_num = 0;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        UInt8 controlCode = 0x04;
+        [[BluetoothDataManage shareInstance] formMotorData:controlCode];
+    });
+}
+
+- (void)updateSuccese_motor{
+    //self.progressView.hidden = NO;
+    //_tipLabel.text = LocalString(@"####Update Success####");
+    //_tipLabel.textColor = [UIColor greenColor];
+    //[NSObject showHudTipStr:LocalString(@"update succese")];
+    //[[UIApplication sharedApplication] setIdleTimerDisabled:NO];
+    //_progressViewNew.progress = 1.0;
+    //[BluetoothDataManage shareInstance].progress_num = 0;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        UInt8 controlCode = 0x01;
+        [[BluetoothDataManage shareInstance] formMotorData:controlCode];
+    });
+    
+}
+
+- (void)updateSuccese_left{
+    //self.progressView.hidden = NO;
+    //_tipLabel.text = LocalString(@"####Update Success####");
+    //_tipLabel.textColor = [UIColor greenColor];
+    //[NSObject showHudTipStr:LocalString(@"update succese")];
+    //[[UIApplication sharedApplication] setIdleTimerDisabled:NO];
+    //_progressViewNew.progress = 1.0;
+    //[BluetoothDataManage shareInstance].progress_num = 0;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        UInt8 controlCode = 0x02;
+        [[BluetoothDataManage shareInstance] formMotorData:controlCode];
+        [BluetoothDataManage shareInstance].updateSucceseFlag = 4;
+    });
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        //[BluetoothDataManage shareInstance].updateSucceseFlag = 4;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"recieveUpdateFirmware" object:nil userInfo:nil];
+    });
+    
+}
+
+- (void)updateSuccese_right{
+    //self.progressView.hidden = NO;
+    //_tipLabel.text = LocalString(@"####Update Success####");
+    //_tipLabel.textColor = [UIColor greenColor];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        UInt8 controlCode = 0x00;
+        [[BluetoothDataManage shareInstance] formMotorData:controlCode];
+    });
+    
+}
+
+- (void)updateSucceseEnd{
+    //取消查询
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    });
     [NSObject showHudTipStr:LocalString(@"update succese")];
     [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
     _progressViewNew.progress = 1.0;
+    [BluetoothDataManage shareInstance].updateSucceseFlag = 1;
     [BluetoothDataManage shareInstance].progress_num = 0;
+    
+}
+
+- (void)GETupdateSucceseEnd{
+    UInt8 controlCode = 0x10;
+    [[BluetoothDataManage shareInstance] formMotorData:controlCode];
+    //查询计时器
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self performSelector:@selector(GETupdateSucceseEnd) withObject:nil afterDelay:3.f];
+    });
+    sleep(3);
 }
 
 - (void)backAction{

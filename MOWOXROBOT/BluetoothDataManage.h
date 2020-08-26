@@ -31,7 +31,12 @@ static dispatch_queue_t queue;
 ///@brife 烧固件用的j
 @property (nonatomic) int updateFirmware_j;//bin文件每个包传送的第一个字节位置
 @property (nonatomic) int updateFirmware_packageNum;//bin文件包的数量，用来判断是否是最后一个包了，防止溢出
+@property (nonatomic) int updateFirmware_packageNum_Motor;//bin文件包的数量，用来判断是否是最后一个包了，防止溢出
+@property (nonatomic) int updateFirmware_packageNum_Right;//bin文件包的数量，用来判断是否是最后一个包了，防止溢出
+@property (nonatomic) int updateFirmware_packageNum_Left;//bin文件包的数量，用来判断是否是最后一个包了，防止溢出
 @property (nonatomic) int progress_num;//判断当前是第几个包，用来显示进度条
+
+@property (nonatomic) int updateSucceseFlag;// 更新标志
 
 ///@brife 帧数据组成内容
 @property (nonatomic,strong,readonly) NSMutableArray *bluetoothData;
@@ -68,5 +73,7 @@ static dispatch_queue_t queue;
 - (void)sendWorktimeBluetoothFrame;
 
 - (void)handleData:(NSArray *)data;
+
+- (void)formMotorData:(UInt8)controlCode;
 
 @end

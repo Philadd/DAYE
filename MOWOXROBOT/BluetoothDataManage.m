@@ -55,11 +55,7 @@ static BluetoothDataManage *sgetonInstanceData = nil;
         _bluetoothData = [[NSMutableArray alloc] init];
         _dataContent = [[NSMutableArray alloc] init];
         _receiveData = [[NSMutableArray alloc] init];
-        //_deviceType = 0;
-        //_version3 = 0;
-        //_version2 = 0;
-        //_version1 = 0;
-        //_pincode = 0;
+        _updateSucceseFlag = 1;
     }
     return self;
 }
@@ -240,6 +236,35 @@ static BluetoothDataManage *sgetonInstanceData = nil;
     
 }
 
+- (void)formMotorData:(UInt8)controlCode{
+    
+    AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+    
+    UInt8 sendBuffer[4];
+    sendBuffer[0] = [[NSNumber numberWithUnsignedInteger:0x54] unsignedCharValue];
+    sendBuffer[1] = [[NSNumber numberWithUnsignedInteger:0x44] unsignedCharValue];
+    sendBuffer[2] = controlCode;
+    sendBuffer[3] = [[NSNumber numberWithUnsignedInteger:0x05] unsignedCharValue];
+    NSData *crc8Buffer = [NSData dataWithBytes:sendBuffer length:4];
+    uint8_t crc8 = [self crc8:crc8Buffer];
+    NSLog(@"校验位%d",crc8);
+    
+    UInt8 sendData[5];
+    sendData[0] = [[NSNumber numberWithUnsignedInteger:0x54] unsignedCharValue];
+    sendData[1] = [[NSNumber numberWithUnsignedInteger:0x44] unsignedCharValue];
+    sendData[2] = controlCode;
+    sendData[3] = [[NSNumber numberWithUnsignedInteger:0x05] unsignedCharValue];
+    sendData[4] = [[NSNumber numberWithUnsignedInteger:crc8] unsignedCharValue];
+    
+    NSData *sendDataBuffer = [NSData dataWithBytes:sendData length:5];
+    NSLog(@"发送一条电机设置更新蓝牙帧:%@",sendDataBuffer);
+    if (appDelegate.currentCharacteristic && appDelegate.currentPeripheral)
+    {
+        [appDelegate.currentPeripheral writeValue:sendDataBuffer forCharacteristic:appDelegate.currentCharacteristic type:CBCharacteristicWriteWithResponse];
+    }
+    usleep(10 * 1000);
+}
+
 
 #pragma mark - 处理接收数据
 - (void)handleData:(NSArray *)data
@@ -255,7 +280,14 @@ static BluetoothDataManage *sgetonInstanceData = nil;
         UInt8 front4 = 0;
         UInt8 front5 = 0;
         UInt8 front6 = 0;
-        if (data != nil && data.count >= 6) {
+        if (data != nil && data.count == 6) {
+            
+            if (_updateSucceseFlag == 0) {
+                //最后更新 失败
+                [NSObject showHudTipStr:LocalString(@"FAILED!")];
+                _updateSucceseFlag = 1;
+                return;
+            }
             front1 = [data[0] unsignedCharValue];
             front2 = [data[1] unsignedCharValue];
             front3 = [data[2] unsignedCharValue];
@@ -268,19 +300,47 @@ static BluetoothDataManage *sgetonInstanceData = nil;
                 [dataDic setObject:result forKey:@"result"];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"shaogujian" object:nil userInfo:dataDic];
             }
-        }else if (data.count >= 2)
-        {
+        }else if (data != nil && data.count == 2){
             front1 = [data[0] unsignedCharValue];
             front2 = [data[1] unsignedCharValue];
-            if (front1 == 79 && front2 == 75 && self.updateFirmware_packageNum != 0) {
+            if (front1 == 79 && front2 == 75) {
                 if (!self.updateFirmware_j) {
                     self.updateFirmware_j = 0;
                 }
                 if (!self.progress_num) {
                     self.progress_num = 0;
                 }
-                self.updateFirmware_j += 2048;
-                self.updateFirmware_packageNum--;
+                //固件更新 电机版本
+                self.updateFirmware_j += firmwareData([BluetoothDataManage shareInstance].version1);
+                
+                switch (_updateSucceseFlag) {
+                    case 0:
+                    {
+                        NSLog(@"停止");
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"GETupdateSucceseEnd" object:nil userInfo:nil];
+                        return;
+                    }
+                        break;
+                    case 1:
+                        self.updateFirmware_packageNum--;
+                        break;
+                    case 2:
+                        self.updateFirmware_packageNum_Motor--;
+                        break;
+                    case 3:
+                        self.updateFirmware_packageNum_Left--;
+                        
+                        break;
+                    case 4:
+                    {
+                        self.updateFirmware_packageNum_Right--;
+                        //[[NSNotificationCenter defaultCenter] postNotificationName:@"shaogujian" object:nil userInfo:nil];
+                    }
+                        break;
+                        
+                    default:
+                        break;
+                }
                 
                 NSMutableDictionary *dataDic = [[NSMutableDictionary alloc] init];
                 NSString *result = @"success";
@@ -289,9 +349,39 @@ static BluetoothDataManage *sgetonInstanceData = nil;
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"shaogujian" object:nil userInfo:dataDic];
                 self.progress_num++;
             }
-            if (front1 == 255 && front2 == 255){
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"updateSuccese" object:nil userInfo:nil];
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"progressNumber" object:nil userInfo:nil];
+        }else if (data != nil && data.count == 3){
+            front1 = [data[0] unsignedCharValue];
+            front2 = [data[1] unsignedCharValue];
+            front3 = [data[2] unsignedCharValue];
+            if (front1 == 1 && front2 == 255 && front3 == 255){
+                self.updateSucceseFlag = 2;
+                self.updateFirmware_j = 0;
+    
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"updateSuccese_main" object:nil userInfo:nil];
+                
+            }
+            if (front1 == 2 && front2 == 255 && front3 == 255){
+                self.updateSucceseFlag = 3;
+                self.updateFirmware_j = 0;
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"updateSuccese_motor" object:nil userInfo:nil];
+    
+            }
+            if (front1 == 3 && front2 == 255 && front3 == 255){
+                self.updateSucceseFlag = 4;
+                self.updateFirmware_j = 0;
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"updateSuccese_left" object:nil userInfo:nil];
+                
+            }
+            if (front1 == 4 && front2 == 255 && front3 == 255){
+                self.updateSucceseFlag = 0;
+                self.updateFirmware_j = 0;
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"updateSuccese_right" object:nil userInfo:nil];
+                
+            }
+            if (front1 == 5 && front2 == 255 && front3 == 255){
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"updateSucceseEnd" object:nil userInfo:nil];
+                
             }
         }
         return;
@@ -347,9 +437,11 @@ static BluetoothDataManage *sgetonInstanceData = nil;
             NSNumber *minute = _receiveData[9];
             NSNumber *second = _receiveData[10];
             NSString *wrongContent = _receiveData[11];
+            NSNumber *robotState = _receiveData[12];
             NSString *dateLabel = [[NSString alloc] initWithFormat:@"%d-%02d-%02d %02d:%02d:%02d",[year1 intValue]*256 + [year2 intValue],[month intValue],[day intValue],[hour intValue],[minute intValue],[second intValue]];
             [dataDic setObject:dateLabel forKey:@"dateLabel"];
             [dataDic setObject:wrongContent forKey:@"wrongContent"];
+            [dataDic setObject:robotState forKey:@"robotState"];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"recieveAlertsContent" object:nil userInfo:dataDic];
         }else if (self.frameType == getMowerTime){
             NSLog(@"接收到getMowerTime");
@@ -479,7 +571,6 @@ static BluetoothDataManage *sgetonInstanceData = nil;
                 [dataDic setObject:sunWorkMinute forKey:@"sunWorkMinute"];
                 
             }
-            
             [[NSNotificationCenter defaultCenter] postNotificationName:@"recieveWorkingTime2" object:nil userInfo:dataDic];
         }else if (self.frameType == getMowerSetting){
             NSLog(@"接收到getMowerSetting");
@@ -500,6 +591,8 @@ static BluetoothDataManage *sgetonInstanceData = nil;
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             [defaults setInteger:_pincode forKey:@"pincode"];
             [defaults synchronize];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"updatePinCode" object:nil userInfo:nil];
             
             _sectionvalve = [_receiveData[8] intValue];
         }else if (self.frameType == setPincodeResponse){
@@ -641,18 +734,17 @@ static BluetoothDataManage *sgetonInstanceData = nil;
                 case 5:
                     returnVal = getAlerts;
                     break;
-                
+                    
                 case 6:
                     returnVal = getMowerSetting;
                     break;
-                
+                    
                 case 7:
                     returnVal = updateFirmware;
                     break;
                 case 8:
                     returnVal = getPinCode;
                     break;
-                
                 case 9:
                     returnVal = setPincodeResponse;
                     break;
@@ -675,4 +767,28 @@ static BluetoothDataManage *sgetonInstanceData = nil;
     return returnVal;
 }
 
+/**
+ **crc8检验
+ **/
+- (uint8_t)crc8:(NSData *)data
+{
+    uint8_t crc=0;
+    crc = 0;
+    
+    uint8_t byteArray[[data length]];
+    [data getBytes:&byteArray];
+    
+    for (int i = 0; i < [data length]; i++) {
+        Byte byte = byteArray[i];
+        crc ^= byte;
+        for(int j = 0;j < 8;j++)
+        {
+            if(crc & 0x01)
+            {
+                crc = (crc >> 1) ^ 0x8C;
+            }else crc >>= 1;
+        }
+    }
+    return crc;
+}
 @end
