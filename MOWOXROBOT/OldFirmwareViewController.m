@@ -395,7 +395,7 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        NSString *path = [[NSBundle mainBundle] pathForResource:dataName ofType:@"BIN"];
+        NSString *path = [[NSBundle mainBundle] pathForResource:self->dataName ofType:@"BIN"];
         NSData *data = [NSData dataWithContentsOfFile:path];
         
         AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];

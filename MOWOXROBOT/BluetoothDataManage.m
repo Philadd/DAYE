@@ -349,6 +349,10 @@ static BluetoothDataManage *sgetonInstanceData = nil;
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"shaogujian" object:nil userInfo:dataDic];
                 self.progress_num++;
             }
+            if (front1 == 255 && front2 == 255){
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"updateSuccese" object:nil userInfo:nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"progressNumber" object:nil userInfo:nil];
+            }
         }else if (data != nil && data.count == 3){
             front1 = [data[0] unsignedCharValue];
             front2 = [data[1] unsignedCharValue];
