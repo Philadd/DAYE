@@ -45,10 +45,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
+  
     [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
-    
     
     //解决navigationitem标题右偏移
     NSArray *viewControllerArray = [self.navigationController viewControllers];
@@ -65,49 +63,6 @@
     self.navigationItem.title = LocalString(@"Update Robot's Firmware");
     self.bluetoothDataManage = [BluetoothDataManage shareInstance];
     
-    //获取bin文件的总包数并记录
-    dataName = @"DYM221501M040_APPlication";
-    dataMotor = @"DYM221501_BladeMotorDriverLoopInc";
-    dataMotorRight = @"DYM221501_WalkMotorDriverLoopInc";
-    dataMotorLeft = @"DYM221501_WalkMotorDriverLoopInc";
-    
-    NSString *path = [[NSBundle mainBundle] pathForResource:dataName ofType:@"BIN"];
-    NSData *data = [NSData dataWithContentsOfFile:path];
-    long size = [data length];
-    _packgeNum_main = (int)size / firmwareData([BluetoothDataManage shareInstance].version1);
-    
-    if (!self.bluetoothDataManage.updateFirmware_packageNum) {
-        self.bluetoothDataManage.updateFirmware_packageNum = _packgeNum_main;
-    }
-    
-    NSString *motorPath = [[NSBundle mainBundle] pathForResource:dataMotor ofType:@"BIN"];
-    NSData *motor = [NSData dataWithContentsOfFile:motorPath];
-    long motorSize = [motor length];
-    _packgeNum_motor= (int)motorSize / firmwareData([BluetoothDataManage shareInstance].version1);
-    if (!self.bluetoothDataManage.updateFirmware_packageNum_Motor) {
-        self.bluetoothDataManage.updateFirmware_packageNum_Motor = _packgeNum_motor;
-    }
-    
-    NSString *dataMotor_left = [[NSBundle mainBundle] pathForResource:dataMotorLeft ofType:@"BIN"];
-    NSData *motor_left = [NSData dataWithContentsOfFile:dataMotor_left];
-    long motor_leftSize = [motor_left length];
-    _packgeNum_left = (int)motor_leftSize / firmwareData([BluetoothDataManage shareInstance].version1);
-    if (!self.bluetoothDataManage.updateFirmware_packageNum_Left) {
-        self.bluetoothDataManage.updateFirmware_packageNum_Left = _packgeNum_left;
-    }
-    
-    
-    NSString *dataMotor_right = [[NSBundle mainBundle] pathForResource:dataMotorRight ofType:@"BIN"];
-    NSData *motor_right = [NSData dataWithContentsOfFile:dataMotor_right];
-    long motor_rightSize = [motor_right length];
-    _packgeNum_right = (int)motor_rightSize / firmwareData([BluetoothDataManage shareInstance].version1);
-    
-    if (!self.bluetoothDataManage.updateFirmware_packageNum_Right) {
-        self.bluetoothDataManage.updateFirmware_packageNum_Right = _packgeNum_right;
-    }
-    
-    _packgeNum_All = ((float)self.packgeNum_main + (float)self.packgeNum_motor + (float)self.packgeNum_left + (float)self.packgeNum_right);
-    NSLog(@"总包数 %f %f %f %f %f",(float)_packgeNum_All,(float)self.packgeNum_main,(float)self.packgeNum_motor,(float)self.packgeNum_left,(float)self.packgeNum_right);
     //ui设置
     [self viewLayoutSet];
     
@@ -125,7 +80,48 @@
     _tipImage.multipleTouchEnabled = YES;
     oldFrame = _tipImage.frame;
     largeFrame = CGRectMake(ScreenWidth,ScreenHeight, 3 * oldFrame.size.width, 3 * oldFrame.size.height);
+    
+    [self readFileBIN];
 
+}
+
+- (void)readFileBIN{
+    //获取bin文件的总包数并记录
+    dataName = @"DM00401";
+    dataMotor = @"DY0M008";
+    dataMotorLeft = @"DY0L008";
+    dataMotorRight = @"DY0R008";
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:dataName ofType:@"BIN"];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    long size = [data length];
+    _packgeNum_main = (int)size / firmwareData([BluetoothDataManage shareInstance].version1);
+    
+    self.bluetoothDataManage.updateFirmware_packageNum = _packgeNum_main;
+    NSLog(@"固件包数%d",self.bluetoothDataManage.updateFirmware_packageNum);
+    
+    NSString *motorPath = [[NSBundle mainBundle] pathForResource:dataMotor ofType:@"BIN"];
+    NSData *motor = [NSData dataWithContentsOfFile:motorPath];
+    long motorSize = [motor length];
+    _packgeNum_motor= (int)motorSize / firmwareData([BluetoothDataManage shareInstance].version1);
+    
+    self.bluetoothDataManage.updateFirmware_packageNum_Motor = _packgeNum_motor;
+    
+    NSString *dataMotor_left = [[NSBundle mainBundle] pathForResource:dataMotorLeft ofType:@"BIN"];
+    NSData *motor_left = [NSData dataWithContentsOfFile:dataMotor_left];
+    long motor_leftSize = [motor_left length];
+    _packgeNum_left = (int)motor_leftSize / firmwareData([BluetoothDataManage shareInstance].version1);
+    self.bluetoothDataManage.updateFirmware_packageNum_Left = _packgeNum_left;
+    
+    NSString *dataMotor_right = [[NSBundle mainBundle] pathForResource:dataMotorRight ofType:@"BIN"];
+    NSData *motor_right = [NSData dataWithContentsOfFile:dataMotor_right];
+    long motor_rightSize = [motor_right length];
+    _packgeNum_right = (int)motor_rightSize / firmwareData([BluetoothDataManage shareInstance].version1);
+    
+    self.bluetoothDataManage.updateFirmware_packageNum_Right = _packgeNum_right;
+    
+    _packgeNum_All = ((float)self.packgeNum_main + (float)self.packgeNum_motor + (float)self.packgeNum_left + (float)self.packgeNum_right);
+    NSLog(@"总包数 %f %f %f %f %f",(float)_packgeNum_All,(float)self.packgeNum_main,(float)self.packgeNum_motor,(float)self.packgeNum_left,(float)self.packgeNum_right);
 }
 
 //单击实现原来大小
@@ -425,7 +421,10 @@
         switch ([BluetoothDataManage shareInstance].updateSucceseFlag) {
             case 1: //固件更新
             {
-                [self setMototData:0x23 numData:self.bluetoothDataManage.updateFirmware_packageNum pathName:self->dataName];
+                if (self.bluetoothDataManage.updateFirmware_packageNum <= 0) {
+                    [self readFileBIN];
+                }
+                [self setMototData:0x23 numData:(uint16_t)self.bluetoothDataManage.updateFirmware_packageNum pathName:self->dataName];
                 NSLog(@"固件名称%@ %d",self->dataName,[BluetoothDataManage shareInstance].updateFirmware_packageNum);
             }
                 break;
@@ -453,7 +452,7 @@
     
 }
 //更新
-- (void)setMototData:(UInt8)HCode numData:(UInt16)PackageNum pathName:(NSString *)fileName{
+- (void)setMototData:(UInt8)HCode numData:(UInt8)PackageNum pathName:(NSString *)fileName{
     
     NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:@"BIN"];
     NSData *data = [NSData dataWithContentsOfFile:path];
@@ -482,7 +481,7 @@
         {
             [appDelegate.currentPeripheral writeValue:sendPacHead forCharacteristic:appDelegate.currentCharacteristic type:CBCharacteristicWriteWithResponse];
         }
-        usleep(10 * 1000);
+        //usleep(10 * 1000);
         
         for (int i = 0; i < [subPac length]; i += 20) {
             
@@ -506,7 +505,7 @@
                 {
                     [appDelegate.currentPeripheral writeValue:subData forCharacteristic:appDelegate.currentCharacteristic type:CBCharacteristicWriteWithResponse];
                 }
-                usleep(10 * 1000);
+                //usleep(10 * 1000);
             }
         }
         
@@ -538,7 +537,7 @@
         {
             [appDelegate.currentPeripheral writeValue:sendPacHead forCharacteristic:appDelegate.currentCharacteristic type:CBCharacteristicWriteWithResponse];
         }
-        usleep(10 * 1000);
+        //usleep(10 * 1000);
         
         for (int i = 0; i < [subPac length]; i += 20) {
             
@@ -562,7 +561,7 @@
                 {
                     [appDelegate.currentPeripheral writeValue:subData forCharacteristic:appDelegate.currentCharacteristic type:CBCharacteristicWriteWithResponse];
                 }
-                usleep(10 * 1000);
+                //usleep(10 * 1000);
             }
         }
         
