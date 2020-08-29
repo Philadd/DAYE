@@ -47,7 +47,7 @@
     [super viewDidLoad];
   
     [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
-    
+    self.bluetoothDataManage = [BluetoothDataManage shareInstance];
     //解决navigationitem标题右偏移
     NSArray *viewControllerArray = [self.navigationController viewControllers];
     long previousViewControllerIndex = [viewControllerArray indexOfObject:self] - 1;
@@ -61,7 +61,7 @@
                                                      action:nil];
     }
     self.navigationItem.title = LocalString(@"Update Robot's Firmware");
-    self.bluetoothDataManage = [BluetoothDataManage shareInstance];
+    
     
     //ui设置
     [self viewLayoutSet];
@@ -96,7 +96,6 @@
     NSData *data = [NSData dataWithContentsOfFile:path];
     long size = [data length];
     _packgeNum_main = (int)size / firmwareData([BluetoothDataManage shareInstance].version1);
-    
     self.bluetoothDataManage.updateFirmware_packageNum = _packgeNum_main;
     NSLog(@"固件包数%d",self.bluetoothDataManage.updateFirmware_packageNum);
     
@@ -421,10 +420,7 @@
         switch ([BluetoothDataManage shareInstance].updateSucceseFlag) {
             case 1: //固件更新
             {
-                if (self.bluetoothDataManage.updateFirmware_packageNum <= 0) {
-                    [self readFileBIN];
-                }
-                [self setMototData:0x23 numData:(uint16_t)self.bluetoothDataManage.updateFirmware_packageNum pathName:self->dataName];
+                [self setMototData:0x23 numData:self.bluetoothDataManage.updateFirmware_packageNum pathName:self->dataName];
                 NSLog(@"固件名称%@ %d",self->dataName,[BluetoothDataManage shareInstance].updateFirmware_packageNum);
             }
                 break;
@@ -452,7 +448,7 @@
     
 }
 //更新
-- (void)setMototData:(UInt8)HCode numData:(UInt8)PackageNum pathName:(NSString *)fileName{
+- (void)setMototData:(UInt8)HCode numData:(UInt16)PackageNum pathName:(NSString *)fileName{
     
     NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:@"BIN"];
     NSData *data = [NSData dataWithContentsOfFile:path];
@@ -481,7 +477,7 @@
         {
             [appDelegate.currentPeripheral writeValue:sendPacHead forCharacteristic:appDelegate.currentCharacteristic type:CBCharacteristicWriteWithResponse];
         }
-        //usleep(10 * 1000);
+        usleep(10 * 1000);
         
         for (int i = 0; i < [subPac length]; i += 20) {
             
@@ -505,7 +501,7 @@
                 {
                     [appDelegate.currentPeripheral writeValue:subData forCharacteristic:appDelegate.currentCharacteristic type:CBCharacteristicWriteWithResponse];
                 }
-                //usleep(10 * 1000);
+                usleep(10 * 1000);
             }
         }
         
@@ -537,7 +533,7 @@
         {
             [appDelegate.currentPeripheral writeValue:sendPacHead forCharacteristic:appDelegate.currentCharacteristic type:CBCharacteristicWriteWithResponse];
         }
-        //usleep(10 * 1000);
+        usleep(10 * 1000);
         
         for (int i = 0; i < [subPac length]; i += 20) {
             
@@ -561,7 +557,7 @@
                 {
                     [appDelegate.currentPeripheral writeValue:subData forCharacteristic:appDelegate.currentCharacteristic type:CBCharacteristicWriteWithResponse];
                 }
-                //usleep(10 * 1000);
+                usleep(10 * 1000);
             }
         }
         
