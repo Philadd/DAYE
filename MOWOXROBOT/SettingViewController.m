@@ -58,9 +58,9 @@ static int latestVersion = 273;
         
         if ([BluetoothDataManage shareInstance].versionupdate < latestVersion) {
             _updateButton.hidden = NO;
-            if ([BluetoothDataManage shareInstance].versionupdate <= 268) {
-                _updateButton.hidden = YES;
-            }
+//            if ([BluetoothDataManage shareInstance].versionupdate <= 268) {
+//                _updateButton.hidden = YES;
+//            }
         }else{
             _updateButton.hidden = YES;
         }

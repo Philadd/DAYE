@@ -320,6 +320,13 @@
         self.area2_disTF.text = [NSString stringWithFormat:@"%d",Adistance];
         self.area3_perTF.text = [NSString stringWithFormat:@"%d",Bpre];
         self.area3_disTF.text = [NSString stringWithFormat:@"%d",Bdistance];
+        //更新分区
+        if ((([self.area2_perTF.text intValue] + [self.area3_perTF.text intValue]) >100 ) || ([self.area2_disTF.text intValue] >500) || ([self.area3_disTF.text intValue] >500) ){
+            self.number = 0;
+        }else{
+            self.number = 1;
+        }
+        
     });
     
 }
