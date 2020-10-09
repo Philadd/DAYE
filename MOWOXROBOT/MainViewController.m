@@ -131,7 +131,7 @@
             //[self.signalButton setTitle:LocalString(@"Bluetooth connected") forState:UIControlStateNormal];
             self.signalButton = [UIButton signalButton:LocalString(@"Bluetooth connected") signalImage:[UIImage imageNamed:@"蓝牙连接"]];
             [_signalButton.layer setBackgroundColor:[UIColor colorWithHexString:@"7DA86D"].CGColor];
-            self.batteryButton = [UIButton batteryButton:LocalString(@"100%") batteryImage:[UIImage imageNamed:@"电量5-2"]];
+            self.batteryButton = [UIButton batteryButton:LocalString(@"") batteryImage:[UIImage imageNamed:@"电量5-2"]];
         }
     }
     
