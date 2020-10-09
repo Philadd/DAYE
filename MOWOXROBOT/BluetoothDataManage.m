@@ -583,6 +583,11 @@ static BluetoothDataManage *sgetonInstanceData = nil;
             NSNumber *boundary = _receiveData[5];
             [dataDic setObject:rain forKey:@"rain"];
             [dataDic setObject:boundary forKey:@"boundary"];
+            if ([BluetoothDataManage shareInstance].version1 == 4) {
+                NSNumber *ultrasound = _receiveData[6];
+                [dataDic setObject:ultrasound forKey:@"ultrasound"];
+                
+            }
             [[NSNotificationCenter defaultCenter] postNotificationName:@"recieveMowerSetting" object:nil userInfo:dataDic];
         }else if (self.frameType == updateFirmware){
             [[NSNotificationCenter defaultCenter] postNotificationName:@"recieveUpdateFirmware" object:nil userInfo:nil];

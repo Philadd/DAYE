@@ -122,17 +122,16 @@
         }
     }else{
         if (_appDelegate.currentPeripheral == nil) {
-            //[self.signalButton setTitle:LocalString(@"Bluetooth disconnected") forState:UIControlStateNormal];
             self.signalButton = [UIButton signalButton:LocalString(@"Bluetooth disconnected") signalImage:[UIImage imageNamed:@"蓝牙连接"]];
             [_signalButton.layer setBackgroundColor:[UIColor redColor].CGColor];
-            //[self.batteryButton setTitle:LocalString(@"---") forState:UIControlStateNormal];
+            [self.batteryButton setTitle:LocalString(@"---") forState:UIControlStateNormal];
             self.batteryButton = [UIButton buttonWithTitle:LocalString(@"---") titleColor:[UIColor blackColor]];
             [self.batteryButton.titleLabel setFont:[UIFont systemFontOfSize:17]];
         }else{
             //[self.signalButton setTitle:LocalString(@"Bluetooth connected") forState:UIControlStateNormal];
             self.signalButton = [UIButton signalButton:LocalString(@"Bluetooth connected") signalImage:[UIImage imageNamed:@"蓝牙连接"]];
             [_signalButton.layer setBackgroundColor:[UIColor colorWithHexString:@"7DA86D"].CGColor];
-            self.batteryButton = [UIButton batteryButton:LocalString(@"") batteryImage:[UIImage imageNamed:@"电量5-2"]];
+            self.batteryButton = [UIButton batteryButton:LocalString(@"100%") batteryImage:[UIImage imageNamed:@"电量5-2"]];
         }
     }
     
@@ -280,28 +279,52 @@
     NSNumber *batterData = dict[@"batterData"];
     NSNumber *robotState = dict[@"robotState"];
     dispatch_async(dispatch_get_main_queue(), ^{
-        //[_batteryButton setTitle:[NSString stringWithFormat:@"%ld%%",(long)batterData.integerValue] forState:UIControlStateNormal];
+#if RobotMower | RobotPark
+            if (batterData.integerValue <= 20) {
+                
+                [self.batteryButton setImage:[UIImage imageNamed:@"电量1-2"] forState:UIControlStateNormal];
+                
+            }else if (batterData.integerValue <= 40){
+                
+                [self.batteryButton setImage:[UIImage imageNamed:@"电量2-2"] forState:UIControlStateNormal];
+                
+            }else if (batterData.integerValue <= 60){
+                
+                [self.batteryButton setImage:[UIImage imageNamed:@"电量3-2"] forState:UIControlStateNormal];
+                
+            }else if (batterData.integerValue <=80){
+                
+                [self.batteryButton setImage:[UIImage imageNamed:@"电量4-2"] forState:UIControlStateNormal];
+                
+            }else{
+                
+                [self.batteryButton setImage:[UIImage imageNamed:@"电量5-2"] forState:UIControlStateNormal];
+            }
+                        
+#elif MOWOXROBOT
+        [self.batteryButton setTitle:[NSString stringWithFormat:@"%ld%%",(long)batterData.integerValue] forState:UIControlStateNormal];
         if (batterData.integerValue <= 20) {
             
-            [_batteryButton setImage:[UIImage imageNamed:@"电量1-2"] forState:UIControlStateNormal];
+            [self.batteryButton setImage:[UIImage imageNamed:@"电量1-2"] forState:UIControlStateNormal];
             
         }else if (batterData.integerValue <= 40){
             
-            [_batteryButton setImage:[UIImage imageNamed:@"电量2-2"] forState:UIControlStateNormal];
+            [self.batteryButton setImage:[UIImage imageNamed:@"电量2-2"] forState:UIControlStateNormal];
             
         }else if (batterData.integerValue <= 60){
             
-            [_batteryButton setImage:[UIImage imageNamed:@"电量3-2"] forState:UIControlStateNormal];
+            [self.batteryButton setImage:[UIImage imageNamed:@"电量3-2"] forState:UIControlStateNormal];
             
         }else if (batterData.integerValue <=80){
             
-            [_batteryButton setImage:[UIImage imageNamed:@"电量4-2"] forState:UIControlStateNormal];
+            [self.batteryButton setImage:[UIImage imageNamed:@"电量4-2"] forState:UIControlStateNormal];
             
         }else{
             
-            [_batteryButton setImage:[UIImage imageNamed:@"电量5-2"] forState:UIControlStateNormal];
-            
+            [self.batteryButton setImage:[UIImage imageNamed:@"电量5-2"] forState:UIControlStateNormal];
         }
+            
+#endif
         
         //按钮设置
         NSNumber *mowerState = dict[@"mowerState"];

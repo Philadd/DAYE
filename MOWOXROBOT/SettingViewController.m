@@ -17,6 +17,7 @@
 #import "SecondarySettingViewController.h"
 #import "WorkTimeSettingVC_268.h"
 #import "OldFirmwareViewController.h"
+#import "MowerSetingVC_type4.h"
 
 @interface SettingViewController ()
 
@@ -252,8 +253,14 @@ static int latestVersion = 273;
 }
 
 - (void)mowerSet{
-    MowerSettingViewController *VC = [[MowerSettingViewController alloc] init];
-    [self.navigationController pushViewController:VC animated:YES];
+    if ([BluetoothDataManage shareInstance].version1 == 4) {
+        MowerSetingVC_type4 *typeVC = [[MowerSetingVC_type4 alloc] init];
+        [self.navigationController pushViewController:typeVC animated:YES];
+    }else{
+        MowerSettingViewController *VC = [[MowerSettingViewController alloc] init];
+        [self.navigationController pushViewController:VC animated:YES];
+        
+    }
 }
 - (void)secondarySet{
     SecondarySettingViewController *VC = [[SecondarySettingViewController alloc] init];
