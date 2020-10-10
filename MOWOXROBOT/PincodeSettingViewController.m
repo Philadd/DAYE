@@ -180,7 +180,7 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     
     //简化版的只能输入1234
-    if ([BluetoothDataManage shareInstance].deviceType == 0) {
+    if ([[BluetoothDataManage shareInstance].deviceType integerValue] == 0 || [[BluetoothDataManage shareInstance].deviceType integerValue] == 5) {
         if (((textField == self.inputOldPinCodeTextField)|| (textField == self.inputNewPinCodeTextField) ||(textField == self.repeatNewPinCodeTextField)) && range.location > 3) {
             return NO;
         }

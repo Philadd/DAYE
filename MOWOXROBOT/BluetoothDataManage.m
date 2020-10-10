@@ -414,7 +414,7 @@ static BluetoothDataManage *sgetonInstanceData = nil;
             NSNumber *version2 = _receiveData[10];
             NSNumber *version3 = _receiveData[11];
             NSNumber *robotState = _receiveData[12];
-            _deviceType = [deviceType intValue];
+            _deviceType = deviceType;
             _version1 = [version1 intValue];
             _version2 = [version2 intValue];
             _version3 = [version3 intValue];
@@ -428,7 +428,7 @@ static BluetoothDataManage *sgetonInstanceData = nil;
             [[NSNotificationCenter defaultCenter] postNotificationName:@"getMowerData" object:nil userInfo:dataDic];
             
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            [defaults setInteger:_deviceType forKey:@"deviceType"];
+            [defaults setObject:deviceType forKey:@"deviceType"];
             [defaults synchronize];
         }else if (self.frameType == getAlerts){
             NSLog(@"接收到getAlerts");

@@ -231,7 +231,7 @@
     
     //curVerTextView
     _curVerTV = [[UITextView alloc] init];
-    _curVerTV.text = [NSString stringWithFormat:@"%@\n V%d.%d.%d.%d\n%@\n V%d.2.7.3\n",LocalString(@"Your robot's firmware version:"),[BluetoothDataManage shareInstance].deviceType,[BluetoothDataManage shareInstance].version1,[BluetoothDataManage shareInstance].version2,[BluetoothDataManage shareInstance].version3,LocalString(@"Latest robot's firmware version:"),[BluetoothDataManage shareInstance].deviceType];
+    _curVerTV.text = [NSString stringWithFormat:@"%@\n V%@.%d.%d.%d\n%@\n V%@.2.7.3\n",LocalString(@"Your robot's firmware version:"),[BluetoothDataManage shareInstance].deviceType,[BluetoothDataManage shareInstance].version1,[BluetoothDataManage shareInstance].version2,[BluetoothDataManage shareInstance].version3,LocalString(@"Latest robot's firmware version:"),[BluetoothDataManage shareInstance].deviceType];
     _curVerTV.font = [UIFont fontWithName:@"Arial" size:17];
     _curVerTV.backgroundColor = [UIColor clearColor];
     _curVerTV.autocapitalizationType = UITextAutocapitalizationTypeSentences;

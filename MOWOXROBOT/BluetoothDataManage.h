@@ -51,7 +51,7 @@ static dispatch_queue_t queue;
 @property (nonatomic) int pincode;
 
 ///@brife 收到的版本信息
-@property (nonatomic) int deviceType;
+@property (nonatomic, strong) NSNumber *deviceType;
 @property (nonatomic) int version1;
 @property (nonatomic) int version2;
 @property (nonatomic) int version3;

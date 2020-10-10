@@ -38,7 +38,7 @@
 {
     [super viewWillAppear:animated];
     //[self viewLayoutSet];
-    _label3.text = [NSString stringWithFormat:@"%@: V%d.%d.%d.%d",LocalString(@"Robot software version"),_bluetoothDataManage.deviceType,_bluetoothDataManage.version1,_bluetoothDataManage.version2,_bluetoothDataManage.version3];
+    _label3.text = [NSString stringWithFormat:@"%@: V%@.%d.%d.%d",LocalString(@"Robot software version"),_bluetoothDataManage.deviceType,_bluetoothDataManage.version1,_bluetoothDataManage.version2,_bluetoothDataManage.version3];
     
 }
 
@@ -139,7 +139,7 @@
         _label3.textColor = [UIColor blackColor];
         _label3.textAlignment = NSTextAlignmentLeft;
         [self.view addSubview:_label3];
-        _label3.text = [NSString stringWithFormat:@"%@: V%d.%d.%d.%d",LocalString(@"Robot software version"),_bluetoothDataManage.deviceType,_bluetoothDataManage.version1,_bluetoothDataManage.version2,_bluetoothDataManage.version3];
+        _label3.text = [NSString stringWithFormat:@"%@: V%@.%d.%d.%d",LocalString(@"Robot software version"),_bluetoothDataManage.deviceType,_bluetoothDataManage.version1,_bluetoothDataManage.version2,_bluetoothDataManage.version3];
         [_label3 setLineBreakMode:NSLineBreakByWordWrapping];
         _label3.numberOfLines = 0;
         _label3.textAlignment = NSTextAlignmentLeft;

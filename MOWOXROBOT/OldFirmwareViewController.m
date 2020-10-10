@@ -39,11 +39,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.bluetoothDataManage = [BluetoothDataManage shareInstance];
     
-    if ([defaults integerForKey:@"deviceType"]) {
-        [BluetoothDataManage shareInstance].deviceType = (int)[defaults integerForKey:@"deviceType"];
-        switch ([BluetoothDataManage shareInstance].deviceType) {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSNumber *deviceType = [defaults valueForKey:@"deviceType"];
+    if (deviceType) {
+        switch ([deviceType integerValue]) {
             case 0:
                 dataName = @"DY00273";
                 break;
@@ -223,9 +224,9 @@
     //curVerTextView
     _curVerTV = [[UITextView alloc] init];
 #if RobotMower | MOWOXROBOT
-    _curVerTV.text = [NSString stringWithFormat:@"%@\n V%d.%d.%d.%d\n%@\n V%d.2.7.3\n",LocalString(@"Your robot's firmware version:"),[BluetoothDataManage shareInstance].deviceType,[BluetoothDataManage shareInstance].version1,[BluetoothDataManage shareInstance].version2,[BluetoothDataManage shareInstance].version3,LocalString(@"Latest robot's firmware version:"),[BluetoothDataManage shareInstance].deviceType];
+    _curVerTV.text = [NSString stringWithFormat:@"%@\n V%@.%d.%d.%d\n%@\n V%@.2.7.3\n",LocalString(@"Your robot's firmware version:"),[BluetoothDataManage shareInstance].deviceType,[BluetoothDataManage shareInstance].version1,[BluetoothDataManage shareInstance].version2,[BluetoothDataManage shareInstance].version3,LocalString(@"Latest robot's firmware version:"),[BluetoothDataManage shareInstance].deviceType];
 #elif RobotPark
-    _curVerTV.text = [NSString stringWithFormat:@"%@\n V%d.%d.%d.%d\n%@\n V%d.2.7.3\n",LocalString(@"Your robot's firmware version:"),[BluetoothDataManage shareInstance].deviceType,[BluetoothDataManage shareInstance].version1,[BluetoothDataManage shareInstance].version2,[BluetoothDataManage shareInstance].version3,LocalString(@"Latest robot's firmware version:"),[BluetoothDataManage shareInstance].deviceType];
+    _curVerTV.text = [NSString stringWithFormat:@"%@\n V%@.%d.%d.%d\n%@\n V%@.2.7.3\n",LocalString(@"Your robot's firmware version:"),[BluetoothDataManage shareInstance].deviceType,[BluetoothDataManage shareInstance].version1,[BluetoothDataManage shareInstance].version2,[BluetoothDataManage shareInstance].version3,LocalString(@"Latest robot's firmware version:"),[BluetoothDataManage shareInstance].deviceType];
 #endif
     _curVerTV.font = [UIFont fontWithName:@"Arial" size:17];
     _curVerTV.backgroundColor = [UIColor clearColor];
