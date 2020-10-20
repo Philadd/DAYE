@@ -39,12 +39,59 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
+    
+    //解决navigationitem标题右偏移
+    NSArray *viewControllerArray = [self.navigationController viewControllers];
+    long previousViewControllerIndex = [viewControllerArray indexOfObject:self] - 1;
+    UIViewController *previous;
+    if (previousViewControllerIndex >= 0) {
+        previous = [viewControllerArray objectAtIndex:previousViewControllerIndex];
+        previous.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]
+                                                     initWithTitle:@""
+                                                     style:UIBarButtonItemStylePlain
+                                                     target:self
+                                                     action:nil];
+    }
+    self.navigationItem.title = LocalString(@"Update Robot's Firmware");
     self.bluetoothDataManage = [BluetoothDataManage shareInstance];
+    
+    [self readDataFile];
+    
+    //获取bin文件的总包数并记录
+    NSString *path = [[NSBundle mainBundle] pathForResource:dataName ofType:@"BIN"];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    long size = [data length];
+    int packageNum = (int)size / 2048;
+    _packgeNum = packageNum;
+    
+    [BluetoothDataManage shareInstance].updateFirmware_packageNum = packageNum;
+    
+    //ui设置
+    [self viewLayoutSet];
+    
+    //设置从第1包开始
+    [BluetoothDataManage shareInstance].progress_num = 0;
+    
+    [self.progressViewNew showPopUpViewAnimated:YES];
+    // 单击
+    UITapGestureRecognizer *SingleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resetImage:)];
+    SingleTapGesture.numberOfTapsRequired = 1;//tap次数
+    [self.tipImage addGestureRecognizer:SingleTapGesture];
+    //如果处理的是图片，别忘了
+    _tipImage.userInteractionEnabled = YES;
+    _tipImage.multipleTouchEnabled = YES;
+    oldFrame = _tipImage.frame;
+    largeFrame = CGRectMake(ScreenWidth,ScreenHeight, 3 * oldFrame.size.width, 3 * oldFrame.size.height);
+}
+
+- (void)readDataFile{
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSNumber *deviceType = [defaults valueForKey:@"deviceType"];
     if (deviceType) {
-        switch ([deviceType integerValue]) {
+        switch ([self.bluetoothDataManage.deviceType intValue]) {
             case 0:
                 dataName = @"DY00273";
                 break;
@@ -82,49 +129,6 @@
     }
     
     NSLog(@"更新文件包名.....%@",dataName);
-    [[self rdv_tabBarController] setTabBarHidden:YES animated:YES];
-    
-    
-    //解决navigationitem标题右偏移
-    NSArray *viewControllerArray = [self.navigationController viewControllers];
-    long previousViewControllerIndex = [viewControllerArray indexOfObject:self] - 1;
-    UIViewController *previous;
-    if (previousViewControllerIndex >= 0) {
-        previous = [viewControllerArray objectAtIndex:previousViewControllerIndex];
-        previous.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]
-                                                     initWithTitle:@""
-                                                     style:UIBarButtonItemStylePlain
-                                                     target:self
-                                                     action:nil];
-    }
-    self.navigationItem.title = LocalString(@"Update Robot's Firmware");
-    self.bluetoothDataManage = [BluetoothDataManage shareInstance];
-    
-    //获取bin文件的总包数并记录
-    NSString *path = [[NSBundle mainBundle] pathForResource:dataName ofType:@"BIN"];
-    NSData *data = [NSData dataWithContentsOfFile:path];
-    long size = [data length];
-    int packageNum = (int)size / 2048;
-    _packgeNum = packageNum;
-    if (![BluetoothDataManage shareInstance].updateFirmware_packageNum) {
-        [BluetoothDataManage shareInstance].updateFirmware_packageNum = packageNum;
-    }
-    //ui设置
-    [self viewLayoutSet];
-    
-    //设置从第1包开始
-    [BluetoothDataManage shareInstance].progress_num = 0;
-    
-    [self.progressViewNew showPopUpViewAnimated:YES];
-    // 单击
-    UITapGestureRecognizer *SingleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resetImage:)];
-    SingleTapGesture.numberOfTapsRequired = 1;//tap次数
-    [self.tipImage addGestureRecognizer:SingleTapGesture];
-    //如果处理的是图片，别忘了
-    _tipImage.userInteractionEnabled = YES;
-    _tipImage.multipleTouchEnabled = YES;
-    oldFrame = _tipImage.frame;
-    largeFrame = CGRectMake(ScreenWidth,ScreenHeight, 3 * oldFrame.size.width, 3 * oldFrame.size.height);
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -134,6 +138,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateFirmware:) name:@"shaogujian" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSuccese) name:@"updateSuccese" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateFirmwareWeak) name:@"recieveUpdateFirmware" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(readDataFile) name:@"getDeviceType" object:nil];
     
 }
 
@@ -143,6 +148,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"shaogujian" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateSuccese" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"recieveUpdateFirmware" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"getDeviceType" object:nil];
     [BluetoothDataManage shareInstance].updateFirmware_j = 0;
 }
 
