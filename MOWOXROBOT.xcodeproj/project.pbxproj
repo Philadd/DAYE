@@ -2754,6 +2754,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 5FAMV3D32N;
 				GCC_PREFIX_HEADER = "MOWOXROBOT/MOWOXROBOT-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2781,6 +2782,7 @@
 					"\"$PODS_CONFIGURATION_BUILD_DIR/MBProgressHUD\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/SVProgressHUD\"",
 				);
+				MARKETING_VERSION = 2.0.19;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-all_load",
@@ -2814,6 +2816,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 5FAMV3D32N;
 				GCC_PREFIX_HEADER = "MOWOXROBOT/MOWOXROBOT-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2840,6 +2843,7 @@
 					"\"$PODS_CONFIGURATION_BUILD_DIR/MBProgressHUD\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/SVProgressHUD\"",
 				);
+				MARKETING_VERSION = 2.0.19;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-all_load",
@@ -2873,6 +2877,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 5FAMV3D32N;
 				GCC_PREFIX_HEADER = "MOWOXROBOT/MOWOXROBOT-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
@@ -2896,6 +2901,7 @@
 					"\"$PODS_CONFIGURATION_BUILD_DIR/MBProgressHUD\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/SVProgressHUD\"",
 				);
+				MARKETING_VERSION = 2.0.19;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-all_load",
@@ -2929,6 +2935,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 5FAMV3D32N;
 				GCC_PREFIX_HEADER = "MOWOXROBOT/MOWOXROBOT-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2956,6 +2963,7 @@
 					"\"$PODS_CONFIGURATION_BUILD_DIR/MBProgressHUD\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/SVProgressHUD\"",
 				);
+				MARKETING_VERSION = 1.2.4;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-all_load",
@@ -2989,6 +2997,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 5FAMV3D32N;
 				GCC_PREFIX_HEADER = "MOWOXROBOT/MOWOXROBOT-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -3015,6 +3024,7 @@
 					"\"$PODS_CONFIGURATION_BUILD_DIR/MBProgressHUD\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/SVProgressHUD\"",
 				);
+				MARKETING_VERSION = 1.2.4;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-all_load",
@@ -3048,6 +3058,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 5FAMV3D32N;
 				GCC_PREFIX_HEADER = "MOWOXROBOT/MOWOXROBOT-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
@@ -3071,6 +3082,7 @@
 					"\"$PODS_CONFIGURATION_BUILD_DIR/MBProgressHUD\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/SVProgressHUD\"",
 				);
+				MARKETING_VERSION = 1.2.4;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-all_load",
