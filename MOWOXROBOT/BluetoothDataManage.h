@@ -22,7 +22,8 @@ typedef enum {
     setPincodeResponse,
     getAeraMessage,
     getRobotTimeContent,
-    getBladeUserTime
+    getBladeUserTime,
+    updateFlag
 }FrameType;
 static dispatch_queue_t queue;
 
@@ -37,6 +38,7 @@ static dispatch_queue_t queue;
 @property (nonatomic) int progress_num;//判断当前是第几个包，用来显示进度条
 
 @property (nonatomic) int updateSucceseFlag;// 更新标志
+@property (nonatomic) BOOL isUpdateFirmware;// 是否更新固件
 
 ///@brife 帧数据组成内容
 @property (nonatomic,strong,readonly) NSMutableArray *bluetoothData;

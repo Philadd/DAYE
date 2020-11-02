@@ -13,7 +13,7 @@
 #define QD_BLE_SEND_MAX_LEN 20
 
 ///@brife 可判断的数据帧类型数量
-#define LEN 13
+#define LEN 14
 ///@brife 2的24次方
 static const long int data24 = 16777216;
 ///@brife 2的16次方
@@ -56,6 +56,7 @@ static BluetoothDataManage *sgetonInstanceData = nil;
         _dataContent = [[NSMutableArray alloc] init];
         _receiveData = [[NSMutableArray alloc] init];
         _updateSucceseFlag = 1;
+        _isUpdateFirmware = NO;
     }
     return self;
 }
@@ -383,7 +384,8 @@ static BluetoothDataManage *sgetonInstanceData = nil;
                 
             }
             if (front1 == 5 && front2 == 255 && front3 == 255){
-                
+                self.updateSucceseFlag = 0;
+                self.updateFirmware_j = 0;
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"updateSucceseEnd" object:nil userInfo:nil];
                 
             }
@@ -685,6 +687,19 @@ static BluetoothDataManage *sgetonInstanceData = nil;
             
             [dataDic setObject:bladeUserTimeStr forKey:@"bladeUserTimeStr"];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"recieveBladeUserTime" object:nil userInfo:dataDic];
+        }else if (self.frameType ==updateFlag){
+            //0x08只更新固件 0x0f所有的固件都更新
+            self.isUpdateFirmware = YES;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"updateFlag" object:nil userInfo:nil];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                UInt8 controlCode = 0x08;
+                [[BluetoothDataManage shareInstance] formMotorData:controlCode];
+            });
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                UInt8 controlCode = 0x0f;
+//                [[BluetoothDataManage shareInstance] formMotorData:controlCode];
+//            });
+            
         }
     }
 }
@@ -711,7 +726,7 @@ static BluetoothDataManage *sgetonInstanceData = nil;
     unsigned char dataType;
     
     unsigned char type[LEN]= {
-        0x80,0x82,0x83,0x84,0x85,0x8e,0x89,0x8a,0x8c,0x86,0x8d,0x8f,0x7f
+        0x80,0x82,0x83,0x84,0x85,0x8e,0x89,0x8a,0x8c,0x86,0x8d,0x8f,0x7f,0x7a
     };
     
     dataType = [data[3] unsignedIntegerValue];
@@ -768,6 +783,9 @@ static BluetoothDataManage *sgetonInstanceData = nil;
                     break;
                 case 12:
                     returnVal = getBladeUserTime;
+                    break;
+                case 13:
+                    returnVal = updateFlag;
                     break;
                 default:
                     returnVal = otherFrame;

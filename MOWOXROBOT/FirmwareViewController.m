@@ -87,7 +87,7 @@
 
 - (void)readFileBIN{
     //获取bin文件的总包数并记录
-    dataName = @"DM00401";
+    dataName = @"DM10401";
     dataMotor = @"DY0M008";
     dataMotorLeft = @"DY0L008";
     dataMotorRight = @"DY0R008";
@@ -118,8 +118,12 @@
     _packgeNum_right = (int)motor_rightSize / firmwareData([BluetoothDataManage shareInstance].version1);
     
     self.bluetoothDataManage.updateFirmware_packageNum_Right = _packgeNum_right;
-    
-    _packgeNum_All = ((float)self.packgeNum_main + (float)self.packgeNum_motor + (float)self.packgeNum_left + (float)self.packgeNum_right);
+    //更新固件包进度条显示
+    if ([BluetoothDataManage shareInstance].isUpdateFirmware == YES) {
+        _packgeNum_All = self.bluetoothDataManage.updateFirmware_packageNum;
+    }else{
+        _packgeNum_All = ((float)self.packgeNum_main + (float)self.packgeNum_motor + (float)self.packgeNum_left + (float)self.packgeNum_right);
+    }
     NSLog(@"总包数 %f %f %f %f %f",(float)_packgeNum_All,(float)self.packgeNum_main,(float)self.packgeNum_motor,(float)self.packgeNum_left,(float)self.packgeNum_right);
 }
 
@@ -185,6 +189,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateSucceseEnd) name:@"updateSucceseEnd" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(GETupdateSucceseEnd) name:@"GETupdateSucceseEnd" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateFirmwareWeak) name:@"recieveUpdateFirmware" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateFlag) name:@"updateFlag" object:nil];
     
 }
 
@@ -199,6 +204,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateSucceseEnd" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"GETupdateSucceseEnd" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"recieveUpdateFirmware" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"updateFlag" object:nil];
     [BluetoothDataManage shareInstance].updateFirmware_j = 0;
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
 }
@@ -231,7 +237,7 @@
     
     //curVerTextView
     _curVerTV = [[UITextView alloc] init];
-    _curVerTV.text = [NSString stringWithFormat:@"%@\n V%@.%d.%d.%d\n%@\n V%@.2.7.3\n",LocalString(@"Your robot's firmware version:"),[BluetoothDataManage shareInstance].deviceType,[BluetoothDataManage shareInstance].version1,[BluetoothDataManage shareInstance].version2,[BluetoothDataManage shareInstance].version3,LocalString(@"Latest robot's firmware version:"),[BluetoothDataManage shareInstance].deviceType];
+    _curVerTV.text = [NSString stringWithFormat:@"%@\n V%@.%d.%d.%d\n%@\n V%@.4.0.2\n",LocalString(@"Your robot's firmware version:"),[BluetoothDataManage shareInstance].deviceType,[BluetoothDataManage shareInstance].version1,[BluetoothDataManage shareInstance].version2,[BluetoothDataManage shareInstance].version3,LocalString(@"Latest robot's firmware version:"),[BluetoothDataManage shareInstance].deviceType];
     _curVerTV.font = [UIFont fontWithName:@"Arial" size:17];
     _curVerTV.backgroundColor = [UIColor clearColor];
     _curVerTV.autocapitalizationType = UITextAutocapitalizationTypeSentences;
@@ -688,6 +694,10 @@
         [self performSelector:@selector(GETupdateSucceseEnd) withObject:nil afterDelay:3.f];
     });
     sleep(3);
+}
+
+- (void)updateFlag{
+    [self readFileBIN];
 }
 
 - (void)backAction{

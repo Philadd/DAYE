@@ -614,6 +614,18 @@
 		36BEE70D2439FE7F00684369 /* WorktimeCell_268.m in Sources */ = {isa = PBXBuildFile; fileRef = 36BEE70C2439FE7F00684369 /* WorktimeCell_268.m */; };
 		36BEE70E2439FE7F00684369 /* WorktimeCell_268.m in Sources */ = {isa = PBXBuildFile; fileRef = 36BEE70C2439FE7F00684369 /* WorktimeCell_268.m */; };
 		36BEE70F2439FE7F00684369 /* WorktimeCell_268.m in Sources */ = {isa = PBXBuildFile; fileRef = 36BEE70C2439FE7F00684369 /* WorktimeCell_268.m */; };
+		BB01A11D254FABFC00BC5340 /* DM10401.BIN in Resources */ = {isa = PBXBuildFile; fileRef = BB01A11C254FABFC00BC5340 /* DM10401.BIN */; };
+		BB01A11E254FB11200BC5340 /* DM10401.BIN in Resources */ = {isa = PBXBuildFile; fileRef = BB01A11C254FABFC00BC5340 /* DM10401.BIN */; };
+		BB01A11F254FB11300BC5340 /* DM10401.BIN in Resources */ = {isa = PBXBuildFile; fileRef = BB01A11C254FABFC00BC5340 /* DM10401.BIN */; };
+		BB01B22A254F9572004156DE /* DY0L008.BIN in Resources */ = {isa = PBXBuildFile; fileRef = BB01B226254F9571004156DE /* DY0L008.BIN */; };
+		BB01B22B254F9572004156DE /* DY0M008.BIN in Resources */ = {isa = PBXBuildFile; fileRef = BB01B227254F9571004156DE /* DY0M008.BIN */; };
+		BB01B22C254F9572004156DE /* DY0R008.BIN in Resources */ = {isa = PBXBuildFile; fileRef = BB01B228254F9571004156DE /* DY0R008.BIN */; };
+		BB01B230254F959A004156DE /* DY0L008.BIN in Resources */ = {isa = PBXBuildFile; fileRef = BB01B226254F9571004156DE /* DY0L008.BIN */; };
+		BB01B231254F959A004156DE /* DY0L008.BIN in Resources */ = {isa = PBXBuildFile; fileRef = BB01B226254F9571004156DE /* DY0L008.BIN */; };
+		BB01B232254F959E004156DE /* DY0M008.BIN in Resources */ = {isa = PBXBuildFile; fileRef = BB01B227254F9571004156DE /* DY0M008.BIN */; };
+		BB01B233254F959E004156DE /* DY0M008.BIN in Resources */ = {isa = PBXBuildFile; fileRef = BB01B227254F9571004156DE /* DY0M008.BIN */; };
+		BB01B234254F95A1004156DE /* DY0R008.BIN in Resources */ = {isa = PBXBuildFile; fileRef = BB01B228254F9571004156DE /* DY0R008.BIN */; };
+		BB01B235254F95A2004156DE /* DY0R008.BIN in Resources */ = {isa = PBXBuildFile; fileRef = BB01B228254F9571004156DE /* DY0R008.BIN */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -856,6 +868,10 @@
 		7B70FDA6604CB820688AC28F /* Pods-MOWOXROBOT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOWOXROBOT.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MOWOXROBOT/Pods-MOWOXROBOT.debug.xcconfig"; sourceTree = "<group>"; };
 		B0FFC2AA47A8A70D5B1A5F1F /* libPods-MOWOX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MOWOX.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B42749C854BF69C5989B6D60 /* Pods-MOWOX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOWOX.release.xcconfig"; path = "Pods/Target Support Files/Pods-MOWOX/Pods-MOWOX.release.xcconfig"; sourceTree = "<group>"; };
+		BB01A11C254FABFC00BC5340 /* DM10401.BIN */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = DM10401.BIN; sourceTree = "<group>"; };
+		BB01B226254F9571004156DE /* DY0L008.BIN */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = DY0L008.BIN; sourceTree = "<group>"; };
+		BB01B227254F9571004156DE /* DY0M008.BIN */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = DY0M008.BIN; sourceTree = "<group>"; };
+		BB01B228254F9571004156DE /* DY0R008.BIN */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = DY0R008.BIN; sourceTree = "<group>"; };
 		BB0A37AC2015944C00E5FD94 /* A2_50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "A2_50@2x.png"; path = "image/A2_50@2x.png"; sourceTree = SOURCE_ROOT; };
 		BB0A37AD2015944C00E5FD94 /* A1_50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "A1_50@2x.png"; path = "image/A1_50@2x.png"; sourceTree = SOURCE_ROOT; };
 		BB0A37AE2015944D00E5FD94 /* A3_50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "A3_50@2x.png"; path = "image/A3_50@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -1026,6 +1042,10 @@
 		3E0F567E1FF23F9400A4D339 /* bin */ = {
 			isa = PBXGroup;
 			children = (
+				BB01A11C254FABFC00BC5340 /* DM10401.BIN */,
+				BB01B226254F9571004156DE /* DY0L008.BIN */,
+				BB01B227254F9571004156DE /* DY0M008.BIN */,
+				BB01B228254F9571004156DE /* DY0R008.BIN */,
 				3658FEED25303FE400815B94 /* DY05273.BIN */,
 				3658FEEE25303FE400815B94 /* DY10273.BIN */,
 				3658FEEC25303FE300815B94 /* DY15273.BIN */,
@@ -1753,6 +1773,7 @@
 				3658FEF025303FE400815B94 /* DY05273.BIN in Resources */,
 				36006A832265AFDB00F4EEB2 /* 电量2@1x.png in Resources */,
 				36006A842265AFDB00F4EEB2 /* icon-150@3x.png in Resources */,
+				BB01B22B254F9572004156DE /* DY0M008.BIN in Resources */,
 				36006A852265AFDB00F4EEB2 /* 120x120@2x.png in Resources */,
 				36006A862265AFDB00F4EEB2 /* 机器人APP1+2(1)-3.png in Resources */,
 				36006A872265AFDB00F4EEB2 /* BluetoothWelcome1_5.5@2x.png in Resources */,
@@ -1813,6 +1834,7 @@
 				366A92A124F644D2001996B5 /* DY11273.BIN in Resources */,
 				36006AC82265AFDB00F4EEB2 /* SSIDTableViewCell.xib in Resources */,
 				366A92AD24F644D2001996B5 /* DY12273.BIN in Resources */,
+				BB01B22A254F9572004156DE /* DY0L008.BIN in Resources */,
 				36006AC92265AFDB00F4EEB2 /* 返回1@2x.png in Resources */,
 				36006ACA2265AFDB00F4EEB2 /* 后退@2x.png in Resources */,
 				36006ACB2265AFDB00F4EEB2 /* 割草机@3x.png in Resources */,
@@ -1824,6 +1846,7 @@
 				36006AD22265AFDB00F4EEB2 /* background2@2x.png in Resources */,
 				36006AD32265AFDB00F4EEB2 /* signal@1x.png in Resources */,
 				36006AD42265AFDB00F4EEB2 /* WorkingtimeSetting@2x.png in Resources */,
+				BB01A11D254FABFC00BC5340 /* DM10401.BIN in Resources */,
 				36006AD52265AFDB00F4EEB2 /* home@1x.png in Resources */,
 				36006AD62265AFDB00F4EEB2 /* 电量3@1x.png in Resources */,
 				36006AD72265AFDB00F4EEB2 /* 40x40@2x.png in Resources */,
@@ -1845,6 +1868,7 @@
 				36006AEB2265AFDB00F4EEB2 /* 未选中@2x.png in Resources */,
 				36006AEC2265AFDB00F4EEB2 /* up@1x.png in Resources */,
 				36006AED2265AFDB00F4EEB2 /* icon-60@2x.png in Resources */,
+				BB01B22C254F9572004156DE /* DY0R008.BIN in Resources */,
 				36006AEE2265AFDB00F4EEB2 /* img_nav_more@2x.png in Resources */,
 				36006AEF2265AFDB00F4EEB2 /* A2_50@2x.png in Resources */,
 				36006AF12265AFDB00F4EEB2 /* 58x58@2x.png in Resources */,
@@ -1887,6 +1911,7 @@
 				368E4F1D238D1B8300AFE3B3 /* icon-150@3x.png in Resources */,
 				368E4F1E238D1B8300AFE3B3 /* 120x120@2x.png in Resources */,
 				368E4F1F238D1B8300AFE3B3 /* 机器人APP1+2(1)-3.png in Resources */,
+				BB01B232254F959E004156DE /* DY0M008.BIN in Resources */,
 				368E4F20238D1B8300AFE3B3 /* BluetoothWelcome1_5.5@2x.png in Resources */,
 				368E4F21238D1B8300AFE3B3 /* 右转@2x.png in Resources */,
 				368E4F22238D1B8300AFE3B3 /* ParkWelcome1_4.7@2x.png in Resources */,
@@ -1946,6 +1971,7 @@
 				368E4F96238D244400AFE3B3 /* BLU_Images.xcassets in Resources */,
 				368E4F55238D1B8300AFE3B3 /* 割草机@3x.png in Resources */,
 				368E4F56238D1B8300AFE3B3 /* 87@3x.png in Resources */,
+				BB01B230254F959A004156DE /* DY0L008.BIN in Resources */,
 				368E4F57238D1B8300AFE3B3 /* 120@3x.png in Resources */,
 				368E4F58238D1B8300AFE3B3 /* A3@2x.png in Resources */,
 				368E4F59238D1B8300AFE3B3 /* down@1x.png in Resources */,
@@ -1963,6 +1989,7 @@
 				368E4F63238D1B8300AFE3B3 /* 60x60@2x.png in Resources */,
 				368E4F64238D1B8300AFE3B3 /* A6@1x.png in Resources */,
 				368E4F65238D1B8300AFE3B3 /* Generalsetting@2x.png in Resources */,
+				BB01A11F254FB11300BC5340 /* DM10401.BIN in Resources */,
 				368E4F66238D1B8300AFE3B3 /* 电量2-2@1x.png in Resources */,
 				368E4F67238D1B8300AFE3B3 /* zx_code_line@2x.png in Resources */,
 				368E4F68238D1B8300AFE3B3 /* 选中@1x.png in Resources */,
@@ -1978,6 +2005,7 @@
 				3658FEF625303FF600815B94 /* DY15273.BIN in Resources */,
 				368E4F71238D1B8300AFE3B3 /* icon-60@2x.png in Resources */,
 				368E4F72238D1B8300AFE3B3 /* img_nav_more@2x.png in Resources */,
+				BB01B234254F95A1004156DE /* DY0R008.BIN in Resources */,
 				368E4F73238D1B8300AFE3B3 /* A2_50@2x.png in Resources */,
 				368E4F74238D1B8300AFE3B3 /* 58x58@2x.png in Resources */,
 				368E4F75238D1B8300AFE3B3 /* 割草机@2x.png in Resources */,
@@ -2018,12 +2046,14 @@
 				368E4FE2238D296E00AFE3B3 /* updateFirmwareTip0@2x.png in Resources */,
 				368E4FE3238D296E00AFE3B3 /* 电量2@1x.png in Resources */,
 				368E4FE4238D296E00AFE3B3 /* icon-150@3x.png in Resources */,
+				BB01A11E254FB11200BC5340 /* DM10401.BIN in Resources */,
 				368E4FE5238D296E00AFE3B3 /* 120x120@2x.png in Resources */,
 				368E4FE6238D296E00AFE3B3 /* 机器人APP1+2(1)-3.png in Resources */,
 				368E4FE7238D296E00AFE3B3 /* BluetoothWelcome1_5.5@2x.png in Resources */,
 				368E4FE8238D296E00AFE3B3 /* 右转@2x.png in Resources */,
 				368E4FE9238D296E00AFE3B3 /* ParkWelcome1_4.7@2x.png in Resources */,
 				368E4FEA238D296E00AFE3B3 /* 40@2x.png in Resources */,
+				BB01B235254F95A2004156DE /* DY0R008.BIN in Resources */,
 				368E4FEB238D296E00AFE3B3 /* findBluetooth@2x.png in Resources */,
 				368E4FEC238D296E00AFE3B3 /* 1024x1024@1x.png in Resources */,
 				366A92AF24F644D2001996B5 /* DY12273.BIN in Resources */,
@@ -2065,6 +2095,7 @@
 				368E5009238D296E00AFE3B3 /* BluetoothWelcome1_4.7@2x.png in Resources */,
 				368E500A238D296E00AFE3B3 /* backgroundco@2x.png in Resources */,
 				368E500B238D296E00AFE3B3 /* left@1x.png in Resources */,
+				BB01B233254F959E004156DE /* DY0M008.BIN in Resources */,
 				368E500C238D296E00AFE3B3 /* 蓝牙连接@2x.png in Resources */,
 				368E500D238D296E00AFE3B3 /* 电量3-2@1x.png in Resources */,
 				368E505F238D2AF600AFE3B3 /* App_BG_4@1x.png in Resources */,
@@ -2089,6 +2120,7 @@
 				368E501C238D296E00AFE3B3 /* 87@3x.png in Resources */,
 				368E501D238D296E00AFE3B3 /* 120@3x.png in Resources */,
 				368E501E238D296E00AFE3B3 /* A3@2x.png in Resources */,
+				BB01B231254F959A004156DE /* DY0L008.BIN in Resources */,
 				368E501F238D296E00AFE3B3 /* down@1x.png in Resources */,
 				368E5020238D296E00AFE3B3 /* background2@2x.png in Resources */,
 				368E5021238D296E00AFE3B3 /* signal@1x.png in Resources */,
