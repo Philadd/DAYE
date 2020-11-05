@@ -8,6 +8,7 @@
 
 #import "UITextField+Common.h"
 #import "inputTextField.h"
+#import <objc/runtime.h>
 
 @implementation UITextField (Common)
 + (UITextField *)textFieldWithPlaceholderText:(NSString *)text
@@ -29,7 +30,10 @@
 {
     UITextField *textField = [[inputTextField alloc] init];
     textField.placeholder = text;
-    [textField setValue:[UIColor blackColor] forKeyPath:@"_placeholderLabel.textColor"];
+    Ivar ivar =  class_getInstanceVariable([UITextField class], "_placeholderLabel");
+    UILabel *placeholderLabel = object_getIvar(textField, ivar);
+    placeholderLabel.textColor = [UIColor blackColor];
+
     [textField setFont:[UIFont boldSystemFontOfSize:20]];
     textField.font = [UIFont systemFontOfSize:20.0f];
     textField.textColor = [UIColor blackColor];
