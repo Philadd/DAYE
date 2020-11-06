@@ -56,6 +56,7 @@ static BluetoothDataManage *sgetonInstanceData = nil;
         _dataContent = [[NSMutableArray alloc] init];
         _receiveData = [[NSMutableArray alloc] init];
         _updateSucceseFlag = 1;
+        _deviceType = @0;
         _isUpdateFirmware = NO;
     }
     return self;
