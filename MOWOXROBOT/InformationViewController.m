@@ -103,11 +103,11 @@
         _label2.textAlignment = NSTextAlignmentLeft;
         [self.view addSubview:_label2];
 #if RobotMower
-        _label2.text = [NSString stringWithFormat:@"%@%@",LocalString(@"App software version:"),LocalString(@" V0.3.2 for iOS")];
+        _label2.text = [NSString stringWithFormat:@"%@%@",LocalString(@"App software version:"),LocalString(@" V0.3.3 for iOS")];
 #elif RobotPark
-        _label2.text = [NSString stringWithFormat:@"%@%@",LocalString(@"App software version:"),LocalString(@" V0.3.2 for iOS")];
+        _label2.text = [NSString stringWithFormat:@"%@%@",LocalString(@"App software version:"),LocalString(@" V0.3.3 for iOS")];
 #elif MOWOXROBOT
-        _label2.text = [NSString stringWithFormat:@"%@%@",LocalString(@"App software version:"),LocalString(@" V2.3.2 for iOS")];
+        _label2.text = [NSString stringWithFormat:@"%@%@",LocalString(@"App software version:"),LocalString(@" V2.3.3 for iOS")];
 #endif
         //自动折行设置
         [_label2 setLineBreakMode:NSLineBreakByWordWrapping];
